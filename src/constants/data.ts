@@ -137,6 +137,13 @@ export const LAWYER_DATA = {
 
     contactInfo: [
         {
+            icon: MessageCircle,
+            label: "WhatsApp",
+            value: "(11) 99999-9999",
+            type: "whatsapp" as const,
+            href: "https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta jurídica."
+        },
+        {
             icon: Mail,
             label: "Email",
             value: "geovanna.nery@advocacia.com.br",
@@ -156,13 +163,6 @@ export const LAWYER_DATA = {
             value: "Segunda a Sexta: 9h às 18h",
             type: "hours" as const
         },
-        {
-            icon: MessageCircle,
-            label: "WhatsApp",
-            value: "(11) 99999-9999",
-            type: "whatsapp" as const,
-            href: "https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta jurídica."
-        }
     ],
 
     statistics: [
