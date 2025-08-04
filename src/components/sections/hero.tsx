@@ -1,18 +1,16 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Shield, Users, TrendingUp, Star } from "lucide-react"
+import { lawyerConfig, statisticsConfig } from "@/lib/config"
 import { motion } from "framer-motion"
 
-const stats = [
-    { id: 1, name: "Anos de Experiência", value: "5+", icon: Users },
-    { id: 2, name: "Casos Resolvidos", value: "200+", icon: Shield },
-    { id: 3, name: "Taxa de Sucesso", value: "90%", icon: TrendingUp },
-]
-
+/**
+ * Componente Hero - Seção principal da página
+ * Exibe informações do advogado, call-to-action e estatísticas
+ */
 export function Hero() {
     return (
-        <section id="home" className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-20 sm:pt-24">
+        <section id="home" className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-16 sm:pt-20 lg:pt-24">
             {/* Background decoration */}
             <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
                 <div
@@ -53,8 +51,8 @@ export function Hero() {
                 />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-24 lg:px-8">
-                <div className="mx-auto max-w-6xl">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16 lg:py-20 lg:px-8 xl:px-12 2xl:px-16">
+                <div className="mx-auto max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                         {/* Coluna da Esquerda - Informações */}
                         <motion.div
@@ -70,20 +68,21 @@ export function Hero() {
                                     transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                                     className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 sm:px-4 sm:py-2 shadow-lg border border-white/20"
                                 >
-                                    <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
+                                    <svg className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    </svg>
                                     <span className="text-xs sm:text-sm font-medium text-gray-200">Advogada Jovem e Dinâmica</span>
                                 </motion.div>
                             </div>
 
                             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white lg:text-5xl xl:text-6xl">
-                                Dra. Geovanna Nery
+                                {lawyerConfig.name}
                             </h1>
                             <h2 className="mt-3 sm:mt-4 text-lg sm:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                                Advogada Especialista em Direito Civil e Trabalhista
+                                {lawyerConfig.title}
                             </h2>
                             <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-300 max-w-2xl mx-auto lg:mx-0">
-                                Com mais de 5 anos de experiência na área jurídica, ofereço assessoria
-                                personalizada e soluções eficazes para seus problemas legais.
+                                {lawyerConfig.description}
                             </p>
 
                             <motion.div
@@ -148,7 +147,7 @@ export function Hero() {
                                                 <svg className="w-24 h-24 sm:w-32 sm:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
                                                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                                                 </svg>
-                                                <p className="text-sm sm:text-base font-medium">Dra. Geovanna Nery</p>
+                                                <p className="text-sm sm:text-base font-medium">{lawyerConfig.photoPlaceholder}</p>
                                                 <p className="text-xs sm:text-sm text-gray-500">Advogada</p>
                                             </div>
                                         </div>
@@ -162,7 +161,7 @@ export function Hero() {
                                     animate={{ scale: 1 }}
                                     transition={{ delay: 1, type: "spring", stiffness: 200 }}
                                 >
-                                    OAB/DF
+                                    {lawyerConfig.oab}
                                 </motion.div>
                             </div>
                         </motion.div>
@@ -176,7 +175,7 @@ export function Hero() {
                         className="mx-auto mt-12 sm:mt-16 max-w-2xl lg:mt-20 lg:max-w-none"
                     >
                         <dl className="grid max-w-xl grid-cols-1 gap-8 sm:gap-x-8 sm:gap-y-16 lg:max-w-none lg:grid-cols-3">
-                            {stats.map((stat, index) => (
+                            {statisticsConfig.map((stat, index) => (
                                 <motion.div
                                     key={stat.id}
                                     initial={{ opacity: 0, scale: 0.8 }}
