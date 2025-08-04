@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Shield, Users, TrendingUp, Star, Calendar } from "lucide-react"
+import { Shield, Users, TrendingUp, Star } from "lucide-react"
 import { motion } from "framer-motion"
 
 const stats = [
