@@ -74,11 +74,14 @@ export const Contact: React.FC = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                                    className="bg-background-secondary border border-border-primary rounded-lg p-6 hover:shadow-lg transition-all duration-300"
+                                    className={`bg-background-secondary border border-border-primary rounded-lg p-6 hover:shadow-lg transition-all duration-300 group ${contact.href ? 'cursor-pointer hover:border-gold-500/50 hover:bg-background-secondary/80' : ''
+                                        }`}
+                                    onClick={contact.href ? () => window.open(contact.href, '_blank') : undefined}
                                 >
                                     <div className="flex items-start gap-4">
                                         <div className="flex-shrink-0">
-                                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg">
+                                            <div className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg ${contact.href ? 'group-hover:scale-110 transition-transform duration-200' : ''
+                                                }`}>
                                                 <contact.icon className="h-5 w-5 text-white" />
                                             </div>
                                         </div>
@@ -86,10 +89,20 @@ export const Contact: React.FC = () => {
                                             <h4 className="text-sm font-medium text-text-secondary mb-1">
                                                 {contact.label}
                                             </h4>
-                                            <p className="text-text-primary font-medium">
+                                            <p className={`text-text-primary font-medium ${contact.href ? 'group-hover:text-gold-500 transition-colors duration-200' : ''
+                                                }`}>
                                                 {contact.value}
                                             </p>
                                         </div>
+                                        {contact.href && (
+                                            <div className="flex-shrink-0">
+                                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-500/20 text-gold-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                                    <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </motion.div>
                             ))}

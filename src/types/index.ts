@@ -53,7 +53,8 @@ export interface ContactInfo {
     icon: React.ComponentType<{ className?: string }>
     label: string
     value: string
-    type: 'phone' | 'email' | 'address' | 'hours'
+    type: 'phone' | 'email' | 'address' | 'hours' | 'whatsapp'
+    href?: string
 }
 
 export interface FormSubject {

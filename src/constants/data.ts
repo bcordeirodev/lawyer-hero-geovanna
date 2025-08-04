@@ -16,7 +16,8 @@ import {
     Home,
     Activity,
     Scale,
-    DollarSign
+    DollarSign,
+    MessageCircle
 } from 'lucide-react'
 
 // ============================================================================
@@ -140,25 +141,35 @@ export const LAWYER_DATA = {
             icon: Phone,
             label: "Telefone",
             value: "(11) 99999-9999",
-            type: "phone" as const
+            type: "phone" as const,
+            href: "tel:+5511999999999"
         },
         {
             icon: Mail,
             label: "Email",
             value: "geovanna.nery@advocacia.com.br",
-            type: "email" as const
+            type: "email" as const,
+            href: "mailto:geovanna.nery@advocacia.com.br"
         },
         {
             icon: MapPin,
             label: "Escritório",
             value: "São Paulo, SP",
-            type: "address" as const
+            type: "address" as const,
+            href: "https://maps.google.com/?q=São+Paulo,SP"
         },
         {
             icon: Clock,
             label: "Horário de Atendimento",
             value: "Segunda a Sexta: 9h às 18h",
             type: "hours" as const
+        },
+        {
+            icon: MessageCircle,
+            label: "WhatsApp",
+            value: "(11) 99999-9999",
+            type: "whatsapp" as const,
+            href: "https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta jurídica."
         }
     ],
 
