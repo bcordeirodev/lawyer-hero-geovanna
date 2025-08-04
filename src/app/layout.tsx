@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { ThemeProvider } from "@/contexts/ThemeContext"
 import { ThemeWrapper } from "@/components/ui/theme-wrapper"
-import { ThemeDebug } from "@/components/ui/theme-debug"
+
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -43,7 +43,6 @@ export default function RootLayout({
                 {children}
               </main>
               <Footer />
-              {/* <ThemeDebug /> */}
             </div>
           </ThemeWrapper>
         </ThemeProvider>
