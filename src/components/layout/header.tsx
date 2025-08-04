@@ -66,7 +66,7 @@ export function Header() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
-                            <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-0 text-sm lg:text-base">
+                            <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-0 text-sm lg:text-base">
                                 <a href="#contact">Fale Conosco</a>
                             </Button>
                         </motion.div>
@@ -132,7 +132,7 @@ export function Header() {
                                     transition={{ delay: 0.1 }}
                                     className="px-4 pt-2"
                                 >
-                                    <Button asChild className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-0">
+                                    <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-0">
                                         <a href="#contact">Fale Conosco</a>
                                     </Button>
                                 </motion.div>

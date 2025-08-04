@@ -92,7 +92,7 @@ export function Hero() {
                                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                                 className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-6"
                             >
-                                <Button size="lg" asChild className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-0 flex flex-row items-center justify-center gap-2 w-full sm:w-auto">
+                                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-0 flex flex-row items-center justify-center gap-2 w-full sm:w-auto">
                                     <a href="#contact">
                                         <span className="relative z-10 flex flex-row items-center gap-2">Agende uma Consulta
                                             <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +101,7 @@ export function Hero() {
                                         </span>
                                     </a>
                                 </Button>
-                                <Button variant="outline" size="lg" asChild className="group border-slate-600 text-gray-200 hover:bg-slate-700 hover:text-white bg-transparent flex flex-row items-center justify-center gap-2 w-full sm:w-auto">
+                                <Button variant="outline" size="lg" className="group border-slate-600 text-gray-200 hover:bg-slate-700 hover:text-white bg-transparent flex flex-row items-center justify-center gap-2 w-full sm:w-auto">
                                     <a href="#services">
                                         <span className="flex flex-row items-center gap-2">Ver Áreas de Atuação
                                             <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
