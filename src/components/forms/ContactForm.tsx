@@ -110,10 +110,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 <CheckCircle className="h-12 w-12 text-success" />
             </div>
             <h3 className="text-xl font-semibold text-text-primary">
-                Message Sent Successfully!
+                Mensagem Enviada com Sucesso!
             </h3>
             <p className="text-text-secondary">
-                Thank you for your message. We&apos;ll get back to you as soon as possible.
+                Obrigada pela sua mensagem. Retornarei o mais breve possível.
             </p>
         </motion.div>
     )
@@ -128,16 +128,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             onSubmit={handleSubmit}
             className="space-y-6"
         >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {renderField('name', 'Full Name', 'text', 'Enter your full name', true)}
-                {renderField('email', 'Email Address', 'email', 'Enter your email address', true)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                {renderField('name', 'Nome Completo', 'text', 'Digite seu nome completo', true)}
+                {renderField('email', 'Endereço de Email', 'email', 'Digite seu endereço de email', true)}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {renderField('phone', 'Phone Number', 'tel', 'Enter your phone number (optional)', false)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                {renderField('phone', 'Telefone', 'tel', 'Digite seu número de telefone (opcional)', false)}
                 <div className="space-y-2">
                     <label htmlFor="subject" className="block text-sm font-medium text-text-primary mb-2">
-                        Subject <span className="text-error ml-1">*</span>
+                        Assunto <span className="text-error ml-1">*</span>
                     </label>
                     <select
                         id="subject"
@@ -169,7 +169,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
             <div className="space-y-2">
                 <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-2">
-                    Message <span className="text-error ml-1">*</span>
+                    Mensagem <span className="text-error ml-1">*</span>
                 </label>
                 <textarea
                     id="message"
@@ -177,7 +177,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     value={formData.message}
                     onChange={(e) => handleChange('message', e.target.value)}
                     onBlur={(e) => handleBlur('message', e.target.value)}
-                    placeholder="Tell us about your legal matter..."
+                    placeholder="Conte-nos sobre seu caso jurídico..."
                     required
                     rows={6}
                     maxLength={contactFormConfig.maxMessageLength}
@@ -186,7 +186,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 />
                 <div className="flex justify-between items-center text-xs text-text-muted">
                     <span>
-                        {formData.message.length}/{contactFormConfig.maxMessageLength} characters
+                        {formData.message.length}/{contactFormConfig.maxMessageLength} caracteres
                     </span>
                     {errors.message && (
                         <motion.span
@@ -220,12 +220,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 {isLoading ? (
                     <div className="flex items-center gap-2">
                         <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
-                        Sending...
+                        Enviando...
                     </div>
                 ) : (
                     <div className="flex items-center gap-2">
                         <Send className="h-4 w-4" />
-                        Send Message
+                        Enviar Mensagem
                     </div>
                 )}
             </button>

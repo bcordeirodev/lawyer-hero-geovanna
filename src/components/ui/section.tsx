@@ -15,7 +15,7 @@ export function Section({
     container = true
 }: SectionProps) {
     return (
-        <section id={id} className={`relative py-12 sm:py-16 lg:py-20 xl:py-24 ${className}`}>
+        <section id={id} className={`relative py-8 sm:py-12 lg:py-16 xl:py-20 ${className}`}>
             {backgroundPattern && (
                 <div className="absolute inset-0 bg-gradient-to-br from-neutral-100 via-neutral-50 to-neutral-100">
                     <div

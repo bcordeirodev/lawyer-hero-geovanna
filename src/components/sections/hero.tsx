@@ -12,7 +12,7 @@ export function Hero() {
     const { theme } = useTheme()
 
     return (
-        <section className="relative overflow-hidden pt-16 sm:pt-20 lg:pt-24 bg-background-tertiary">
+        <section className="relative overflow-hidden pt-12 sm:pt-16 lg:pt-20 bg-background-tertiary">
             {/* Background decoration */}
             <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
                 <div
@@ -53,7 +53,7 @@ export function Hero() {
                 />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
                 <div className="mx-auto max-w-6xl lg:max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                         {/* Coluna da Esquerda - Informações */}
@@ -63,22 +63,31 @@ export function Hero() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="text-center lg:text-left"
                         >
-                            <div className="flex items-center justify-center lg:justify-start mb-4 sm:mb-6">
-                                <div className="inline-flex items-center gap-2 bg-secondary-500/10 text-secondary-600 px-3 py-1 rounded-full text-sm font-medium">
-                                    <svg className="h-3 w-3 sm:h-4 sm:w-4 text-secondary-500 fill-current" fill="currentColor" viewBox="0 0 24 24">
+                            <motion.div
+                                className="flex items-center justify-center lg:justify-start mb-4 sm:mb-6"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                            >
+                                <motion.div
+                                    className="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500/20 to-gold-600/20 text-gold-600 px-4 py-2 rounded-full text-sm font-semibold border border-gold-500/30 shadow-lg backdrop-blur-sm"
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <svg className="h-3 w-3 sm:h-4 sm:w-4 text-gold-500 fill-current" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                     </svg>
                                     <span className="text-xs sm:text-sm font-medium">Advogada Jovem e Dinâmica</span>
-                                </div>
-                            </div>
+                                </motion.div>
+                            </motion.div>
 
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent drop-shadow-sm text-center lg:text-left">
                                 {lawyerConfig.name}
                             </h1>
-                            <p className="mt-3 sm:mt-4 text-lg sm:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-secondary-600 to-secondary-500 bg-clip-text text-transparent">
+                            <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-secondary-600 to-secondary-500 bg-clip-text text-transparent text-center lg:text-left">
                                 {lawyerConfig.title}
                             </p>
-                            <p className="mt-4 sm:mt-6 text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0">
+                            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
                                 {lawyerConfig.description}
                             </p>
 
@@ -86,7 +95,7 @@ export function Hero() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                                className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-6"
+                                className="mt-6 sm:mt-8 lg:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 lg:gap-6"
                             >
                                 <button className="group relative overflow-hidden flex flex-row items-center justify-center gap-2 w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg">
                                     <a href="#contact" className="text-white">
@@ -133,7 +142,7 @@ export function Hero() {
 
                                 {/* Foto de perfil */}
                                 <motion.div
-                                    className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 mx-auto"
+                                    className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-72 lg:h-72 xl:w-80 xl:h-80 mx-auto"
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ duration: 0.3 }}
                                 >

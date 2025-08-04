@@ -20,15 +20,15 @@ export function Header() {
                 <div className="flex items-center justify-between h-16 sm:h-20">
                     {/* Logo */}
                     <motion.div
-                        className="flex items-center space-x-3"
+                        className="flex items-center space-x-2 sm:space-x-3"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-xl">
-                            <Scale className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        <div className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-xl">
+                            <Scale className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
                         </div>
-                        <span className="text-xl sm:text-2xl font-bold text-text-primary">Dra. Geovanna Nery</span>
+                        <span className="text-lg sm:text-xl md:text-2xl font-bold text-text-primary">Dra. Geovanna Nery</span>
                     </motion.div>
 
                     {/* Desktop Navigation */}
@@ -104,10 +104,10 @@ export function Header() {
                             transition={{ duration: 0.3 }}
                             className="md:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl"
                         >
-                            <div className="py-6 space-y-4">
+                            <div className="py-4 space-y-2">
                                 <motion.a
                                     href="#home"
-                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-3 text-lg font-medium"
+                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-2 text-base font-medium"
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
@@ -115,7 +115,7 @@ export function Header() {
                                 </motion.a>
                                 <motion.a
                                     href="#services"
-                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-3 text-lg font-medium"
+                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-2 text-base font-medium"
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
@@ -123,7 +123,7 @@ export function Header() {
                                 </motion.a>
                                 <motion.a
                                     href="#about"
-                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-3 text-lg font-medium"
+                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-2 text-base font-medium"
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
@@ -131,7 +131,7 @@ export function Header() {
                                 </motion.a>
                                 <motion.a
                                     href="#contact"
-                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-3 text-lg font-medium"
+                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-2 text-base font-medium"
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >

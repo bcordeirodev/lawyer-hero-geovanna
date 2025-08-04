@@ -8,7 +8,7 @@
  * ============================================================================ */
 
 .section {
-  @apply relative py-12 sm:py-16 lg:py-20 xl:py-24;
+  @apply relative py-8 sm:py-12 lg:py-16 xl:py-20;
 }
 
 .section--with-pattern {

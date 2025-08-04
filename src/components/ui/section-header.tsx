@@ -26,7 +26,7 @@ export function SectionHeader({
             )}
 
             {/* Title */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4 sm:mb-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-foreground via-gold-500 to-foreground bg-clip-text text-transparent mb-4 sm:mb-6 drop-shadow-sm">
                 {title}
             </h2>
 

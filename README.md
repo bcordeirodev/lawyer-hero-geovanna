@@ -1,15 +1,15 @@
 # LawyerHero - Dra. Geovanna Nery
 
-Landing page profissional para a advogada **Dra. Geovanna Nery**, especialista em Direito Civil e Trabalhista, atuando em Brasília-DF.
+Landing page profissional para a advogada **Dra. Geovanna Nery**, especialista em Direito Civil, Empresarial e Família, atuando em São Paulo-SP.
 
 ## 🎯 Sobre a Advogada
 
 - **Nome**: Dra. Geovanna Nery
 - **Nascimento**: 20/09/1997
-- **Localização**: Brasília-DF
-- **Experiência**: Mais de 5 anos na área jurídica
-- **OAB**: Inscrita recentemente no DF
-- **Especialidades**: Direito Civil e Trabalhista
+- **Localização**: São Paulo-SP
+- **Experiência**: Mais de 8 anos na área jurídica
+- **OAB**: OAB/SP - Advogada Licenciada
+- **Especialidades**: Direito Civil, Empresarial e Família
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -173,9 +173,9 @@ Para alterar as cores, edite:
 ## 📞 Contato
 
 **Dra. Geovanna Nery**
-- **Telefone**: (61) 99999-9999
-- **E-mail**: geovanna.nery@email.com
-- **Localização**: Brasília, DF
+- **Telefone**: (11) 99999-9999
+- **E-mail**: geovanna.nery@advocacia.com.br
+- **Localização**: São Paulo, SP
 - **Horário**: Segunda a Sexta: 9h às 18h
 
 ---

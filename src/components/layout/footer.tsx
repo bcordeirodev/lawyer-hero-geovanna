@@ -25,8 +25,8 @@ export function Footer() {
                             <span className="text-xl sm:text-2xl font-bold">Dra. Geovanna Nery</span>
                         </div>
                         <p className="text-base sm:text-lg text-text-secondary mb-6 sm:mb-8 max-w-md">
-                            Advogada jovem e dinâmica com mais de 5 anos de experiência
-                            na área jurídica. Atuação especializada em Direito Civil e Trabalhista em Brasília-DF.
+                            Advogada jovem e dinâmica com mais de 8 anos de experiência
+                            na área jurídica. Atuação especializada em Direito Civil, Empresarial e Família em São Paulo-SP.
                         </p>
                         <div className="flex space-x-6">
                             <motion.a
@@ -81,15 +81,15 @@ export function Footer() {
                         <ul className="space-y-3 sm:space-y-4">
                             <li className="flex items-center space-x-3">
                                 <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-secondary-500" />
-                                <span className="text-base sm:text-lg text-text-secondary">(61) 99999-9999</span>
+                                <span className="text-base sm:text-lg text-text-secondary">(11) 99999-9999</span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-secondary-500" />
-                                <span className="text-base sm:text-lg text-text-secondary">geovanna.nery@email.com</span>
+                                <span className="text-base sm:text-lg text-text-secondary">geovanna.nery@advocacia.com.br</span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-secondary-500" />
-                                <span className="text-base sm:text-lg text-text-secondary">Brasília, DF</span>
+                                <span className="text-base sm:text-lg text-text-secondary">São Paulo, SP</span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-secondary-500" />
@@ -110,7 +110,7 @@ export function Footer() {
                         &copy; 2024 Dra. Geovanna Nery. Todos os direitos reservados.
                     </p>
                     <p className="mt-2 sm:mt-3 text-sm sm:text-base text-text-muted">
-                        OAB/DF - Inscrita recentemente
+                        OAB/SP - Advogada Licenciada
                     </p>
                 </motion.div>
             </div>

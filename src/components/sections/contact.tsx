@@ -20,21 +20,35 @@ export const Contact: React.FC = () => {
     const { theme } = useTheme()
 
     return (
-        <section id="contact" className="relative py-12 sm:py-16 lg:py-20 xl:py-24 bg-background-primary">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <section id="contact" className="relative py-8 sm:py-12 lg:py-16 xl:py-20 bg-background-primary">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
                 <div className="text-center mb-12 sm:mb-16">
-                    <div className="inline-flex items-center gap-2 bg-secondary-500/10 text-secondary-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
-                        📞 Get In Touch
-                    </div>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
-                        Contact Us
-                    </h2>
+                    <motion.div
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500/20 to-gold-600/20 text-gold-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gold-500/30 shadow-lg backdrop-blur-sm"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                    >
+                        📞 Entre em Contato
+                    </motion.div>
+                    <motion.h2
+                        className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent mb-4 drop-shadow-sm hover:scale-105 transition-transform duration-300 cursor-default"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        whileHover={{ scale: 1.02 }}
+                    >
+                        Entre em Contato
+                    </motion.h2>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-                        Ready to discuss your legal matter? Get in touch with us for a consultation.
+                        Pronto para discutir seu caso jurídico? Entre em contato para uma consulta.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
                     {/* Contact Information */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -43,13 +57,13 @@ export const Contact: React.FC = () => {
                         className="space-y-8"
                     >
                         <div>
-                            <h3 className="text-2xl font-semibold text-text-primary mb-6">
-                                Let&apos;s Discuss Your Case
+                            <h3 className="text-xl sm:text-2xl font-semibold text-text-primary mb-4 sm:mb-6">
+                                Vamos Discutir Seu Caso
                             </h3>
-                            <p className="text-text-secondary leading-relaxed">
-                                I&apos;m here to help you navigate your legal challenges. Whether you need
-                                consultation, representation, or just have questions, I&apos;m committed to
-                                providing you with the guidance and support you deserve.
+                            <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
+                                Estou aqui para ajudá-lo a navegar pelos seus desafios jurídicos. Seja para
+                                consultoria, representação ou apenas dúvidas, estou comprometida em
+                                fornecer a orientação e o suporte que você merece.
                             </p>
                         </div>
 
@@ -83,24 +97,24 @@ export const Contact: React.FC = () => {
 
                         <div className="bg-background-secondary border border-border-primary rounded-lg p-6">
                             <h4 className="text-lg font-semibold text-text-primary mb-3">
-                                Why Choose Professional Legal Counsel?
+                                Por que Escolher Assessoria Jurídica Profissional?
                             </h4>
                             <ul className="space-y-2 text-text-secondary">
                                 <li className="flex items-start gap-2">
                                     <span className="text-gold-500 mt-1">•</span>
-                                    <span>Expert guidance through complex legal processes</span>
+                                    <span>Orientação especializada em processos jurídicos complexos</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <span className="text-gold-500 mt-1">•</span>
-                                    <span>Protection of your rights and interests</span>
+                                    <span>Proteção dos seus direitos e interesses</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <span className="text-gold-500 mt-1">•</span>
-                                    <span>Negotiation skills to achieve favorable outcomes</span>
+                                    <span>Habilidades de negociação para alcançar resultados favoráveis</span>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <span className="text-gold-500 mt-1">•</span>
-                                    <span>Peace of mind knowing your case is handled properly</span>
+                                    <span>Tranquilidade sabendo que seu caso está sendo tratado adequadamente</span>
                                 </li>
                             </ul>
                         </div>
@@ -115,10 +129,10 @@ export const Contact: React.FC = () => {
                     >
                         <div className="mb-6">
                             <h3 className="text-xl font-semibold text-text-primary mb-2">
-                                Send Us a Message
+                                Envie uma Mensagem
                             </h3>
                             <p className="text-text-secondary">
-                                Fill out the form below and I&apos;ll get back to you within 24 hours.
+                                Preencha o formulário abaixo e retornarei em até 24 horas.
                             </p>
                         </div>
 

@@ -10,20 +10,20 @@ import { ThemeWrapper } from "@/components/ui/theme-wrapper"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Sarah Johnson, Esq. - Experienced Attorney",
-  description: "Experienced attorney specializing in civil litigation and family law. Providing comprehensive legal services in New York.",
-  keywords: "attorney, lawyer, civil litigation, family law, New York, legal services",
-  authors: [{ name: "Sarah Johnson, Esq." }],
+  title: "Dra. Geovanna Nery - Advogada Especialista",
+  description: "Advogada especializada em direito civil, empresarial e família. Assessoria jurídica personalizada em São Paulo.",
+  keywords: "advogada, direito civil, direito empresarial, direito família, São Paulo, assessoria jurídica",
+  authors: [{ name: "Dra. Geovanna Nery" }],
   openGraph: {
-    title: "Sarah Johnson, Esq. - Experienced Attorney",
-    description: "Experienced attorney specializing in civil litigation and family law.",
+    title: "Dra. Geovanna Nery - Advogada Especialista",
+    description: "Advogada especializada em direito civil, empresarial e família.",
     type: "website",
-    locale: "en_US",
+    locale: "pt_BR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sarah Johnson, Esq. - Experienced Attorney",
-    description: "Experienced attorney specializing in civil litigation and family law.",
+    title: "Dra. Geovanna Nery - Advogada Especialista",
+    description: "Advogada especializada em direito civil, empresarial e família.",
   },
 }
 

@@ -42,7 +42,7 @@ export interface LegalService {
     icon: React.ComponentType<{ className?: string }>
     features: string[]
     gradient: string
-    category: 'civil' | 'criminal' | 'family' | 'business' | 'real-estate' | 'employment' | 'intellectual-property' | 'immigration'
+    category: 'civil' | 'criminal' | 'family' | 'business' | 'real-estate' | 'employment' | 'intellectual-property' | 'immigration' | 'health' | 'tax' | 'environmental'
 }
 
 // ============================================================================

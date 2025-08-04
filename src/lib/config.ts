@@ -3,7 +3,7 @@
  * Follows SOLID principles and provides internationalization support
  */
 
-import { US_SAMPLE_DATA } from '@/constants/sample-data'
+import { LAWYER_DATA } from '@/constants/data'
 import { FORM_SUBJECTS, WORKING_HOURS } from '@/constants/countries'
 import { AppConfig } from '@/types'
 
@@ -12,20 +12,20 @@ import { AppConfig } from '@/types'
 // ============================================================================
 
 // Change this to switch between different countries
-export const CURRENT_COUNTRY = 'US' as const
+export const CURRENT_COUNTRY = 'BR' as const
 
 // ============================================================================
 // MAIN CONFIGURATION
 // ============================================================================
 
 export const appConfig: AppConfig = {
-    lawyer: US_SAMPLE_DATA.lawyer,
-    services: US_SAMPLE_DATA.services,
-    contactInfo: US_SAMPLE_DATA.contactInfo,
-    statistics: US_SAMPLE_DATA.statistics,
-    formSubjects: FORM_SUBJECTS[CURRENT_COUNTRY] || FORM_SUBJECTS.US,
-    aboutHighlights: US_SAMPLE_DATA.aboutSection.highlights,
-    whyChooseUs: US_SAMPLE_DATA.aboutSection.whyChooseUs
+    lawyer: LAWYER_DATA.lawyer,
+    services: LAWYER_DATA.services,
+    contactInfo: LAWYER_DATA.contactInfo,
+    statistics: LAWYER_DATA.statistics,
+    formSubjects: FORM_SUBJECTS[CURRENT_COUNTRY] || FORM_SUBJECTS.BR,
+    aboutHighlights: LAWYER_DATA.aboutSection.highlights,
+    whyChooseUs: LAWYER_DATA.aboutSection.whyChooseUs
 }
 
 // ============================================================================
@@ -93,12 +93,12 @@ export const breakpoints = {
 // ============================================================================
 
 export const seoConfig = {
-    title: 'Sarah Johnson, Esq. - Experienced Attorney',
-    description: 'Experienced attorney specializing in civil litigation and family law. Providing comprehensive legal services in New York.',
-    keywords: 'attorney, lawyer, civil litigation, family law, New York, legal services',
-    author: 'Sarah Johnson, Esq.',
+    title: 'Dra. Geovanna Nery - Advogada Especialista',
+    description: 'Advogada especializada em direito civil, empresarial e família. Assessoria jurídica personalizada em São Paulo.',
+    keywords: 'advogada, direito civil, direito empresarial, direito família, São Paulo, assessoria jurídica',
+    author: 'Dra. Geovanna Nery',
     ogImage: '/og-image.jpg',
-    twitterHandle: '@sarahjohnsonlaw'
+    twitterHandle: '@geovannanery'
 }
 
 // ============================================================================
