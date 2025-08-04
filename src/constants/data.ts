@@ -4,7 +4,6 @@
  */
 
 import {
-    Phone,
     Mail,
     MapPin,
     Clock,
@@ -137,13 +136,6 @@ export const LAWYER_DATA = {
     ],
 
     contactInfo: [
-        {
-            icon: Phone,
-            label: "Telefone",
-            value: "(11) 99999-9999",
-            type: "phone" as const,
-            href: "tel:+5511999999999"
-        },
         {
             icon: Mail,
             label: "Email",
