@@ -3,20 +3,17 @@
 import { motion } from "framer-motion"
 import { servicesConfig } from "@/lib/config"
 import { useTheme } from "@/contexts/ThemeContext"
-import {
-    FileText,
-    Leaf
-} from 'lucide-react'
+
 
 /**
  * Componente Services - Seção de especialidades jurídicas
  * Exibe os serviços oferecidos pelo advogado
  */
 export function Services() {
-    const { theme, isDark } = useTheme()
+
 
     // Serviços adicionais para completar 6 itens
-    const additionalServices: any[] = []
+    const additionalServices: never[] = []
 
     const allServices = [...servicesConfig, ...additionalServices]
 

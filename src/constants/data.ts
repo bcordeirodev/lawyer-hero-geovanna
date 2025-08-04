@@ -16,11 +16,8 @@ import {
     Home,
     Activity,
     Scale,
-    DollarSign,
-    Leaf
+    DollarSign
 } from 'lucide-react'
-
-import { Lawyer, LegalService, ContactInfo, Statistic, AboutSection } from '@/types'
 
 // ============================================================================
 // DADOS DO ADVOGADO
