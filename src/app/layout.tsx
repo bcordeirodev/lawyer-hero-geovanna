@@ -1,25 +1,29 @@
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
+import { ThemeProvider } from "@/contexts/ThemeContext"
+import { ThemeWrapper } from "@/components/ui/theme-wrapper"
+import { ThemeDebug } from "@/components/ui/theme-debug"
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Dra. Geovanna Nery - Advogada Especialista em Direito Civil e Trabalhista",
-  description: "Advogada jovem e dinâmica com mais de 5 anos de experiência na área jurídica. Atuação em Brasília-DF com assessoria personalizada em Direito Civil e Trabalhista.",
-  keywords: [
-    "advogada",
-    "direito civil",
-    "direito trabalhista",
-    "brasília",
-    "geovanna nery",
-    "assessoria jurídica",
-    "advocacia",
-    "consultoria jurídica"
-  ],
-  authors: [{ name: "Dra. Geovanna Nery" }],
+  title: "Sarah Johnson, Esq. - Experienced Attorney",
+  description: "Experienced attorney specializing in civil litigation and family law. Providing comprehensive legal services in New York.",
+  keywords: "attorney, lawyer, civil litigation, family law, New York, legal services",
+  authors: [{ name: "Sarah Johnson, Esq." }],
   openGraph: {
-    title: "Dra. Geovanna Nery - Advogada Especialista",
-    description: "Advogada jovem e dinâmica com mais de 5 anos de experiência na área jurídica. Atuação em Brasília-DF.",
+    title: "Sarah Johnson, Esq. - Experienced Attorney",
+    description: "Experienced attorney specializing in civil litigation and family law.",
     type: "website",
-    locale: "pt_BR",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sarah Johnson, Esq. - Experienced Attorney",
+    description: "Experienced attorney specializing in civil litigation and family law.",
   },
 }
 
@@ -29,9 +33,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
-      <body className="antialiased">
-        {children}
+    <html lang="en" className="scroll-smooth dark">
+      <body className={`${inter.className} bg-background-primary text-text-primary dark:bg-background-primary dark:text-text-primary`}>
+        <ThemeProvider initialMode="dark">
+          <ThemeWrapper>
+            <div className="min-h-screen bg-background-primary dark:bg-background-primary">
+              <Header />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+              {/* <ThemeDebug /> */}
+            </div>
+          </ThemeWrapper>
+        </ThemeProvider>
       </body>
     </html>
   )

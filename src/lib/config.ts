@@ -1,246 +1,155 @@
 /**
- * Configuração centralizada da aplicação
- * Template reutilizável para sites de advogados
+ * Main configuration file for the Lawyer Hero template
+ * Follows SOLID principles and provides internationalization support
  */
 
-import {
-    FileText,
-    Calendar,
-    Users,
-    Shield,
-    TrendingUp,
-    MessageSquare,
-    Database,
-    Zap,
-    Phone,
-    Mail,
-    MapPin,
-    Clock
-} from 'lucide-react'
+import { US_SAMPLE_DATA } from '@/constants/sample-data'
+import { FORM_SUBJECTS, WORKING_HOURS } from '@/constants/countries'
+import { AppConfig } from '@/types'
 
 // ============================================================================
-// CONFIGURAÇÃO DO ADVOGADO
+// COUNTRY SELECTION
 // ============================================================================
 
-export const lawyerConfig = {
-    // Informações básicas
-    name: "Dra. Geovanna Nery",
-    title: "Advogada Especialista em Direito Civil e Trabalhista",
-    description: "Com mais de 5 anos de experiência na área jurídica, ofereço assessoria personalizada e soluções eficazes para seus problemas legais.",
+// Change this to switch between different countries
+export const CURRENT_COUNTRY = 'US' as const
 
-    // Credenciais
-    oab: "OAB/DF",
-    location: "Brasília, DF",
+// ============================================================================
+// MAIN CONFIGURATION
+// ============================================================================
 
-    // Estatísticas
-    experience: "5+",
-    casesResolved: "200+",
-    successRate: "90%",
-
-    // Contato
-    email: "geovanna.nery@email.com",
-    phone: "(61) 99999-9999",
-    workingHours: "Segunda a Sexta: 9h às 18h",
-
-    // Foto
-    photoPlaceholder: "Dra. Geovanna Nery"
+export const appConfig: AppConfig = {
+    lawyer: US_SAMPLE_DATA.lawyer,
+    services: US_SAMPLE_DATA.services,
+    contactInfo: US_SAMPLE_DATA.contactInfo,
+    statistics: US_SAMPLE_DATA.statistics,
+    formSubjects: FORM_SUBJECTS[CURRENT_COUNTRY] || FORM_SUBJECTS.US,
+    aboutHighlights: US_SAMPLE_DATA.aboutSection.highlights,
+    whyChooseUs: US_SAMPLE_DATA.aboutSection.whyChooseUs
 }
 
 // ============================================================================
-// SERVIÇOS/ESPECIALIDADES
+// EXPORTED CONFIGURATIONS FOR EASY ACCESS
 // ============================================================================
 
-export const servicesConfig = [
-    {
-        title: "Direito Civil",
-        description: "Especializado em contratos, responsabilidade civil, direito de família e sucessões.",
-        icon: FileText,
-        features: ["Contratos e acordos", "Responsabilidade civil", "Direito de família"],
-        gradient: "from-blue-500 to-cyan-500"
-    },
-    {
-        title: "Direito Trabalhista",
-        description: "Assessoria completa em questões trabalhistas e previdenciárias.",
-        icon: Calendar,
-        features: ["Rescisão de contratos", "Horas extras", "Acidentes de trabalho"],
-        gradient: "from-green-500 to-emerald-500"
-    },
-    {
-        title: "Direito do Consumidor",
-        description: "Defesa dos direitos do consumidor em todas as esferas.",
-        icon: Users,
-        features: ["Problemas com produtos", "Serviços inadequados", "Cobranças indevidas"],
-        gradient: "from-purple-500 to-pink-500"
-    },
-    {
-        title: "Direito Previdenciário",
-        description: "Especialista em benefícios previdenciários e aposentadoria.",
-        icon: Shield,
-        features: ["Aposentadoria", "Auxílio-doença", "Pensão por morte"],
-        gradient: "from-orange-500 to-red-500"
-    },
-    {
-        title: "Direito Empresarial",
-        description: "Assessoria jurídica para empresas e empreendedores.",
-        icon: TrendingUp,
-        features: ["Constituição de empresas", "Contratos comerciais", "Compliance"],
-        gradient: "from-indigo-500 to-blue-500"
-    },
-    {
-        title: "Direito Imobiliário",
-        description: "Especializado em questões relacionadas a imóveis e propriedade.",
-        icon: MessageSquare,
-        features: ["Compra e venda", "Locação", "Regularização"],
-        gradient: "from-teal-500 to-green-500"
-    },
-    {
-        title: "Direito de Família",
-        description: "Assessoria em divórcios, guarda de filhos e pensão alimentícia.",
-        icon: Database,
-        features: ["Divórcio", "Guarda de filhos", "Pensão alimentícia"],
-        gradient: "from-pink-500 to-rose-500"
-    },
-    {
-        title: "Direito Sucessório",
-        description: "Especialista em inventários, testamentos e heranças.",
-        icon: Zap,
-        features: ["Inventários", "Testamentos", "Heranças"],
-        gradient: "from-yellow-500 to-orange-500"
-    }
-]
-
-// ============================================================================
-// INFORMAÇÕES DE CONTATO
-// ============================================================================
-
-export const contactConfig = [
-    {
-        icon: Phone,
-        label: "Telefone",
-        value: "(61) 99999-9999"
-    },
-    {
-        icon: Mail,
-        label: "E-mail",
-        value: "geovanna.nery@email.com"
-    },
-    {
-        icon: MapPin,
-        label: "Endereço",
-        value: "Brasília, DF"
-    },
-    {
-        icon: Clock,
-        label: "Horário de Atendimento",
-        value: "Segunda a Sexta: 9h às 18h"
-    }
-]
-
-// ============================================================================
-// ESTATÍSTICAS
-// ============================================================================
-
-export const statisticsConfig = [
-    {
-        id: 1,
-        name: "Anos de Experiência",
-        value: "5+",
-        icon: Users
-    },
-    {
-        id: 2,
-        name: "Casos Resolvidos",
-        value: "200+",
-        icon: Shield
-    },
-    {
-        id: 3,
-        name: "Taxa de Sucesso",
-        value: "90%",
-        icon: TrendingUp
-    }
-]
-
-// ============================================================================
-// FORMULÁRIO DE CONTATO
-// ============================================================================
-
-export const formConfig = {
-    subjects: [
-        { value: "", label: "Selecione um assunto" },
-        { value: "consulta", label: "Agendar Consulta" },
-        { value: "duvida", label: "Dúvida Jurídica" },
-        { value: "orçamento", label: "Solicitar Orçamento" },
-        { value: "outro", label: "Outro" }
-    ]
-}
-
-// ============================================================================
-// SEÇÃO SOBRE
-// ============================================================================
-
+export const lawyerConfig = appConfig.lawyer
+export const servicesConfig = appConfig.services
+export const contactConfig = appConfig.contactInfo
+export const statisticsConfig = appConfig.statistics
+export const formConfig = { subjects: appConfig.formSubjects }
 export const aboutConfig = {
-    highlights: [
-        "OAB/DF - Inscrita recentemente",
-        "Formação em Direito",
-        "Brasília, DF"
-    ],
-    whyChooseUs: [
-        "Experiência comprovada em mais de 200 casos",
-        "Atendimento personalizado e humanizado",
-        "Transparência total nos processos",
-        "Compromisso com prazos e resultados",
-        "Advocacia jovem e dinâmica"
-    ]
+    highlights: appConfig.aboutHighlights,
+    whyChooseUs: appConfig.whyChooseUs
 }
 
 // ============================================================================
-// CONFIGURAÇÃO GERAL DA APLICAÇÃO
+// THEME CONFIGURATION
 // ============================================================================
 
-export const appConfig = {
-    lawyer: lawyerConfig,
-    services: servicesConfig,
-    contactInfo: contactConfig,
-    statistics: statisticsConfig,
-    formSubjects: formConfig.subjects,
-    aboutHighlights: aboutConfig.highlights,
-    whyChooseUs: aboutConfig.whyChooseUs
+export const themeConfig = {
+    colors: {
+        primary: 'blue',
+        secondary: 'indigo',
+        accent: 'cyan',
+        background: 'slate',
+        text: 'white'
+    },
+    gradients: {
+        primary: 'from-blue-500 to-indigo-500',
+        secondary: 'from-cyan-500 to-blue-500'
+    }
 }
 
 // ============================================================================
-// INSTRUÇÕES DE USO DO TEMPLATE
+// ANIMATION CONFIGURATION
 // ============================================================================
 
-/**
- * COMO PERSONALIZAR ESTE TEMPLATE:
- * 
- * 1. ADVOGADO:
- *    - Altere lawyerConfig com as informações do advogado
- *    - Substitua a foto no componente Hero
- * 
- * 2. SERVIÇOS:
- *    - Edite servicesConfig para adicionar/remover especialidades
- *    - Use ícones do lucide-react: https://lucide.dev/icons/
- *    - Personalize gradientes: "from-[cor]-500 to-[cor]-500"
- * 
- * 3. CONTATO:
- *    - Atualize contactConfig com dados reais
- *    - Configure formConfig.subjects para assuntos específicos
- * 
- * 4. CORES E TEMA:
- *    - O template usa tema escuro por padrão
- *    - Cores principais: slate-900, blue-500, indigo-500
- *    - Gradientes: from-blue-500 to-indigo-500
- * 
- * 5. DEPLOY:
- *    - Conecte ao GitHub
- *    - Deploy automático no Vercel
- *    - Domínio personalizado opcional
- * 
- * 6. FUNCIONALIDADES:
- *    - Formulário de contato (requer backend)
- *    - Animações com Framer Motion
- *    - Design responsivo
- *    - SEO otimizado
- */ 
+export const animationConfig = {
+    duration: {
+        fast: 0.2,
+        normal: 0.3,
+        slow: 0.6
+    },
+    easing: {
+        easeOut: 'easeOut',
+        easeInOut: 'easeInOut'
+    }
+}
+
+// ============================================================================
+// RESPONSIVE BREAKPOINTS
+// ============================================================================
+
+export const breakpoints = {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+    '2xl': '1536px'
+}
+
+// ============================================================================
+// SEO CONFIGURATION
+// ============================================================================
+
+export const seoConfig = {
+    title: 'Sarah Johnson, Esq. - Experienced Attorney',
+    description: 'Experienced attorney specializing in civil litigation and family law. Providing comprehensive legal services in New York.',
+    keywords: 'attorney, lawyer, civil litigation, family law, New York, legal services',
+    author: 'Sarah Johnson, Esq.',
+    ogImage: '/og-image.jpg',
+    twitterHandle: '@sarahjohnsonlaw'
+}
+
+// ============================================================================
+// CONTACT FORM CONFIGURATION
+// ============================================================================
+
+export const contactFormConfig = {
+    requiredFields: ['name', 'email', 'subject', 'message'],
+    optionalFields: ['phone'],
+    maxMessageLength: 1000,
+    autoComplete: {
+        name: 'name',
+        email: 'email',
+        phone: 'tel',
+        subject: 'off',
+        message: 'off'
+    }
+}
+
+// ============================================================================
+// VALIDATION RULES
+// ============================================================================
+
+export const validationRules = {
+    name: {
+        required: true,
+        minLength: 2,
+        maxLength: 50
+    },
+    email: {
+        required: true,
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    },
+    phone: {
+        required: false,
+        pattern: /^[\+]?[1-9][\d]{0,15}$/
+    },
+    subject: {
+        required: true,
+        minLength: 1,
+        maxLength: 100
+    },
+    message: {
+        required: true,
+        minLength: 10,
+        maxLength: 1000
+    }
+}
+
+// ============================================================================
+// EXPORT DEFAULT CONFIGURATION
+// ============================================================================
+
+export default appConfig 

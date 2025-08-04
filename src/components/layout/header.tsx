@@ -1,37 +1,41 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Scale, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTheme } from "@/contexts/ThemeContext"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { theme } = useTheme()
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-background-primary/98 backdrop-blur-xl border-b border-border-primary shadow-2xl">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-14 sm:h-16">
+                <div className="flex items-center justify-between h-16 sm:h-20">
                     {/* Logo */}
                     <motion.div
-                        className="flex items-center space-x-2"
+                        className="flex items-center space-x-3"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <Scale className="h-6 w-6 sm:h-8 sm:w-8 text-blue-400" />
-                        <span className="text-lg sm:text-xl font-bold text-white">Dra. Geovanna Nery</span>
+                        <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-xl">
+                            <Scale className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        </div>
+                        <span className="text-xl sm:text-2xl font-bold text-text-primary">Dra. Geovanna Nery</span>
                     </motion.div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <nav className="hidden md:flex items-center space-x-8 lg:space-x-10">
                         <motion.a
                             href="#home"
-                            className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
+                            className="text-base lg:text-lg text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -39,7 +43,7 @@ export function Header() {
                         </motion.a>
                         <motion.a
                             href="#services"
-                            className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
+                            className="text-base lg:text-lg text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -47,7 +51,7 @@ export function Header() {
                         </motion.a>
                         <motion.a
                             href="#about"
-                            className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
+                            className="text-base lg:text-lg text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -55,32 +59,39 @@ export function Header() {
                         </motion.a>
                         <motion.a
                             href="#contact"
-                            className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors"
+                            className="text-base lg:text-lg text-text-secondary hover:text-text-primary transition-colors duration-200 font-medium"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
                             Contato
                         </motion.a>
+
+                        {/* Theme Toggle */}
+                        <ThemeToggle />
+
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
-                            <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-0 text-sm lg:text-base">
-                                <a href="#contact">Fale Conosco</a>
-                            </Button>
+                            <button className="bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-lg text-base lg:text-lg transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                                <a href="#contact" className="text-white font-medium">Fale Conosco</a>
+                            </button>
                         </motion.div>
                     </nav>
 
                     {/* Mobile Menu Button */}
-                    <motion.button
-                        className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
-                        onClick={toggleMenu}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                    </motion.button>
+                    <div className="md:hidden flex items-center space-x-3">
+                        <ThemeToggle />
+                        <motion.button
+                            className="p-2 text-text-secondary hover:text-text-primary transition-colors"
+                            onClick={toggleMenu}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
+                            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                        </motion.button>
+                    </div>
                 </div>
 
                 {/* Mobile Menu */}
@@ -91,12 +102,12 @@ export function Header() {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="md:hidden border-t border-slate-800"
+                            className="md:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl"
                         >
-                            <div className="py-4 space-y-3">
+                            <div className="py-6 space-y-4">
                                 <motion.a
                                     href="#home"
-                                    className="block text-gray-300 hover:text-white transition-colors px-4 py-2"
+                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-3 text-lg font-medium"
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
@@ -104,7 +115,7 @@ export function Header() {
                                 </motion.a>
                                 <motion.a
                                     href="#services"
-                                    className="block text-gray-300 hover:text-white transition-colors px-4 py-2"
+                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-3 text-lg font-medium"
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
@@ -112,7 +123,7 @@ export function Header() {
                                 </motion.a>
                                 <motion.a
                                     href="#about"
-                                    className="block text-gray-300 hover:text-white transition-colors px-4 py-2"
+                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-3 text-lg font-medium"
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
@@ -120,7 +131,7 @@ export function Header() {
                                 </motion.a>
                                 <motion.a
                                     href="#contact"
-                                    className="block text-gray-300 hover:text-white transition-colors px-4 py-2"
+                                    className="block text-text-secondary hover:text-text-primary transition-colors px-4 py-3 text-lg font-medium"
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
@@ -130,11 +141,11 @@ export function Header() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 }}
-                                    className="px-4 pt-2"
+                                    className="px-4 pt-4"
                                 >
-                                    <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 border-0">
-                                        <a href="#contact">Fale Conosco</a>
-                                    </Button>
+                                    <button className="w-full bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-lg transition-all duration-200 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 font-medium">
+                                        <a href="#contact" className="text-white">Fale Conosco</a>
+                                    </button>
                                 </motion.div>
                             </div>
                         </motion.div>

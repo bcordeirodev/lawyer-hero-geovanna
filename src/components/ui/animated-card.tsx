@@ -1,17 +1,13 @@
-/**
- * Componente AnimatedCard - Card com animações
- * Fornece animações consistentes para cards
- */
+"use client"
+
 import React from 'react'
 import { motion } from 'framer-motion'
+import { AnimatedCardProps } from '@/types'
 
-interface AnimatedCardProps {
-    children: React.ReactNode
-    index?: number
-    className?: string
-    hoverEffect?: boolean
-}
-
+/**
+ * AnimatedCard Component
+ * Reusable animated card component with hover effects
+ */
 export function AnimatedCard({
     children,
     index = 0,
@@ -32,7 +28,7 @@ export function AnimatedCard({
                 y: -5,
                 transition: { duration: 0.2 }
             } : undefined}
-            className={className}
+            className={`bg-card border border-border rounded-lg shadow-lg ${className}`}
         >
             {children}
         </motion.div>
