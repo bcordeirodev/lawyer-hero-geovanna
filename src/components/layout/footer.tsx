@@ -112,6 +112,24 @@ export function Footer() {
                     <p className="mt-2 sm:mt-3 text-sm sm:text-base text-text-muted">
                         OAB/SP - Advogada Licenciada
                     </p>
+
+                    {/* Desenvolvedor - Informações discretas */}
+                    <div className="mt-6 pt-4 border-t border-border-primary/30 px-4">
+                        <p className="text-xs text-text-muted/60 mb-1">
+                            Desenvolvido por
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-xs text-text-muted/50">
+                            <span>Bruno Cordeiro da Silva</span>
+                            <span className="hidden sm:inline">•</span>
+                            <a href="tel:+5561983631107" className="hover:text-gold-500 transition-colors">
+                                (61) 98363-1107
+                            </a>
+                            <span className="hidden sm:inline">•</span>
+                            <a href="mailto:bcordeiro.dev@gmail.com" className="hover:text-gold-500 transition-colors">
+                                bcordeiro.dev@gmail.com
+                            </a>
+                        </div>
+                    </div>
                 </motion.div>
             </div>
         </footer>
