@@ -28,6 +28,7 @@ export async function GET(request: Request) {
                         backgroundImage: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
                         padding: '40px',
                         position: 'relative',
+                        fontFamily: 'Inter, system-ui, sans-serif',
                     }}
                 >
                     {/* Background Pattern */}
@@ -43,23 +44,30 @@ export async function GET(request: Request) {
                         }}
                     />
 
-                    {/* Logo/Icon */}
+                    {/* Profile Image */}
                     <div
                         style={{
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            width: '80px',
-                            height: '80px',
-                            backgroundColor: '#ffc107',
+                            width: '120px',
+                            height: '120px',
                             borderRadius: '50%',
                             marginBottom: '20px',
-                            fontSize: '40px',
-                            fontWeight: 'bold',
-                            color: '#1a1a1a',
+                            overflow: 'hidden',
+                            border: '4px solid #ffc107',
+                            boxShadow: '0 8px 32px rgba(255, 193, 7, 0.3)',
                         }}
                     >
-                        ⚖️
+                        <img
+                            src="https://picsum.photos/200/200?random=1"
+                            alt="Dra. Geovanna Nery"
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                            }}
+                        />
                     </div>
 
                     {/* Main Content */}
@@ -103,23 +111,61 @@ export async function GET(request: Request) {
                             <div
                                 style={{
                                     display: 'flex',
+                                    flexDirection: 'column',
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     backgroundColor: 'rgba(255, 193, 7, 0.1)',
-                                    padding: '15px 25px',
-                                    borderRadius: '10px',
+                                    padding: '20px 30px',
+                                    borderRadius: '15px',
                                     marginTop: '20px',
+                                    border: '1px solid rgba(255, 193, 7, 0.3)',
                                 }}
                             >
                                 <span
                                     style={{
-                                        fontSize: '18px',
+                                        fontSize: '20px',
                                         color: '#ffc107',
-                                        fontWeight: '500',
+                                        fontWeight: '600',
+                                        marginBottom: '10px',
                                     }}
                                 >
                                     {serviceData.title}
                                 </span>
+                                <span
+                                    style={{
+                                        fontSize: '14px',
+                                        color: '#cccccc',
+                                        textAlign: 'center',
+                                        maxWidth: '400px',
+                                    }}
+                                >
+                                    {serviceData.description}
+                                </span>
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        flexWrap: 'wrap',
+                                        justifyContent: 'center',
+                                        gap: '8px',
+                                        marginTop: '10px',
+                                    }}
+                                >
+                                    {serviceData.features.slice(0, 3).map((feature, index) => (
+                                        <span
+                                            key={index}
+                                            style={{
+                                                fontSize: '12px',
+                                                color: '#ffc107',
+                                                backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                                                padding: '4px 8px',
+                                                borderRadius: '12px',
+                                                border: '1px solid rgba(255, 193, 7, 0.3)',
+                                            }}
+                                        >
+                                            {feature}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         )}
 
@@ -132,11 +178,29 @@ export async function GET(request: Request) {
                                 marginTop: '30px',
                                 fontSize: '16px',
                                 color: '#cccccc',
+                                gap: '20px',
                             }}
                         >
                             <span>📞 {LAWYER_DATA.lawyer.contact.phone}</span>
-                            <span style={{ margin: '0 15px' }}>•</span>
                             <span>📍 {LAWYER_DATA.lawyer.credentials.location}</span>
+                            <span>📧 {LAWYER_DATA.lawyer.contact.email}</span>
+                        </div>
+
+                        {/* Statistics */}
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginTop: '20px',
+                                gap: '30px',
+                                fontSize: '14px',
+                                color: '#ffc107',
+                            }}
+                        >
+                            <span>⭐ {LAWYER_DATA.lawyer.statistics.experience} Anos de Experiência</span>
+                            <span>⚖️ {LAWYER_DATA.lawyer.statistics.casesResolved} Casos Resolvidos</span>
+                            <span>📈 {LAWYER_DATA.lawyer.statistics.successRate} Taxa de Sucesso</span>
                         </div>
 
                         {/* OAB Credential */}
@@ -146,6 +210,9 @@ export async function GET(request: Request) {
                                 fontSize: '14px',
                                 color: '#999999',
                                 fontWeight: '500',
+                                backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                                padding: '8px 16px',
+                                borderRadius: '20px',
                             }}
                         >
                             {LAWYER_DATA.lawyer.credentials.bar}

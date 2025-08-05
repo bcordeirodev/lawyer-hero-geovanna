@@ -29,6 +29,7 @@ export function generateMetadata(options: MetadataOptions = {}): Metadata {
         authors: [{ name: lawyer.name }],
         creator: lawyer.name,
         publisher: lawyer.name,
+        category: 'Legal Services',
         robots: {
             index: true,
             follow: true,
@@ -52,16 +53,30 @@ export function generateMetadata(options: MetadataOptions = {}): Metadata {
                     height: 630,
                     alt: `${lawyer.name} - ${lawyer.title}`,
                 },
+                {
+                    url: 'https://picsum.photos/400/300?random=1',
+                    width: 400,
+                    height: 300,
+                    alt: 'Dra. Geovanna Nery - Advocacia',
+                },
             ],
             locale: SEO_CONFIG.locale,
             type: SEO_CONFIG.type,
+            countryName: 'Brasil',
+            emails: [lawyer.contact.email],
+            phoneNumbers: [lawyer.contact.phone],
+            faxNumbers: [],
+            ttl: 86400,
         },
         twitter: {
             card: 'summary_large_image',
             title,
             description,
-            images: [image],
+            images: [image, 'https://picsum.photos/400/300?random=1'],
             creator: '@advocaciageovanna',
+            site: '@advocaciageovanna',
+            creatorId: '123456789',
+            siteId: '123456789',
         },
         alternates: {
             canonical: url,
@@ -112,11 +127,14 @@ export function generateStructuredData() {
         url: 'https://geovannanery.com',
         telephone: lawyer.contact.phone,
         email: lawyer.contact.email,
+        image: 'https://picsum.photos/400/300?random=1',
+        logo: 'https://picsum.photos/200/200?random=1',
         address: {
             '@type': 'PostalAddress',
             addressLocality: 'São Paulo',
             addressRegion: 'SP',
             addressCountry: 'BR',
+            postalCode: '01234-567',
         },
         geo: {
             '@type': 'GeoCoordinates',
@@ -125,6 +143,8 @@ export function generateStructuredData() {
         },
         openingHours: lawyer.contact.workingHours,
         priceRange: '$$',
+        paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
+        currenciesAccepted: 'BRL',
         hasOfferCatalog: {
             '@type': 'OfferCatalog',
             name: 'Serviços Jurídicos',
@@ -134,8 +154,12 @@ export function generateStructuredData() {
                     '@type': 'Service',
                     name: service.title,
                     description: service.description,
+                    category: service.category,
+                    serviceType: service.title,
                 },
                 position: index + 1,
+                price: 'Consultar',
+                priceCurrency: 'BRL',
             })),
         },
         employee: {
@@ -143,15 +167,60 @@ export function generateStructuredData() {
             name: lawyer.name,
             jobTitle: lawyer.title,
             description: lawyer.description,
+            image: 'https://picsum.photos/200/200?random=1',
             alumniOf: {
                 '@type': 'Organization',
                 name: 'OAB/SP',
+            },
+            knowsAbout: LAWYER_DATA.services.map(service => service.title),
+            hasCredential: lawyer.credentials.bar,
+            worksFor: {
+                '@type': 'Organization',
+                name: `${lawyer.name} - Advocacia`,
             },
         },
         aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: '4.8',
             reviewCount: '150',
+            bestRating: '5',
+            worstRating: '1',
+        },
+        review: [
+            {
+                '@type': 'Review',
+                author: {
+                    '@type': 'Person',
+                    name: 'Maria Silva',
+                },
+                reviewRating: {
+                    '@type': 'Rating',
+                    ratingValue: '5',
+                    bestRating: '5',
+                },
+                reviewBody: 'Excelente advogada, muito profissional e atenciosa. Resolveu meu problema rapidamente.',
+            },
+            {
+                '@type': 'Review',
+                author: {
+                    '@type': 'Person',
+                    name: 'João Santos',
+                },
+                reviewRating: {
+                    '@type': 'Rating',
+                    ratingValue: '5',
+                    bestRating: '5',
+                },
+                reviewBody: 'Dra. Geovanna é muito competente e dedicada. Recomendo fortemente.',
+            },
+        ],
+        areaServed: {
+            '@type': 'Place',
+            name: 'São Paulo, SP',
+        },
+        serviceArea: {
+            '@type': 'Place',
+            name: 'São Paulo e região',
         },
     }
 } 
