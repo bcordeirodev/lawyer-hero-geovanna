@@ -37,4 +37,5 @@ export * from './seo'
 // ENVIRONMENT MODULE
 // ============================================================================
 
-export * from './env' 
+export * from './env'
+export * from './env-checker' 
