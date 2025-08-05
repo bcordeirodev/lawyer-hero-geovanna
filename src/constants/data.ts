@@ -28,25 +28,25 @@ export const LAWYER_DATA = {
         name: "Dra. Geovanna Nery",
         fullName: "Geovanna Nery da Silva",
         title: "Advogada Especialista em Direito Civil, Empresarial e Família",
-        description: "Com mais de 8 anos de experiência na área jurídica, ofereço assessoria personalizada e soluções eficazes para seus problemas legais. Especializada em direito civil, empresarial e família, com foco em resultados e satisfação do cliente.",
-        detailedDescription: "Dra. Geovanna Nery é uma advogada experiente e dedicada, especializada em Direito Civil, Empresarial e Família. Com mais de 8 anos de atuação na área jurídica, ela oferece assessoria personalizada e soluções eficazes para seus clientes. Formada pela Universidade de São Paulo (USP) e inscrita na OAB/SP, Dra. Geovanna se destaca pela ética, transparência e compromisso com os melhores resultados. Sua abordagem humanizada e técnica garante que cada caso receba a atenção especial que merece, independentemente da complexidade.",
+        description: "Olá! Sou a Dra. Geovanna Nery, advogada recém-inscrita na OAB/DF, mas com mais de 5 anos de experiência na área jurídica. Acredito que cada caso é único e merece atenção especial. Minha missão é oferecer soluções práticas e eficazes, sempre com transparência e dedicação.",
+        detailedDescription: "Sou a Dra. Geovanna Nery, uma advogada que acredita no poder transformador do direito. Formada em Direito e com mais de 5 anos de experiência na área jurídica, acabei de conquistar minha inscrição na OAB/DF, um sonho que persegui com determinação. Ao longo desses anos, trabalhei em diferentes setores do direito, desenvolvendo uma visão abrangente e prática das necessidades jurídicas das pessoas. Especializada em Direito Civil, Empresarial e Família, aprendi que cada cliente tem uma história única e que a melhor advocacia é aquela que combina conhecimento técnico com sensibilidade humana. Trabalho com ética, transparência e compromisso total com os resultados dos meus clientes. Acredito que o sucesso na advocacia não se mede apenas pelos casos ganhos, mas pela confiança construída e pela tranquilidade que proporcionamos às pessoas que confiam em nosso trabalho.",
         credentials: {
-            bar: "OAB/SP",
-            location: "São Paulo, SP"
+            bar: "OAB/DF 123.456",
+            location: "Brasília, DF"
         },
         statistics: {
-            experience: "8+",
-            casesResolved: "300+",
+            experience: "5+",
+            casesResolved: "200+",
             successRate: "92%"
         },
         contact: {
             email: "geovanna.nery@advocacia.com.br",
-            phone: "(11) 99999-9999",
-            workingHours: "Segunda a Sexta: 9h às 18h"
+            phone: "(61) 99999-9999",
+            workingHours: "Segunda a Sexta: 9h às 18h | Sábados: 9h às 12h"
         },
         photo: {
             placeholder: "Dra. Geovanna Nery",
-            alt: "Advogada Geovanna Nery"
+            alt: "Advogada Geovanna Nery - Especialista em Direito Civil e Família"
         }
     },
 
@@ -54,13 +54,13 @@ export const LAWYER_DATA = {
         {
             id: "civil-law",
             title: "Direito Civil",
-            description: "Assessoria completa em questões civis, contratos e responsabilidade civil.",
+            description: "Protejo seus direitos civis com assessoria completa e personalizada. Desde contratos até questões de responsabilidade, estou aqui para defender seus interesses.",
             icon: Scale,
             features: [
-                "Contratos civis",
-                "Responsabilidade civil",
-                "Direito do consumidor",
-                "Direito de propriedade"
+                "Contratos civis e comerciais",
+                "Responsabilidade civil e danos morais",
+                "Direito do consumidor e proteção",
+                "Direito de propriedade e posse"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "civil" as const
@@ -68,13 +68,13 @@ export const LAWYER_DATA = {
         {
             id: "business-law",
             title: "Direito Empresarial",
-            description: "Assessoria jurídica completa para empresas de todos os portes.",
+            description: "Acompanho o crescimento da sua empresa com assessoria jurídica estratégica. Do planejamento à resolução de conflitos, sua empresa em boas mãos.",
             icon: Building,
             features: [
-                "Contratos comerciais",
-                "Direito societário",
-                "Recuperação judicial",
-                "Compliance empresarial"
+                "Contratos comerciais e empresariais",
+                "Direito societário e governança",
+                "Recuperação judicial e extrajudicial",
+                "Compliance e adequação legal"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "business" as const
@@ -82,13 +82,13 @@ export const LAWYER_DATA = {
         {
             id: "family-law",
             title: "Direito de Família",
-            description: "Assessoria especializada em questões familiares com sensibilidade.",
+            description: "Entendo que questões familiares são delicadas e pessoais. Ofereço assessoria com sensibilidade e respeito, sempre priorizando o bem-estar da família.",
             icon: Heart,
             features: [
-                "Divórcio consensual",
-                "Guarda de filhos",
-                "Pensão alimentícia",
-                "Inventário e partilha"
+                "Divórcio consensual e litigioso",
+                "Guarda compartilhada e unilateral",
+                "Pensão alimentícia e revisional",
+                "Inventário e partilha de bens"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "family" as const
@@ -96,13 +96,13 @@ export const LAWYER_DATA = {
         {
             id: "real-estate-law",
             title: "Direito Imobiliário",
-            description: "Assessoria completa em transações imobiliárias e questões de propriedade.",
+            description: "Realizo seu sonho da casa própria com segurança jurídica. Assessoria completa em todas as etapas da transação imobiliária.",
             icon: Home,
             features: [
-                "Compra e venda",
-                "Locação residencial",
-                "Regularização imobiliária",
-                "Condomínios"
+                "Compra, venda e permuta",
+                "Locação residencial e comercial",
+                "Regularização e usucapião",
+                "Condomínios e assembleias"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "real-estate" as const
@@ -110,13 +110,13 @@ export const LAWYER_DATA = {
         {
             id: "health-law",
             title: "Direito à Saúde",
-            description: "Defesa dos direitos do paciente e questões relacionadas à saúde.",
+            description: "Defendo seus direitos como paciente. Trabalho para garantir que você receba o tratamento e medicamentos que precisa.",
             icon: Activity,
             features: [
-                "Planos de saúde",
-                "Medicamentos",
-                "Tratamentos médicos",
-                "Responsabilidade médica"
+                "Planos de saúde e cobertura",
+                "Medicamentos de alto custo",
+                "Tratamentos médicos e cirúrgicos",
+                "Responsabilidade médica e hospitalar"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "health" as const
@@ -124,13 +124,13 @@ export const LAWYER_DATA = {
         {
             id: "tax-law",
             title: "Direito Tributário",
-            description: "Assessoria em questões fiscais e tributárias para pessoas físicas e jurídicas.",
+            description: "Otimizo sua situação fiscal com planejamento tributário inteligente. Reduza impostos dentro da legalidade.",
             icon: DollarSign,
             features: [
-                "Planejamento tributário",
-                "Recursos fiscais",
-                "Compliance tributário",
-                "Auditoria fiscal"
+                "Planejamento tributário pessoal",
+                "Recursos fiscais e administrativos",
+                "Compliance tributário empresarial",
+                "Auditoria e regularização fiscal"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "tax" as const
@@ -141,28 +141,28 @@ export const LAWYER_DATA = {
         {
             icon: MessageCircle,
             label: "WhatsApp",
-            value: "(11) 99999-9999",
+            value: "(61) 99999-9999",
             type: "whatsapp" as const,
-            href: "https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta jurídica."
+            href: "https://wa.me/5561999999999?text=Olá Dra. Geovanna! Gostaria de agendar uma consulta jurídica. Pode me ajudar?"
         },
         {
             icon: Mail,
             label: "Email",
-            value: "geovannanery@gmail.com",
+            value: "geovanna.nery@advocacia.com.br",
             type: "email" as const,
             href: "mailto:geovanna.nery@advocacia.com.br"
         },
         {
             icon: MapPin,
             label: "Escritório",
-            value: "São Paulo, SP",
+            value: "Brasília, DF",
             type: "address" as const,
-            href: "https://maps.google.com/?q=São+Paulo,SP"
+            href: "https://maps.google.com/?q=Brasília,DF"
         },
         {
             icon: Clock,
             label: "Horário de Atendimento",
-            value: "Segunda a Sexta: 9h às 18h",
+            value: "Segunda a Sexta: 9h às 18h | Sábados: 9h às 12h",
             type: "hours" as const
         },
     ],
@@ -171,13 +171,13 @@ export const LAWYER_DATA = {
         {
             id: 1,
             name: "Anos de Experiência",
-            value: "8+",
+            value: "5+",
             icon: Award
         },
         {
             id: 2,
             name: "Casos Resolvidos",
-            value: "300+",
+            value: "200+",
             icon: Gavel
         },
         {
@@ -190,16 +190,17 @@ export const LAWYER_DATA = {
 
     aboutSection: {
         highlights: [
-            "OAB/SP - Advogada Licenciada",
-            "8+ Anos de Experiência Jurídica",
-            "São Paulo, SP"
+            "OAB/DF 123.456 - Advogada Licenciada",
+            "5+ Anos de Experiência Jurídica",
+            "Brasília, DF - Atendimento Presencial e Online"
         ],
         whyChooseUs: [
-            "Mais de 300 casos resolvidos com sucesso",
-            "Atendimento personalizado e dedicado",
+            "Mais de 200 casos resolvidos com sucesso",
+            "Atendimento personalizado e dedicado a cada cliente",
             "Comunicação transparente durante todo o processo",
-            "Compromisso com os melhores resultados",
-            "Especialização em múltiplas áreas do direito"
+            "Compromisso total com os melhores resultados",
+            "Especialização em múltiplas áreas do direito",
+            "Disponibilidade para consultas online e presenciais"
         ]
     }
 } 
