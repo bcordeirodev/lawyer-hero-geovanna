@@ -4,6 +4,7 @@ import "./globals.css"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { ThemeProvider } from "@/contexts/ThemeContext"
+import { AppProvider } from "@/contexts/AppContext"
 import { ThemeWrapper } from "@/components/ui/theme"
 import { generateMetadata } from "@/lib/seo/metadata"
 import { StructuredData } from "@/components/common/StructuredData"
@@ -25,15 +26,17 @@ export default function RootLayout({
       <body className={`${inter.className} bg-background-primary text-text-primary dark:bg-background-primary dark:text-text-primary`}>
         <StructuredData />
         <ThemeProvider initialMode="dark">
-          <ThemeWrapper>
-            <div className="min-h-screen bg-background-primary dark:bg-background-primary">
-              <Header />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </ThemeWrapper>
+          <AppProvider>
+            <ThemeWrapper>
+              <div className="min-h-screen bg-background-primary dark:bg-background-primary">
+                <Header />
+                <main className="flex-1">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </ThemeWrapper>
+          </AppProvider>
         </ThemeProvider>
       </body>
     </html>

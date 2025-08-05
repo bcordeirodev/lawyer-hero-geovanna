@@ -1,140 +1,87 @@
 /**
  * TypeScript types for the Lawyer Hero template
  * Provides type safety and better development experience
+ * 
+ * @author Bruno Cordeiro
+ * @version 2.0.0
  */
 
 // ============================================================================
-// LAWYER TYPES
+// RE-EXPORTS FROM ORGANIZED TYPE FILES
 // ============================================================================
 
-export interface Lawyer {
-    name: string
-    title: string
-    description: string
-    credentials: {
-        bar: string
-        location: string
-    }
-    statistics: {
-        experience: string
-        casesResolved: string
-        successRate: string
-    }
-    contact: {
-        email: string
-        phone: string
-        workingHours: string
-    }
-    photo: {
-        placeholder: string
-        alt: string
-    }
-}
+// Lawyer types
+export * from './lawyer'
+
+// UI types (excluding conflicting names)
+export type {
+    // Component props
+    SectionProps,
+    SectionHeaderProps,
+    AnimatedCardProps,
+    ButtonProps,
+    CardProps,
+    InputProps,
+    TextareaProps,
+
+    // Animation types
+    ScrollAnimationConfig,
+    ScrollAnimationState,
+    HoverAnimationConfig,
+
+    // Theme types
+    ThemeMode,
+    Breakpoint,
+    AnimationPreference,
+    ThemeColors,
+    UIConfig,
+    UIActions,
+    UIContextType,
+
+    // Form validation
+    ValidationRule,
+    ValidationRules,
+    FormErrors,
+    UseFormValidationReturn,
+
+    // Notifications and app state
+    Notification,
+    AppState,
+    AppActions,
+    AppContextType
+} from './ui'
+
+// Configuration types (excluding conflicting names)
+export type {
+    AppConfig as ConfigAppConfig,
+    SEOConfig,
+    ThemeConfig as ConfigThemeConfig,
+    BreakpointsConfig,
+    AnimationConfig as ConfigAnimationConfig,
+    FormConfig,
+    ContactFormConfig,
+    EnvironmentConfig,
+    LocalizationConfig as ConfigLocalizationConfig,
+    CountryConfig,
+    FeatureFlags,
+    ValidationConfig,
+    PerformanceConfig,
+    SecurityConfig,
+    IntegrationConfig,
+    MonitoringConfig
+} from './config'
 
 // ============================================================================
-// SERVICE TYPES
+// LEGACY TYPES (for backward compatibility)
 // ============================================================================
 
-export interface LegalService {
-    id: string
-    title: string
-    description: string
-    icon: React.ComponentType<{ className?: string }>
-    features: string[]
-    gradient: string
-    category: 'civil' | 'criminal' | 'family' | 'business' | 'real-estate' | 'employment' | 'intellectual-property' | 'immigration' | 'health' | 'tax' | 'environmental'
-}
+// These types are kept for backward compatibility
+// New code should use the organized types from the specific files above
 
-// ============================================================================
-// CONTACT TYPES
-// ============================================================================
-
-export interface ContactInfo {
-    icon: React.ComponentType<{ className?: string }>
-    label: string
-    value: string
-    type: 'email' | 'address' | 'hours' | 'whatsapp'
-    href?: string
-}
-
-export interface FormSubject {
-    value: string
-    label: string
-}
+import type { FormSubject } from './lawyer'
 
 export interface ContactForm {
     subjects: FormSubject[]
-}
-
-// ============================================================================
-// STATISTICS TYPES
-// ============================================================================
-
-export interface Statistic {
-    id: number
-    name: string
-    value: string
-    icon: React.ComponentType<{ className?: string }>
-}
-
-// ============================================================================
-// ABOUT TYPES
-// ============================================================================
-
-export interface AboutSection {
-    highlights: string[]
-    whyChooseUs: string[]
-}
-
-// ============================================================================
-// COMPONENT PROPS TYPES
-// ============================================================================
-
-export interface SectionProps {
-    id: string
-    children: React.ReactNode
-    className?: string
-    backgroundPattern?: boolean
-    container?: boolean
-}
-
-export interface SectionHeaderProps {
-    badge?: {
-        text: string
-        icon?: React.ReactNode
-    }
-    title: string
-    description?: string
-    className?: string
-}
-
-export interface AnimatedCardProps {
-    children: React.ReactNode
-    index?: number
-    className?: string
-    hoverEffect?: boolean
-}
-
-export interface ContactFormData {
-    name: string
-    email: string
-    phone: string
-    subject: string
-    message: string
-}
-
-// ============================================================================
-// CONFIGURATION TYPES
-// ============================================================================
-
-export interface AppConfig {
-    lawyer: Lawyer
-    services: LegalService[]
-    contactInfo: ContactInfo[]
-    statistics: Statistic[]
-    formSubjects: FormSubject[]
-    aboutHighlights: string[]
-    whyChooseUs: string[]
 }
 
 export interface ThemeConfig {
@@ -149,18 +96,4 @@ export interface ThemeConfig {
         primary: string
         secondary: string
     }
-}
-
-// ============================================================================
-// UTILITY TYPES
-// ============================================================================
-
-export type Country = 'US' | 'UK' | 'CA' | 'AU' | 'BR' | 'DE' | 'FR' | 'ES' | 'IT'
-
-export interface LocalizationConfig {
-    country: Country
-    language: string
-    currency: string
-    dateFormat: string
-    legalSystem: 'common-law' | 'civil-law' | 'mixed'
 } 

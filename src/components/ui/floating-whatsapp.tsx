@@ -2,21 +2,34 @@
 
 import { motion } from "framer-motion"
 import { MessageCircle } from "lucide-react"
-import { contactConfig } from "@/lib/core"
+import { useContact } from "@/hooks/useContact"
+import { isFeatureEnabled } from "@/lib/env"
 
 /**
  * Componente Floating WhatsApp
  * Botão flutuante do WhatsApp no canto inferior direito
+ * 
+ * Utiliza o hook useContact para gerenciar links de contato
+ * de forma centralizada e reutilizável
+ * 
+ * Respeita as configurações de ambiente para habilitar/desabilitar
  */
 export function FloatingWhatsApp() {
-    // Função para gerar link do WhatsApp
-    const getWhatsAppLink = () => {
-        const whatsappContact = contactConfig.find(contact => contact.type === 'whatsapp')
-        if (whatsappContact?.href) {
-            return whatsappContact.href
-        }
-        // Fallback se não encontrar o contato do WhatsApp
-        return "https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta jurídica."
+    const { getWhatsAppLink, addContactHistory } = useContact()
+
+    // Verifica se a integração do WhatsApp está habilitada
+    const isWhatsAppEnabled = isFeatureEnabled('ENABLE_WHATSAPP_INTEGRATION')
+
+    // Se não estiver habilitado, não renderiza o componente
+    if (!isWhatsAppEnabled) {
+        return null
+    }
+
+    // Função para gerar link do WhatsApp com mensagem personalizada
+    const handleWhatsAppClick = () => {
+        const link = getWhatsAppLink("Olá Dra. Geovanna! Gostaria de agendar uma consulta jurídica. Pode me ajudar?")
+        addContactHistory('whatsapp', true)
+        return link
     }
 
     return (
@@ -32,7 +45,7 @@ export function FloatingWhatsApp() {
             }}
         >
             <motion.a
-                href={getWhatsAppLink()}
+                href={handleWhatsAppClick()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer"
