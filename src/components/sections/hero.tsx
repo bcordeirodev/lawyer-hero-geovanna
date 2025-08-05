@@ -12,7 +12,7 @@ export function Hero() {
     const { theme } = useTheme()
 
     return (
-        <section className="relative overflow-hidden pt-12 sm:pt-16 lg:pt-20 bg-background-tertiary">
+        <section id="home" className="relative overflow-hidden pt-12 sm:pt-16 lg:pt-20 bg-background-tertiary">
             {/* Background decoration */}
             <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
                 <div
