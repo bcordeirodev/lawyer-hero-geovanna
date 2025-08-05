@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { servicesConfig } from "@/lib/config"
 import { useTheme } from "@/contexts/ThemeContext"
+import Link from "next/link"
 
 
 /**
@@ -57,36 +58,43 @@ export function Services() {
                             whileHover={{ scale: 1.02 }}
                             className="group"
                         >
-                            <div className="bg-background-secondary border border-border-primary rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 h-full">
-                                <div className="mb-4">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg mb-4">
-                                        <service.icon className="h-6 w-6 text-white" />
+                            <Link href={`/servicos/${service.id}`} className="block h-full">
+                                <div className="bg-background-secondary border border-border-primary rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 h-full cursor-pointer">
+                                    <div className="mb-4">
+                                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg mb-4">
+                                            <service.icon className="h-6 w-6 text-white" />
+                                        </div>
+                                        <h3 className="text-base sm:text-lg md:text-xl font-semibold text-text-primary group-hover:text-secondary-500 transition-colors duration-300 mb-2">
+                                            {service.title}
+                                        </h3>
+                                        <p className="text-text-secondary text-xs sm:text-sm md:text-base mb-4">
+                                            {service.description}
+                                        </p>
                                     </div>
-                                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-text-primary group-hover:text-secondary-500 transition-colors duration-300 mb-2">
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-text-secondary text-xs sm:text-sm md:text-base mb-4">
-                                        {service.description}
-                                    </p>
+                                    <ul className="space-y-2 sm:space-y-3">
+                                        {service.features.map((feature: string, featureIndex: number) => (
+                                            <motion.li
+                                                key={feature}
+                                                className="flex items-center text-xs sm:text-sm text-text-secondary transition-colors duration-300"
+                                                initial={{ opacity: 0, x: -10 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                transition={{
+                                                    delay: index * 0.1 + featureIndex * 0.1,
+                                                    duration: 0.3
+                                                }}
+                                            >
+                                                <div className="mr-2 sm:mr-3 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600" />
+                                                {feature}
+                                            </motion.li>
+                                        ))}
+                                    </ul>
+                                    <div className="mt-4 pt-4 border-t border-border-primary">
+                                        <span className="text-xs text-gold-500 font-medium">
+                                            Saiba mais →
+                                        </span>
+                                    </div>
                                 </div>
-                                <ul className="space-y-2 sm:space-y-3">
-                                    {service.features.map((feature: string, featureIndex: number) => (
-                                        <motion.li
-                                            key={feature}
-                                            className="flex items-center text-xs sm:text-sm text-text-secondary transition-colors duration-300"
-                                            initial={{ opacity: 0, x: -10 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            transition={{
-                                                delay: index * 0.1 + featureIndex * 0.1,
-                                                duration: 0.3
-                                            }}
-                                        >
-                                            <div className="mr-2 sm:mr-3 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600" />
-                                            {feature}
-                                        </motion.li>
-                                    ))}
-                                </ul>
-                            </div>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>

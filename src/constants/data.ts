@@ -146,7 +146,7 @@ export const LAWYER_DATA = {
         {
             icon: Mail,
             label: "Email",
-            value: "geovanna.nery@advocacia.com.br",
+            value: "geovannanery@gmail.com",
             type: "email" as const,
             href: "mailto:geovanna.nery@advocacia.com.br"
         },
