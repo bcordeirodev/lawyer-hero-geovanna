@@ -5,7 +5,6 @@ import { Scale, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext"
 import { ThemeToggle } from "@/components/ui/theme"
-
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const { theme } = useTheme()
@@ -69,15 +68,7 @@ export function Header() {
                         {/* Theme Toggle */}
                         <ThemeToggle />
 
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                        >
-                            <button className="bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-lg text-base lg:text-lg transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105">
-                                <a href="#contact" className="text-white font-medium">Fale Conosco</a>
-                            </button>
-                        </motion.div>
+
                     </nav>
 
                     {/* Mobile Menu Button */}
@@ -137,16 +128,7 @@ export function Header() {
                                 >
                                     Contato
                                 </motion.a>
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.1 }}
-                                    className="px-4 pt-4"
-                                >
-                                    <button className="w-full bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-lg transition-all duration-200 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 font-medium">
-                                        <a href="#contact" className="text-white">Fale Conosco</a>
-                                    </button>
-                                </motion.div>
+
                             </div>
                         </motion.div>
                     )}
