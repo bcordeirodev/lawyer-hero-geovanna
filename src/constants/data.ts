@@ -26,8 +26,10 @@ import {
 export const LAWYER_DATA = {
     lawyer: {
         name: "Dra. Geovanna Nery",
+        fullName: "Geovanna Nery da Silva",
         title: "Advogada Especialista em Direito Civil, Empresarial e Família",
         description: "Com mais de 8 anos de experiência na área jurídica, ofereço assessoria personalizada e soluções eficazes para seus problemas legais. Especializada em direito civil, empresarial e família, com foco em resultados e satisfação do cliente.",
+        detailedDescription: "Dra. Geovanna Nery é uma advogada experiente e dedicada, especializada em Direito Civil, Empresarial e Família. Com mais de 8 anos de atuação na área jurídica, ela oferece assessoria personalizada e soluções eficazes para seus clientes. Formada pela Universidade de São Paulo (USP) e inscrita na OAB/SP, Dra. Geovanna se destaca pela ética, transparência e compromisso com os melhores resultados. Sua abordagem humanizada e técnica garante que cada caso receba a atenção especial que merece, independentemente da complexidade.",
         credentials: {
             bar: "OAB/SP",
             location: "São Paulo, SP"

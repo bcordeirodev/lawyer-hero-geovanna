@@ -14,7 +14,7 @@ export function generateMetadata(options: MetadataOptions = {}): Metadata {
     const { lawyer } = LAWYER_DATA
 
     const defaultTitle = `${lawyer.name} - ${lawyer.title}`
-    const defaultDescription = lawyer.description
+    const defaultDescription = lawyer.detailedDescription
     const defaultImage = `${SEO_CONFIG.siteImage}?name=${encodeURIComponent(lawyer.name)}&title=${encodeURIComponent(lawyer.title)}`
 
     const title = options.title || defaultTitle
@@ -67,6 +67,7 @@ export function generateMetadata(options: MetadataOptions = {}): Metadata {
             phoneNumbers: [lawyer.contact.phone],
             faxNumbers: [],
             ttl: 86400,
+            determiner: 'the',
         },
         twitter: {
             card: 'summary_large_image',
@@ -164,13 +165,14 @@ export function generateStructuredData() {
         },
         employee: {
             '@type': 'Person',
-            name: lawyer.name,
+            name: lawyer.fullName,
+            alternateName: lawyer.name,
             jobTitle: lawyer.title,
-            description: lawyer.description,
+            description: lawyer.detailedDescription,
             image: 'https://picsum.photos/200/200?random=1',
             alumniOf: {
                 '@type': 'Organization',
-                name: 'OAB/SP',
+                name: 'Universidade de São Paulo (USP)',
             },
             knowsAbout: LAWYER_DATA.services.map(service => service.title),
             hasCredential: lawyer.credentials.bar,
@@ -178,6 +180,10 @@ export function generateStructuredData() {
                 '@type': 'Organization',
                 name: `${lawyer.name} - Advocacia`,
             },
+            givenName: 'Geovanna',
+            familyName: 'Nery da Silva',
+            honorificPrefix: 'Dra.',
+            honorificSuffix: 'OAB/SP',
         },
         aggregateRating: {
             '@type': 'AggregateRating',
