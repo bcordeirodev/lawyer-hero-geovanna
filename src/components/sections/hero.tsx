@@ -1,6 +1,6 @@
 "use client"
 
-import { lawyerConfig, statisticsConfig } from "@/lib/config"
+import { lawyerConfig, statisticsConfig } from "@/lib/core"
 import { motion } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext"
 
@@ -106,7 +106,7 @@ export function Hero() {
                                         </span>
                                     </a>
                                 </button>
-                                <button className="group flex flex-row items-center justify-center gap-2 w-full sm:w-auto border border-border-primary text-text-primary hover:bg-background-secondary px-6 py-3 rounded-lg font-medium transition-all duration-200">
+                                <button className="group flex flex-row items-center justify-center gap-2 w-full sm:w-auto border border-border-secondary text-text-primary hover:bg-background-secondary px-6 py-3 rounded-lg font-medium transition-all duration-200">
                                     <a href="#services">
                                         <span className="flex flex-row items-center gap-2">Ver Áreas de Atuação
                                             <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -146,7 +146,7 @@ export function Hero() {
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <div className="w-full h-full rounded-full overflow-hidden border-4 border-border-primary shadow-2xl">
+                                    <div className="w-full h-full rounded-full overflow-hidden border-4 border-border-secondary shadow-2xl">
                                         <div className="w-full h-full bg-background-secondary flex items-center justify-center">
                                             {/* Placeholder para foto - você pode substituir por uma imagem real */}
                                             <div className="text-center text-text-muted">

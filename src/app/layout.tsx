@@ -4,8 +4,8 @@ import "./globals.css"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { ThemeProvider } from "@/contexts/ThemeContext"
-import { ThemeWrapper } from "@/components/ui/theme-wrapper"
-import { generateMetadata } from "@/lib/metadata"
+import { ThemeWrapper } from "@/components/ui/theme"
+import { generateMetadata } from "@/lib/seo/metadata"
 import { StructuredData } from "@/components/common/StructuredData"
 
 const inter = Inter({ subsets: ["latin"] })

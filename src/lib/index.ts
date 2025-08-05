@@ -1,37 +1,34 @@
 /**
- * UI Components Index
- * Central exports for all UI components
+ * Main Library Index
+ * Central exports for all library modules
  */
 
 // ============================================================================
-// PRIMITIVE COMPONENTS
+// CORE MODULE
 // ============================================================================
 
-export * from './primitives'
+export * from './core'
 
 // ============================================================================
-// THEME COMPONENTS
+// UI MODULE
 // ============================================================================
 
-export * from './theme'
+export * from './ui'
 
 // ============================================================================
-// LAYOUT COMPONENTS
+// VALIDATION MODULE
 // ============================================================================
 
-export * from './layout'
+export * from './validation'
 
 // ============================================================================
-// COMPOSITE COMPONENTS
+// ANIMATIONS MODULE
 // ============================================================================
 
-export {
-    AnimatedCard,
-    CardHeader as AnimatedCardHeader,
-    CardAction,
-    ServiceCard,
-    ContactCard,
-    type AnimatedCardProps,
-    type CardHeaderProps,
-    type CardActionProps
-} from './composite' 
+export * from './animations'
+
+// ============================================================================
+// SEO MODULE
+// ============================================================================
+
+export * from './seo' 

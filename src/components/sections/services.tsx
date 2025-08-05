@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { servicesConfig } from "@/lib/config"
+import { servicesConfig } from "@/lib/core"
 import { useTheme } from "@/contexts/ThemeContext"
 import Link from "next/link"
 
@@ -59,7 +59,7 @@ export function Services() {
                             className="group"
                         >
                             <Link href={`/servicos/${service.id}`} className="block h-full">
-                                <div className="bg-background-secondary border border-border-primary rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 h-full cursor-pointer">
+                                <div className="bg-background-secondary border border-border-secondary rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 h-full cursor-pointer">
                                     <div className="mb-4">
                                         <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg mb-4">
                                             <service.icon className="h-6 w-6 text-white" />
@@ -88,7 +88,7 @@ export function Services() {
                                             </motion.li>
                                         ))}
                                     </ul>
-                                    <div className="mt-4 pt-4 border-t border-border-primary">
+                                    <div className="mt-4 pt-4 border-t border-border-secondary">
                                         <span className="text-xs text-gold-500 font-medium">
                                             Saiba mais →
                                         </span>

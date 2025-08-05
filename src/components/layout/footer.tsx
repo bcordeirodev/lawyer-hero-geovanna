@@ -8,7 +8,7 @@ export function Footer() {
     const { theme } = useTheme()
 
     return (
-        <footer className="bg-background-tertiary text-text-primary border-t border-border-primary">
+        <footer className="bg-background-tertiary text-text-primary border-t border-border-secondary">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-16 lg:px-8">
                 <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-4">
                     <motion.div
@@ -104,7 +104,7 @@ export function Footer() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                    className="pt-8 sm:pt-10 border-t border-border-primary text-center"
+                    className="pt-8 sm:pt-10 border-t border-border-secondary text-center"
                 >
                     <p className="text-base sm:text-lg text-text-muted">
                         &copy; 2024 Dra. Geovanna Nery. Todos os direitos reservados.
@@ -114,7 +114,7 @@ export function Footer() {
                     </p>
 
                     {/* Desenvolvedor - Informações discretas */}
-                    <div className="mt-6 pt-4 border-t border-border-primary/30 px-4">
+                    <div className="mt-6 pt-4 border-t border-border-secondary/30 px-4">
                         <p className="text-xs text-text-muted/60 mb-1">
                             Desenvolvido por
                         </p>

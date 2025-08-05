@@ -78,9 +78,12 @@ const config: Config = {
                 },
                 // Border colors (Light theme)
                 border: {
-                    primary: '#e5e7eb',
-                    secondary: '#d1d5db',
-                    accent: '#fbbf24'
+                    primary: '#d1d5db',
+                    secondary: '#9ca3af',
+                    accent: '#fbbf24',
+                    dark: '#9ca3af',
+                    darker: '#6b7280',
+                    darkest: '#4b5563'
                 },
                 // Status colors
                 success: '#10b981',

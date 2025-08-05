@@ -11,7 +11,7 @@ export const ThemeToggle: React.FC = () => {
     return (
         <motion.button
             onClick={toggleTheme}
-            className="relative p-3 rounded-lg bg-background-secondary border border-border-primary hover:bg-background-tertiary transition-all duration-200"
+            className="relative p-3 rounded-lg bg-background-secondary border border-border-secondary hover:bg-background-tertiary transition-all duration-200"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             title={isLight ? 'Switch to dark mode' : 'Switch to light mode'}

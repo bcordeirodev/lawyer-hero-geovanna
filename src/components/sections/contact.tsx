@@ -8,7 +8,7 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import { ContactForm } from '@/components/forms/ContactForm'
-import { contactConfig } from '@/lib/config'
+import { contactConfig } from '@/lib/core'
 import { ContactInfo } from '@/types'
 import { useTheme } from '@/contexts/ThemeContext'
 
@@ -74,7 +74,7 @@ export const Contact: React.FC = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                                    className={`bg-background-secondary border border-border-primary rounded-lg p-6 hover:shadow-lg transition-all duration-300 group ${contact.href ? 'cursor-pointer hover:border-gold-500/50 hover:bg-background-secondary/80' : ''
+                                    className={`bg-background-secondary border border-border-secondary rounded-lg p-6 hover:shadow-lg transition-all duration-300 group ${contact.href ? 'cursor-pointer hover:border-gold-500/50 hover:bg-background-secondary/80' : ''
                                         }`}
                                     onClick={contact.href ? () => window.open(contact.href, '_blank') : undefined}
                                 >
@@ -108,7 +108,7 @@ export const Contact: React.FC = () => {
                             ))}
                         </div>
 
-                        <div className="bg-background-secondary border border-border-primary rounded-lg p-6">
+                        <div className="bg-background-secondary border border-border-secondary rounded-lg p-6">
                             <h4 className="text-lg font-semibold text-text-primary mb-3">
                                 Por que Escolher Assessoria Jurídica Profissional?
                             </h4>
@@ -138,7 +138,7 @@ export const Contact: React.FC = () => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-background-secondary border border-border-primary rounded-lg p-6 lg:p-8 hover:shadow-lg transition-all duration-300"
+                        className="bg-background-secondary border border-border-secondary rounded-lg p-6 lg:p-8 hover:shadow-lg transition-all duration-300"
                     >
                         <div className="mb-6">
                             <h3 className="text-xl font-semibold text-text-primary mb-2">

@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { generateServiceMetadata } from '@/lib/metadata'
+import { generateServiceMetadata } from '@/lib/seo/metadata'
 import { LAWYER_DATA } from '@/constants/data'
 import { notFound } from 'next/navigation'
 import { ServiceStructuredData } from '@/components/common/ServiceStructuredData'

@@ -60,21 +60,7 @@ export const themeConfig = {
     }
 }
 
-// ============================================================================
-// ANIMATION CONFIGURATION
-// ============================================================================
 
-export const animationConfig = {
-    duration: {
-        fast: 0.2,
-        normal: 0.3,
-        slow: 0.6
-    },
-    easing: {
-        easeOut: 'easeOut',
-        easeInOut: 'easeInOut'
-    }
-}
 
 // ============================================================================
 // RESPONSIVE BREAKPOINTS
@@ -118,35 +104,7 @@ export const contactFormConfig = {
     }
 }
 
-// ============================================================================
-// VALIDATION RULES
-// ============================================================================
 
-export const validationRules = {
-    name: {
-        required: true,
-        minLength: 2,
-        maxLength: 50
-    },
-    email: {
-        required: true,
-        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    },
-    phone: {
-        required: false,
-        pattern: /^[\+]?[1-9][\d]{0,15}$/
-    },
-    subject: {
-        required: true,
-        minLength: 1,
-        maxLength: 100
-    },
-    message: {
-        required: true,
-        minLength: 10,
-        maxLength: 1000
-    }
-}
 
 // ============================================================================
 // EXPORT DEFAULT CONFIGURATION

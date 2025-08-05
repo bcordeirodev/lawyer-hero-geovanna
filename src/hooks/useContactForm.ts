@@ -1,192 +1,254 @@
-"use client"
-
 /**
- * Custom hook for managing contact form state and validation
- * Follows React best practices and provides type safety
+ * useContactForm Hook
+ * Enhanced contact form hook with validation and state management
+ * Follows SOLID principles and uses the new validation system
  */
 
 import { useState, useCallback } from 'react'
-import { ContactFormData } from '@/types'
-import { validationRules } from '@/lib/config'
+import {
+    ContactFormData,
+    validateField,
+    validateForm,
+    sanitizeFormData,
+    sanitizeField,
+    hasErrors
+} from '@/lib/validation'
+import { contactFormConfig } from '@/lib/core'
 
-interface FormErrors {
-    [key: string]: string
-}
+// ============================================================================
+// HOOK STATE INTERFACE
+// ============================================================================
 
-interface UseContactFormReturn {
+export interface ContactFormState {
     formData: ContactFormData
-    errors: FormErrors
+    errors: Record<keyof ContactFormData, string | null>
     isLoading: boolean
     isSubmitted: boolean
+    submitError: string | null
+}
+
+export interface ContactFormActions {
     handleChange: (field: keyof ContactFormData, value: string) => void
+    handleBlur: (field: keyof ContactFormData, value: string) => void
     handleSubmit: (e: React.FormEvent) => Promise<void>
+    validateField: (field: keyof ContactFormData, value: string) => string | null
     resetForm: () => void
-    validateField: (field: keyof ContactFormData, value: string) => string
 }
 
-/**
- * Validates a single form field based on validation rules
- * @param field - The field name to validate
- * @param value - The field value to validate
- * @returns Error message or empty string if valid
- */
-const validateField = (field: keyof ContactFormData, value: string): string => {
-    const rules = validationRules[field]
+export type UseContactFormReturn = ContactFormState & ContactFormActions
 
-    if (!rules) return ''
+// ============================================================================
+// INITIAL STATE
+// ============================================================================
 
-    // Required field validation
-    if (rules.required && !value.trim()) {
-        return `${field.charAt(0).toUpperCase() + field.slice(1)} is required`
-    }
-
-    // Skip other validations if field is empty and not required
-    if (!value.trim() && !rules.required) {
-        return ''
-    }
-
-    // Minimum length validation
-    if ('minLength' in rules && rules.minLength && value.length < rules.minLength) {
-        return `${field.charAt(0).toUpperCase() + field.slice(1)} must be at least ${rules.minLength} characters`
-    }
-
-    // Maximum length validation
-    if ('maxLength' in rules && rules.maxLength && value.length > rules.maxLength) {
-        return `${field.charAt(0).toUpperCase() + field.slice(1)} must be no more than ${rules.maxLength} characters`
-    }
-
-    // Email validation
-    if (field === 'email' && 'pattern' in rules && rules.pattern) {
-        const emailRegex = rules.pattern as RegExp
-        if (!emailRegex.test(value)) {
-            return 'Please enter a valid email address'
-        }
-    }
-
-    // Phone validation
-    if (field === 'phone' && 'pattern' in rules && rules.pattern && value.trim()) {
-        const phoneRegex = rules.pattern as RegExp
-        if (!phoneRegex.test(value)) {
-            return 'Please enter a valid phone number'
-        }
-    }
-
-    return ''
+const initialFormData: ContactFormData = {
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
 }
 
-/**
- * Custom hook for managing contact form state and validation
- * @returns Object with form state and handlers
- */
-export const useContactForm = (): UseContactFormReturn => {
-    const [formData, setFormData] = useState<ContactFormData>({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-    })
+const initialErrors: Record<keyof ContactFormData, string | null> = {
+    name: null,
+    email: null,
+    phone: null,
+    subject: null,
+    message: null
+}
 
-    const [errors, setErrors] = useState<FormErrors>({})
+// ============================================================================
+// USE CONTACT FORM HOOK
+// ============================================================================
+
+/**
+ * useContactForm - Enhanced contact form hook
+ * 
+ * Provides form state management, validation, and submission handling
+ * 
+ * @returns Object containing form state and actions
+ * 
+ * @example
+ * ```tsx
+ * const {
+ *   formData,
+ *   errors,
+ *   isLoading,
+ *   handleChange,
+ *   handleSubmit
+ * } = useContactForm()
+ * ```
+ */
+export function useContactForm(): UseContactFormReturn {
+    // ============================================================================
+    // STATE MANAGEMENT
+    // ============================================================================
+
+    const [formData, setFormData] = useState<ContactFormData>(initialFormData)
+    const [errors, setErrors] = useState<Record<keyof ContactFormData, string | null>>(initialErrors)
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [submitError, setSubmitError] = useState<string | null>(null)
+
+    // ============================================================================
+    // FORM ACTIONS
+    // ============================================================================
 
     /**
-     * Handles form field changes and validation
-     * @param field - The field name to update
-     * @param value - The new field value
+     * Handles form field changes
+     * @param field - Field name
+     * @param value - New field value
      */
     const handleChange = useCallback((field: keyof ContactFormData, value: string) => {
-        setFormData(prev => ({ ...prev, [field]: value }))
+        const sanitizedValue = sanitizeField(field, value)
+
+        setFormData(prev => ({
+            ...prev,
+            [field]: sanitizedValue
+        }))
 
         // Clear error when user starts typing
         if (errors[field]) {
-            setErrors(prev => {
-                const newErrors = { ...prev }
-                delete newErrors[field]
-                return newErrors
-            })
+            setErrors(prev => ({
+                ...prev,
+                [field]: null
+            }))
         }
-    }, [errors])
+
+        // Clear submit error when user makes changes
+        if (submitError) {
+            setSubmitError(null)
+        }
+    }, [errors, submitError])
 
     /**
-     * Validates all form fields
-     * @returns Object with field names as keys and error messages as values
+     * Handles form field blur events for validation
+     * @param field - Field name
+     * @param value - Field value
      */
-    const validateForm = useCallback((): FormErrors => {
-        const newErrors: FormErrors = {}
+    const handleBlur = useCallback((field: keyof ContactFormData, value: string) => {
+        const error = validateField(field, value)
 
-        Object.keys(formData).forEach(field => {
-            const fieldKey = field as keyof ContactFormData
-            const error = validateField(fieldKey, formData[fieldKey])
-            if (error) {
-                newErrors[field] = error
-            }
-        })
-
-        return newErrors
-    }, [formData])
+        setErrors(prev => ({
+            ...prev,
+            [field]: error
+        }))
+    }, [])
 
     /**
-     * Handles form submission with validation
+     * Validates a single field
+     * @param field - Field name
+     * @param value - Field value
+     * @returns Error message or null
+     */
+    const validateFieldHandler = useCallback((field: keyof ContactFormData, value: string): string | null => {
+        return validateField(field, value)
+    }, [])
+
+    /**
+     * Resets form to initial state
+     */
+    const resetForm = useCallback(() => {
+        setFormData(initialFormData)
+        setErrors(initialErrors)
+        setIsLoading(false)
+        setIsSubmitted(false)
+        setSubmitError(null)
+    }, [])
+
+    /**
+     * Handles form submission
      * @param e - Form event
      */
     const handleSubmit = useCallback(async (e: React.FormEvent) => {
         e.preventDefault()
 
         // Validate all fields
-        const newErrors = validateForm()
+        const validationErrors = validateForm(formData)
+        setErrors(validationErrors)
 
-        if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors)
+        // Check if form has errors
+        if (hasErrors(validationErrors)) {
+            setSubmitError('Por favor, corrija os erros no formulário')
             return
         }
 
         setIsLoading(true)
+        setSubmitError(null)
 
         try {
-            // Simulate API call - replace with actual implementation
-            await new Promise(resolve => setTimeout(resolve, 1000))
+            // Sanitize form data
+            const sanitizedData = sanitizeFormData(formData)
+
+            // Simulate API call
+            await submitFormData(sanitizedData)
 
             setIsSubmitted(true)
-            setErrors({})
-
-            // Reset form after successful submission
-            setTimeout(() => {
-                resetForm()
-            }, 3000)
+            setFormData(initialFormData)
+            setErrors(initialErrors)
 
         } catch (error) {
             console.error('Form submission error:', error)
-            setErrors({ submit: 'Failed to send message. Please try again.' })
+            setSubmitError('Erro ao enviar formulário. Tente novamente.')
         } finally {
             setIsLoading(false)
         }
-    }, [validateForm])
+    }, [formData])
+
+    // ============================================================================
+    // SUBMISSION LOGIC
+    // ============================================================================
 
     /**
-     * Resets form to initial state
+     * Submits form data to API
+     * @param data - Sanitized form data
      */
-    const resetForm = useCallback(() => {
-        setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            subject: '',
-            message: ''
+    const submitFormData = async (data: ContactFormData): Promise<void> => {
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000))
+
+        // Simulate API response
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...data,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                maxMessageLength: contactFormConfig.maxMessageLength
+            })
         })
-        setErrors({})
-        setIsSubmitted(false)
-    }, [])
+
+        if (!response.ok) {
+            throw new Error('Failed to submit form')
+        }
+
+        const result = await response.json()
+
+        if (!result.success) {
+            throw new Error(result.error || 'Form submission failed')
+        }
+    }
+
+    // ============================================================================
+    // RETURN HOOK STATE AND ACTIONS
+    // ============================================================================
 
     return {
+        // State
         formData,
         errors,
         isLoading,
         isSubmitted,
+        submitError,
+
+        // Actions
         handleChange,
+        handleBlur,
         handleSubmit,
-        resetForm,
-        validateField
+        validateField: validateFieldHandler,
+        resetForm
     }
 } 

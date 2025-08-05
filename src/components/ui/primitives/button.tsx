@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/core'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'gold'
@@ -24,8 +24,8 @@ export function Button({
 
     const variantClasses = {
         primary: 'bg-secondary-600 text-white hover:bg-secondary-700 shadow-md hover:shadow-lg',
-        secondary: 'bg-background-secondary text-text-primary border border-border-primary hover:bg-background-tertiary shadow-md hover:shadow-lg',
-        outline: 'border border-border-primary bg-background-primary text-text-primary hover:bg-background-secondary hover:text-text-primary',
+        secondary: 'bg-background-secondary text-text-primary border border-border-secondary hover:bg-background-tertiary shadow-md hover:shadow-lg',
+        outline: 'border border-border-secondary bg-background-primary text-text-primary hover:bg-background-secondary hover:text-text-primary',
         ghost: 'text-text-primary hover:bg-background-secondary hover:text-text-primary',
         gold: 'bg-gold-500 text-white hover:bg-gold-600 shadow-md hover:shadow-lg dark:bg-gold-600 dark:hover:bg-gold-700'
     }

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { lawyerConfig, aboutConfig } from "@/lib/config"
+import { lawyerConfig, aboutConfig } from "@/lib/core"
 import { useTheme } from "@/contexts/ThemeContext"
 
 /**
@@ -78,7 +78,7 @@ export function About() {
                                 {aboutConfig.highlights.map((highlight, index) => (
                                     <motion.div
                                         key={highlight}
-                                        className="flex items-center space-x-3 p-3 bg-background-secondary border border-border-primary rounded-lg"
+                                        className="flex items-center space-x-3 p-3 bg-background-secondary border border-border-secondary rounded-lg"
                                         whileHover={{ scale: 1.02 }}
                                         initial={{ opacity: 0, x: -10 }}
                                         whileInView={{ opacity: 1, x: 0 }}
@@ -104,7 +104,7 @@ export function About() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
-                                className="bg-background-secondary rounded-xl p-4 sm:p-6 shadow-lg border border-border-primary"
+                                className="bg-background-secondary rounded-xl p-4 sm:p-6 shadow-lg border border-border-secondary"
                             >
                                 <h3 className="text-lg sm:text-xl font-semibold text-text-primary mb-3 sm:mb-4 flex items-center">
                                     <svg className="h-4 w-4 sm:h-5 sm:w-5 text-secondary-500 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -132,7 +132,7 @@ export function About() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.1 }}
-                                className="bg-background-secondary rounded-xl p-4 sm:p-6 shadow-lg border border-border-primary"
+                                className="bg-background-secondary rounded-xl p-4 sm:p-6 shadow-lg border border-border-secondary"
                             >
                                 <h3 className="text-lg sm:text-xl font-semibold text-text-primary mb-3 sm:mb-4 flex items-center">
                                     <svg className="h-4 w-4 sm:h-5 sm:w-5 text-secondary-500 mr-2" fill="currentColor" viewBox="0 0 24 24">

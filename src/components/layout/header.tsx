@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Scale, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { ThemeToggle } from "@/components/ui/theme"
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -15,7 +15,7 @@ export function Header() {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-background-primary/98 backdrop-blur-xl border-b border-border-primary shadow-2xl">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-background-primary/98 backdrop-blur-xl border-b border-border-secondary shadow-2xl">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 sm:h-20">
                     {/* Logo */}
@@ -102,7 +102,7 @@ export function Header() {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="md:hidden border-t border-border-primary bg-background-primary/98 backdrop-blur-xl"
+                            className="md:hidden border-t border-border-secondary bg-background-primary/98 backdrop-blur-xl"
                         >
                             <div className="py-4 space-y-2">
                                 <motion.a

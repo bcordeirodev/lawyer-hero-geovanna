@@ -1,4 +1,4 @@
-import { generateStructuredData } from '@/lib/metadata'
+import { generateStructuredData } from '@/lib/seo/metadata'
 
 export function StructuredData() {
     const structuredData = generateStructuredData()

@@ -19,8 +19,8 @@
     --text-secondary: #4a4a4a;
     --text-tertiary: #6b6b6b;
     --text-muted: #9ca3af;
-    --border-primary: #e5e7eb;
-    --border-secondary: #d1d5db;
+    --border-primary: #d1d5db;
+    --border-secondary: #9ca3af;
     --border-accent: #fbbf24;
     --gold-500: #eab308;
     --gold-600: #ca8a04;
@@ -111,6 +111,19 @@
 
   .dark .border-border-secondary {
     border-color: #475569 !important;
+  }
+
+  /* Additional border utilities for light theme */
+  .border-border-dark {
+    border-color: #9ca3af !important;
+  }
+
+  .border-border-darker {
+    border-color: #6b7280 !important;
+  }
+
+  .border-border-darkest {
+    border-color: #4b5563 !important;
   }
 
   /* Force dark theme for all sections */
