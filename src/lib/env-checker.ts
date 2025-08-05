@@ -20,33 +20,37 @@ export function validateEnvironment(): {
     isValid: boolean
     errors: string[]
     warnings: string[]
-    info: Record<string, any>
+    info: Record<string, unknown>
 } {
     const errors: string[] = []
     const warnings: string[] = []
-    const info: Record<string, any> = {}
+    const info: Record<string, unknown> = {}
 
     // ============================================================================
     // REQUIRED VARIABLES
     // ============================================================================
 
     // App configuration
-    if (!env.APP_NAME) {
+    const appName = env.APP_NAME
+    const appVersion = env.APP_VERSION
+    const appUrl = env.APP_URL
+
+    if (!appName) {
         errors.push('NEXT_PUBLIC_APP_NAME is required')
     } else {
-        info.appName = env.APP_NAME
+        info.appName = appName
     }
 
-    if (!env.APP_VERSION) {
+    if (!appVersion) {
         errors.push('NEXT_PUBLIC_APP_VERSION is required')
     } else {
-        info.appVersion = env.APP_VERSION
+        info.appVersion = appVersion
     }
 
-    if (!env.APP_URL) {
+    if (!appUrl) {
         errors.push('NEXT_PUBLIC_APP_URL is required')
     } else {
-        info.appUrl = env.APP_URL
+        info.appUrl = appUrl
     }
 
     // ============================================================================

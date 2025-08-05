@@ -11,6 +11,7 @@ import { Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { useContactForm } from '@/hooks/useContactForm'
 import { formConfig, contactFormConfig } from '@/lib/core'
 import { useTheme } from '@/contexts/ThemeContext'
+import { FormSubject } from '@/types'
 
 interface ContactFormProps {
     className?: string
@@ -149,7 +150,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-border-secondary rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all duration-200 bg-background-secondary text-text-primary ${errors.subject ? 'border-error focus:ring-error' : ''}`}
                         disabled={isLoading}
                     >
-                        {formConfig.subjects.map((option) => (
+                        {formConfig.subjects.map((option: FormSubject) => (
                             <option key={option.value} value={option.value}>
                                 {option.label}
                             </option>

@@ -89,13 +89,13 @@ export interface TextareaProps {
 // ============================================================================
 
 export interface AnimationConfig {
-    initial: any
-    animate: any
-    exit?: any
-    transition?: any
-    whileHover?: any
-    whileTap?: any
-    whileInView?: any
+    initial: Record<string, unknown>
+    animate: Record<string, unknown>
+    exit?: Record<string, unknown>
+    transition?: Record<string, unknown>
+    whileHover?: Record<string, unknown>
+    whileTap?: Record<string, unknown>
+    whileInView?: Record<string, unknown>
 }
 
 export interface ScrollAnimationConfig {
@@ -114,9 +114,9 @@ export interface ScrollAnimationState {
 }
 
 export interface HoverAnimationConfig {
-    whileHover: any
-    whileTap?: any
-    transition?: any
+    whileHover: Record<string, unknown>
+    whileTap?: Record<string, unknown>
+    transition?: Record<string, unknown>
 }
 
 // ============================================================================
@@ -341,11 +341,11 @@ export interface Notification {
 
 export interface AppState {
     // Lawyer data
-    lawyer: any
-    services: any[]
-    contactInfo: any[]
-    statistics: any[]
-    aboutSection: any
+    lawyer: Record<string, unknown>
+    services: Record<string, unknown>[]
+    contactInfo: Record<string, unknown>[]
+    statistics: Record<string, unknown>[]
+    aboutSection: Record<string, unknown>
 
     // UI State
     isMenuOpen: boolean
@@ -375,8 +375,8 @@ export interface AppActions {
     updateVisitCount: () => void
 
     // Data Actions
-    updateLawyerData: (data: Partial<any>) => void
-    updateServices: (services: any[]) => void
+    updateLawyerData: (data: Partial<Record<string, unknown>>) => void
+    updateServices: (services: Record<string, unknown>[]) => void
 }
 
 export interface AppContextType extends AppState, AppActions { } 

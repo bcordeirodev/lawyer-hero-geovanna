@@ -76,7 +76,7 @@ function parseNumber(value: string | undefined, defaultValue: number = 0): numbe
  * @returns Configuração de ambiente tipada
  */
 export function loadEnvironmentConfig(): EnvironmentConfig {
-    return {
+    const config = {
         // App
         APP_NAME: validateEnvVar('NEXT_PUBLIC_APP_NAME', process.env.NEXT_PUBLIC_APP_NAME) || 'LawyerHero',
         APP_VERSION: validateEnvVar('NEXT_PUBLIC_APP_VERSION', process.env.NEXT_PUBLIC_APP_VERSION) || '1.0.0',
@@ -91,6 +91,16 @@ export function loadEnvironmentConfig(): EnvironmentConfig {
         ENABLE_ANIMATIONS: parseBoolean(process.env.NEXT_PUBLIC_ENABLE_ANIMATIONS, true),
         ENABLE_DARK_MODE: parseBoolean(process.env.NEXT_PUBLIC_ENABLE_DARK_MODE, true)
     }
+
+    // Log de debug para verificar carregamento
+    if (typeof window !== 'undefined' && config.DEBUG_MODE) {
+        console.log('🔧 Environment Config Loaded:', config)
+        console.log('📱 WhatsApp Integration:', config.ENABLE_WHATSAPP_INTEGRATION)
+        console.log('🎨 Animations:', config.ENABLE_ANIMATIONS)
+        console.log('🌙 Dark Mode:', config.ENABLE_DARK_MODE)
+    }
+
+    return config
 }
 
 // ============================================================================

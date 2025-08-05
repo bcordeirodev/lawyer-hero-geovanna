@@ -7,7 +7,6 @@ import { ThemeProvider } from "@/contexts/ThemeContext"
 import { ThemeWrapper } from "@/components/ui/theme"
 import { generateMetadata } from "@/lib/seo/metadata"
 import { StructuredData } from "@/components/common/StructuredData"
-import { EnvironmentInfo } from "@/components/ui/environment-info"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -33,7 +32,6 @@ export default function RootLayout({
                 {children}
               </main>
               <Footer />
-              <EnvironmentInfo />
             </div>
           </ThemeWrapper>
         </ThemeProvider>

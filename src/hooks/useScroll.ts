@@ -50,7 +50,7 @@ export function useScroll() {
     })
 
     const lastScrollY = useRef(0)
-    const scrollTimeout = useRef<NodeJS.Timeout>()
+    const scrollTimeout = useRef<NodeJS.Timeout | undefined>(undefined)
 
     const updateScrollState = useCallback(() => {
         const currentScrollY = window.scrollY

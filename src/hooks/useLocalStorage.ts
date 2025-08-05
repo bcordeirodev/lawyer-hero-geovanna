@@ -10,8 +10,8 @@ import { useState, useEffect, useCallback } from 'react'
 // ============================================================================
 
 export interface LocalStorageOptions {
-    serialize?: (value: any) => string
-    deserialize?: (value: string) => any
+    serialize?: (value: unknown) => string
+    deserialize?: (value: string) => unknown
     onError?: (error: Error) => void
 }
 
@@ -106,7 +106,7 @@ export function useLocalStorageString(
     initialValue: string = ''
 ): [string, (value: string | ((val: string) => string)) => void] {
     return useLocalStorage(key, initialValue, {
-        serialize: (value: string) => value,
+        serialize: (value: unknown) => String(value),
         deserialize: (value: string) => value
     })
 }
@@ -123,7 +123,7 @@ export function useLocalStorageBoolean(
     initialValue: boolean = false
 ): [boolean, (value: boolean | ((val: boolean) => boolean)) => void] {
     return useLocalStorage(key, initialValue, {
-        serialize: (value: boolean) => value.toString(),
+        serialize: (value: unknown) => String(value),
         deserialize: (value: string) => value === 'true'
     })
 }
@@ -140,7 +140,7 @@ export function useLocalStorageNumber(
     initialValue: number = 0
 ): [number, (value: number | ((val: number) => number)) => void] {
     return useLocalStorage(key, initialValue, {
-        serialize: (value: number) => value.toString(),
+        serialize: (value: unknown) => String(value),
         deserialize: (value: string) => Number(value)
     })
 }

@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { MessageCircle } from "lucide-react"
 import { useContact } from "@/hooks/useContact"
 import { isFeatureEnabled } from "@/lib/env"
+import { useCallback } from "react"
 
 /**
  * Componente Floating WhatsApp
@@ -20,17 +21,18 @@ export function FloatingWhatsApp() {
     // Verifica se a integração do WhatsApp está habilitada
     const isWhatsAppEnabled = isFeatureEnabled('ENABLE_WHATSAPP_INTEGRATION')
 
+    // Função para lidar com o clique do WhatsApp
+    const handleWhatsAppClick = useCallback(() => {
+        addContactHistory('whatsapp', true)
+    }, [addContactHistory])
+
     // Se não estiver habilitado, não renderiza o componente
     if (!isWhatsAppEnabled) {
         return null
     }
 
-    // Função para gerar link do WhatsApp com mensagem personalizada
-    const handleWhatsAppClick = () => {
-        const link = getWhatsAppLink("Olá Dra. Geovanna! Gostaria de agendar uma consulta jurídica. Pode me ajudar?")
-        addContactHistory('whatsapp', true)
-        return link
-    }
+    // Gera o link do WhatsApp uma vez
+    const whatsappLink = getWhatsAppLink("Olá Dra. Geovanna! Gostaria de agendar uma consulta jurídica. Pode me ajudar?")
 
     return (
         <motion.div
@@ -45,9 +47,10 @@ export function FloatingWhatsApp() {
             }}
         >
             <motion.a
-                href={handleWhatsAppClick()}
+                href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleWhatsAppClick}
                 className="group relative flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer"
                 whileHover={{
                     scale: 1.1,

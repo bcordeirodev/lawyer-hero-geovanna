@@ -5,7 +5,7 @@
 
 import { LAWYER_DATA } from '@/constants/data'
 import { FORM_SUBJECTS, WORKING_HOURS } from '@/constants/countries'
-import { AppConfig } from '@/types'
+import { Lawyer, LegalService, ContactInfo, Statistic, FormSubject } from '@/types'
 
 // ============================================================================
 // COUNTRY SELECTION
@@ -18,7 +18,7 @@ export const CURRENT_COUNTRY = 'BR' as const
 // MAIN CONFIGURATION
 // ============================================================================
 
-export const appConfig: AppConfig = {
+export const appConfig = {
     lawyer: LAWYER_DATA.lawyer,
     services: LAWYER_DATA.services,
     contactInfo: LAWYER_DATA.contactInfo,

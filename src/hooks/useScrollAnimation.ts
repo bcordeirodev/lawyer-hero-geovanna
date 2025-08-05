@@ -34,13 +34,13 @@ export interface ScrollAnimationState {
 }
 
 export interface UseScrollAnimationReturn {
-    ref: React.RefObject<HTMLElement>
+    ref: React.RefObject<HTMLElement | null>
     isVisible: boolean
     hasAnimated: boolean
     progress: number
     triggerAnimation: () => void
     resetAnimation: () => void
-    animationProps: any
+    animationProps: Record<string, unknown>
 }
 
 // ============================================================================
@@ -196,7 +196,7 @@ export function useScrollAnimation(config: ScrollAnimationConfig = {}): UseScrol
  * @returns Array de configurações de animação
  */
 export function createStaggerAnimation(
-    items: any[],
+    items: unknown[],
     staggerDelay: number = 0.1
 ) {
     return items.map((_, index) => ({

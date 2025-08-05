@@ -126,7 +126,7 @@ function validateFieldValue<T>(
  * )
  * ```
  */
-export function useFormValidation<T extends Record<string, any>>(
+export function useFormValidation<T extends Record<string, unknown>>(
     initialValues: T,
     validationRules: ValidationRules<T> = {}
 ): UseFormValidationReturn<T> {

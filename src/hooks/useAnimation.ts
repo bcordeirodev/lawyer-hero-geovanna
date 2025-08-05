@@ -10,26 +10,26 @@ import { useMemo } from 'react'
 // ============================================================================
 
 export interface AnimationConfig {
-    initial: any
-    animate: any
-    exit?: any
-    transition?: any
-    whileHover?: any
-    whileTap?: any
-    whileInView?: any
+    initial: Record<string, unknown>
+    animate: Record<string, unknown>
+    exit?: Record<string, unknown>
+    transition?: Record<string, unknown>
+    whileHover?: Record<string, unknown>
+    whileTap?: Record<string, unknown>
+    whileInView?: Record<string, unknown>
 }
 
 export interface ScrollAnimationConfig {
-    initial: any
-    whileInView: any
-    viewport?: any
-    transition?: any
+    initial: Record<string, unknown>
+    whileInView: Record<string, unknown>
+    viewport?: Record<string, unknown>
+    transition?: Record<string, unknown>
 }
 
 export interface HoverAnimationConfig {
-    whileHover: any
-    whileTap?: any
-    transition?: any
+    whileHover: Record<string, unknown>
+    whileTap?: Record<string, unknown>
+    transition?: Record<string, unknown>
 }
 
 // ============================================================================
@@ -121,6 +121,7 @@ export function useAnimation() {
 
         // Floating animations
         floating: {
+            initial: { y: 0, rotate: 0 },
             animate: {
                 y: [0, -20, 0],
                 rotate: [0, 5, 0],
@@ -133,6 +134,7 @@ export function useAnimation() {
         } as AnimationConfig,
 
         floatingDelayed: {
+            initial: { y: 0, rotate: 0 },
             animate: {
                 y: [0, 20, 0],
                 rotate: [0, -5, 0],
@@ -147,6 +149,7 @@ export function useAnimation() {
 
         // Pulse animations
         pulse: {
+            initial: { scale: 1, opacity: 1 },
             animate: {
                 scale: [1, 1.1, 1],
                 opacity: [1, 0.8, 1],
