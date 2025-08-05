@@ -108,29 +108,7 @@ export const Contact: React.FC = () => {
                             ))}
                         </div>
 
-                        <div className="bg-background-secondary border border-border-secondary rounded-lg p-6">
-                            <h4 className="text-lg font-semibold text-text-primary mb-3">
-                                Por que Escolher Assessoria Jurídica Profissional?
-                            </h4>
-                            <ul className="space-y-2 text-text-secondary">
-                                <li className="flex items-start gap-2">
-                                    <span className="text-gold-500 mt-1">•</span>
-                                    <span>Orientação especializada em processos jurídicos complexos</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-gold-500 mt-1">•</span>
-                                    <span>Proteção dos seus direitos e interesses</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-gold-500 mt-1">•</span>
-                                    <span>Habilidades de negociação para alcançar resultados favoráveis</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-gold-500 mt-1">•</span>
-                                    <span>Tranquilidade sabendo que seu caso está sendo tratado adequadamente</span>
-                                </li>
-                            </ul>
-                        </div>
+
                     </motion.div>
 
                     {/* Contact Form */}
