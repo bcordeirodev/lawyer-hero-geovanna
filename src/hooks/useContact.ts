@@ -13,6 +13,7 @@
 
 import { useState, useMemo, useCallback } from 'react'
 import { LAWYER_DATA } from '@/constants/data'
+import { lawyerConfig } from '@/lib/core/config'
 
 // ============================================================================
 // TYPES
@@ -122,17 +123,17 @@ export function useContact(): UseContactReturn {
     const getWhatsAppLink = useCallback((message?: string): string => {
         const whatsappContact = getContactByType('whatsapp')
         if (!whatsappContact?.href) {
-            return "https://wa.me/5561999999999?text=Olá! Gostaria de agendar uma consulta jurídica."
+            return `https://wa.me/${lawyerConfig.contact.phone.replace(/\D/g, '')}?text=Olá! Gostaria de agendar uma consulta jurídica.`
         }
 
-        const defaultMessage = "Olá Dra. Geovanna! Gostaria de agendar uma consulta jurídica. Pode me ajudar?"
+        const defaultMessage = `Olá ${lawyerConfig.name}! Gostaria de agendar uma consulta jurídica. Pode me ajudar?`
         const finalMessage = message || defaultMessage
 
         return whatsappContact.href.replace(
             /text=.*?(?=&|$)/,
             `text=${encodeURIComponent(finalMessage)}`
         )
-    }, [getContactByType])
+    }, [getContactByType, lawyerConfig])
 
     /**
      * Gera link de email com assunto e corpo personalizados
@@ -143,17 +144,17 @@ export function useContact(): UseContactReturn {
     const getEmailLink = useCallback((subject?: string, body?: string): string => {
         const emailContact = getContactByType('email')
         if (!emailContact?.href) {
-            return "mailto:geovanna.nery@advocacia.com.br"
+            return `mailto:${lawyerConfig.contact.email}`
         }
 
         const defaultSubject = "Consulta Jurídica"
-        const defaultBody = "Olá Dra. Geovanna,\n\nGostaria de agendar uma consulta jurídica.\n\nAguardo seu retorno.\n\nAtenciosamente,"
+        const defaultBody = `Olá ${lawyerConfig.name},\n\nGostaria de agendar uma consulta jurídica.\n\nAguardo seu retorno.\n\nAtenciosamente,`
 
         const finalSubject = subject || defaultSubject
         const finalBody = body || defaultBody
 
         return `${emailContact.href}?subject=${encodeURIComponent(finalSubject)}&body=${encodeURIComponent(finalBody)}`
-    }, [getContactByType])
+    }, [getContactByType, lawyerConfig])
 
     /**
      * Gera link de telefone
@@ -162,12 +163,12 @@ export function useContact(): UseContactReturn {
     const getPhoneLink = useCallback((): string => {
         const phoneContact = getContactByType('phone')
         if (!phoneContact?.value) {
-            return "tel:+5561999999999"
+            return `tel:${lawyerConfig.contact.phone}`
         }
 
         const phoneNumber = phoneContact.value.replace(/\D/g, '')
         return `tel:+55${phoneNumber}`
-    }, [getContactByType])
+    }, [getContactByType, lawyerConfig])
 
     // ============================================================================
     // PREFERENCES

@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { MessageCircle } from "lucide-react"
 import { useContact } from "@/hooks/useContact"
 import { isFeatureEnabled } from "@/lib/env"
+import { lawyerConfig } from "@/lib/core/config"
 import { useCallback } from "react"
 
 /**
@@ -17,78 +18,43 @@ import { useCallback } from "react"
  */
 export function FloatingWhatsApp() {
     const { getWhatsAppLink, addContactHistory } = useContact()
-
-    // Verifica se a integração do WhatsApp está habilitada
     const isWhatsAppEnabled = isFeatureEnabled('ENABLE_WHATSAPP_INTEGRATION')
 
-    // Função para lidar com o clique do WhatsApp
+    // Function to handle WhatsApp click (moved to top)
     const handleWhatsAppClick = useCallback(() => {
         addContactHistory('whatsapp', true)
     }, [addContactHistory])
 
-    // Se não estiver habilitado, não renderiza o componente
+    // If not enabled, do not render the component
     if (!isWhatsAppEnabled) {
         return null
     }
 
-    // Gera o link do WhatsApp uma vez
-    const whatsappLink = getWhatsAppLink("Olá Dra. Geovanna! Gostaria de agendar uma consulta jurídica. Pode me ajudar?")
+    // Generate WhatsApp link once
+    const whatsappLink = getWhatsAppLink(`Olá ${lawyerConfig.name}! Gostaria de agendar uma consulta jurídica. Pode me ajudar?`)
 
     return (
         <motion.div
             className="fixed bottom-6 right-6 z-50"
-            initial={{ opacity: 0, scale: 0, y: 20 }}
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{
-                duration: 0.6,
-                delay: 1,
-                type: "spring",
-                stiffness: 100
-            }}
+            transition={{ duration: 0.5, delay: 1 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
         >
             <motion.a
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick}
-                className="group relative flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer"
+                className="flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 whileHover={{
                     scale: 1.1,
-                    rotate: 5,
-                    transition: { duration: 0.2 }
+                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
                 }}
-                whileTap={{
-                    scale: 0.95,
-                    transition: { duration: 0.1 }
-                }}
+                whileTap={{ scale: 0.9 }}
             >
-                {/* Ícone do WhatsApp */}
-                <MessageCircle className="w-8 h-8 text-white" />
-
-                {/* Efeito de pulso */}
-                <motion.div
-                    className="absolute inset-0 rounded-full bg-green-400"
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 0, 0.5],
-                    }}
-                    transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                />
-
-                {/* Tooltip */}
-                <motion.div
-                    className="absolute right-full mr-3 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
-                    initial={{ opacity: 0, x: 10 }}
-                    whileHover={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    Fale Comigo
-                    <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-gray-900" />
-                </motion.div>
+                <MessageCircle className="w-8 h-8" />
             </motion.a>
         </motion.div>
     )

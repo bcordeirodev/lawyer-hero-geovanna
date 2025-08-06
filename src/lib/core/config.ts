@@ -79,10 +79,10 @@ export const breakpoints = {
 // ============================================================================
 
 export const seoConfig = {
-    title: 'Dra. Geovanna Nery - Advogada Especialista',
-    description: 'Advogada especializada em direito civil, empresarial e família. Assessoria jurídica personalizada em São Paulo.',
-    keywords: 'advogada, direito civil, direito empresarial, direito família, São Paulo, assessoria jurídica',
-    author: 'Dra. Geovanna Nery',
+    title: `${lawyerConfig.name} - ${lawyerConfig.title}`,
+    description: lawyerConfig.description,
+    keywords: 'advogada, direito civil, direito empresarial, direito família, assessoria jurídica',
+    author: lawyerConfig.name,
     ogImage: '/og-image.jpg',
     twitterHandle: '@geovannanery'
 }

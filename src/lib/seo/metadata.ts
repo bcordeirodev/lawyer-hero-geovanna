@@ -57,7 +57,7 @@ export function generateMetadata(options: MetadataOptions = {}): Metadata {
                     url: 'https://picsum.photos/400/300?random=1',
                     width: 400,
                     height: 300,
-                    alt: 'Dra. Geovanna Nery - Advocacia',
+                    alt: `${lawyer.name} - Advocacia`,
                 },
             ],
             locale: SEO_CONFIG.locale,
@@ -132,8 +132,8 @@ export function generateStructuredData() {
         logo: 'https://picsum.photos/200/200?random=1',
         address: {
             '@type': 'PostalAddress',
-            addressLocality: 'São Paulo',
-            addressRegion: 'SP',
+            addressLocality: lawyer.credentials.location.split(', ')[0],
+            addressRegion: lawyer.credentials.location.split(', ')[1],
             addressCountry: 'BR',
             postalCode: '01234-567',
         },
@@ -217,16 +217,16 @@ export function generateStructuredData() {
                     ratingValue: '5',
                     bestRating: '5',
                 },
-                reviewBody: 'Dra. Geovanna é muito competente e dedicada. Recomendo fortemente.',
+                reviewBody: `${lawyer.name} é muito competente e dedicada. Recomendo fortemente.`,
             },
         ],
         areaServed: {
             '@type': 'Place',
-            name: 'São Paulo, SP',
+            name: `${lawyer.credentials.location}`,
         },
         serviceArea: {
             '@type': 'Place',
-            name: 'São Paulo e região',
+            name: `${lawyer.credentials.location} e região`,
         },
     }
 } 

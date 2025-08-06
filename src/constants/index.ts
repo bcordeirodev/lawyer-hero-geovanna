@@ -3,6 +3,8 @@
  * Provides reusable constants following DRY principle
  */
 
+import { lawyerConfig } from '@/lib/core/config'
+
 // ============================================================================
 // APP CONSTANTS
 // ============================================================================
@@ -11,7 +13,7 @@ export const APP_CONFIG = {
     name: 'LawyerHero',
     version: '1.0.0',
     description: 'Professional lawyer landing page',
-    author: 'Dra. Geovanna Nery',
+    author: lawyerConfig.name,
     url: 'https://geovannanery.com'
 } as const
 
@@ -82,22 +84,22 @@ export const FORM = {
 
 export const SEO = {
     title: {
-        default: 'Dra. Geovanna Nery - Advogada Especialista',
-        services: 'Áreas de Atuação - Dra. Geovanna Nery',
-        contact: 'Contato - Dra. Geovanna Nery',
-        about: 'Sobre - Dra. Geovanna Nery'
+        default: `${lawyerConfig.name} - ${lawyerConfig.title}`,
+        services: `Áreas de Atuação - ${lawyerConfig.name}`,
+        contact: `Contato - ${lawyerConfig.name}`,
+        about: `Sobre - ${lawyerConfig.name}`
     },
     description: {
-        default: 'Advogada especializada em direito civil, empresarial e família. Assessoria jurídica personalizada em São Paulo.',
+        default: lawyerConfig.description,
         services: 'Conheça nossas áreas de atuação: direito civil, empresarial e família. Assessoria jurídica especializada.',
-        contact: 'Entre em contato com Dra. Geovanna Nery para assessoria jurídica personalizada.',
-        about: 'Conheça Dra. Geovanna Nery, advogada especialista com mais de 8 anos de experiência.'
+        contact: `Entre em contato com ${lawyerConfig.name} para assessoria jurídica personalizada.`,
+        about: `Conheça ${lawyerConfig.name}, advogada especialista com mais de ${lawyerConfig.statistics.experience} anos de experiência.`
     },
     keywords: {
-        default: 'advogada, direito civil, direito empresarial, direito família, São Paulo, assessoria jurídica',
-        services: 'direito civil, direito empresarial, direito família, advocacia, São Paulo',
-        contact: 'contato advogada, assessoria jurídica, São Paulo',
-        about: 'advogada São Paulo, experiência jurídica, especialista direito'
+        default: 'advogada, direito civil, direito empresarial, direito família, assessoria jurídica',
+        services: 'direito civil, direito empresarial, direito família, advocacia',
+        contact: 'contato advogada, assessoria jurídica',
+        about: 'advogada, experiência jurídica, especialista direito'
     }
 } as const
 
@@ -106,9 +108,9 @@ export const SEO = {
 // ============================================================================
 
 export const SOCIAL = {
-    whatsapp: '+5511999999999',
-    email: 'contato@geovannanery.com',
-    phone: '+55 11 99999-9999',
+    whatsapp: lawyerConfig.contact.phone,
+    email: lawyerConfig.contact.email,
+    phone: lawyerConfig.contact.phone,
     linkedin: 'https://linkedin.com/in/geovannanery',
     instagram: 'https://instagram.com/geovannanery'
 } as const
@@ -121,8 +123,8 @@ export const CONTACT = {
     address: {
         street: 'Rua das Flores, 123',
         neighborhood: 'Vila Madalena',
-        city: 'São Paulo',
-        state: 'SP',
+        city: lawyerConfig.credentials.location.split(', ')[0],
+        state: lawyerConfig.credentials.location.split(', ')[1],
         zipCode: '01234-567',
         country: 'Brasil'
     },
@@ -132,7 +134,7 @@ export const CONTACT = {
         sunday: 'Fechado'
     },
     emergency: {
-        phone: '+55 11 99999-9999',
+        phone: lawyerConfig.contact.phone,
         available: '24/7'
     }
 } as const
@@ -200,7 +202,7 @@ export const TESTIMONIALS = [
         id: 2,
         name: 'João Santos',
         rating: 5,
-        text: 'Dra. Geovanna é muito competente e dedicada. Recomendo fortemente.',
+        text: `${lawyerConfig.name} é muito competente e dedicada. Recomendo fortemente.`,
         service: 'Direito Empresarial',
         date: '2024-01-10'
     },

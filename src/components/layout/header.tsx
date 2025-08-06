@@ -5,6 +5,8 @@ import { Scale, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext"
 import { ThemeToggle } from "@/components/ui/theme"
+import { lawyerConfig } from "@/lib/core/config"
+
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const { theme } = useTheme()
@@ -27,7 +29,7 @@ export function Header() {
                         <div className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-xl">
                             <Scale className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
                         </div>
-                        <span className="text-lg sm:text-xl md:text-2xl font-bold text-text-primary">Dra. Geovanna Nery</span>
+                        <span className="text-lg sm:text-xl md:text-2xl font-bold text-text-primary">{lawyerConfig.name}</span>
                     </motion.div>
 
                     {/* Desktop Navigation */}
