@@ -11,6 +11,7 @@ import { Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { useContactForm } from '@/hooks/useContactForm'
 import { formConfig, contactFormConfig } from '@/lib/core'
 import { useTheme } from '@/contexts/ThemeContext'
+import { useTranslation } from '@/contexts/LanguageContext'
 import { FormSubject } from '@/types'
 
 interface ContactFormProps {
@@ -29,6 +30,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     onError
 }) => {
     const { theme } = useTheme()
+    const t = useTranslation()
     const {
         formData,
         errors,
@@ -112,10 +114,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 <CheckCircle className="h-12 w-12 text-success" />
             </div>
             <h3 className="text-xl font-semibold text-text-primary">
-                Mensagem Enviada com Sucesso!
+                {t.contact.form.success}
             </h3>
             <p className="text-text-secondary">
-                Obrigada pela sua mensagem. Retornarei o mais breve possível.
+                {t.contact.subtitle}
             </p>
         </motion.div>
     )
@@ -131,15 +133,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             className="space-y-6"
         >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                {renderField('name', 'Nome Completo', 'text', 'Digite seu nome completo', true)}
-                {renderField('email', 'Endereço de Email', 'email', 'Digite seu endereço de email', true)}
+                {renderField('name', t.contact.form.name, 'text', t.contact.form.name, true)}
+                {renderField('email', t.contact.form.email, 'email', t.contact.form.email, true)}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                {renderField('phone', 'Telefone', 'tel', 'Digite seu número de telefone (opcional)', false)}
+                {renderField('phone', t.contact.form.phone, 'tel', t.contact.form.phone, false)}
                 <div className="space-y-2">
                     <label htmlFor="subject" className="block text-sm font-medium text-text-primary mb-2">
-                        Assunto <span className="text-error ml-1">*</span>
+                        {t.contact.form.subject} <span className="text-error ml-1">*</span>
                     </label>
                     <select
                         id="subject"
@@ -171,7 +173,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
             <div className="space-y-2">
                 <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-2">
-                    Mensagem <span className="text-error ml-1">*</span>
+                    {t.contact.form.message} <span className="text-error ml-1">*</span>
                 </label>
                 <textarea
                     id="message"
@@ -179,7 +181,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     value={formData.message}
                     onChange={(e) => handleChange('message', e.target.value)}
                     onBlur={(e) => handleBlur('message', e.target.value)}
-                    placeholder="Conte-nos sobre seu caso jurídico..."
+                    placeholder={t.contact.form.message}
                     required
                     rows={6}
                     maxLength={contactFormConfig.maxMessageLength}
@@ -222,12 +224,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 {isLoading ? (
                     <div className="flex items-center gap-2">
                         <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
-                        Enviando...
+                        {t.contact.form.sending}
                     </div>
                 ) : (
                     <div className="flex items-center gap-2">
                         <Send className="h-4 w-4" />
-                        Enviar Mensagem
+                        {t.contact.form.send}
                     </div>
                 )}
             </button>

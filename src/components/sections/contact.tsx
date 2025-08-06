@@ -11,6 +11,7 @@ import { ContactForm } from '@/components/forms/ContactForm'
 import { contactConfig } from '@/lib/core'
 import { ContactInfo } from '@/types'
 import { useTheme } from '@/contexts/ThemeContext'
+import { useTranslation } from '@/contexts/LanguageContext'
 
 /**
  * Contact Section Component
@@ -18,6 +19,7 @@ import { useTheme } from '@/contexts/ThemeContext'
  */
 export const Contact: React.FC = () => {
     const { theme } = useTheme()
+    const t = useTranslation()
 
     return (
         <section id="contact" className="relative py-8 sm:py-12 lg:py-16 xl:py-20 bg-background-primary">
@@ -31,7 +33,7 @@ export const Contact: React.FC = () => {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         whileHover={{ scale: 1.05, y: -2 }}
                     >
-                        📞 Entre em Contato
+                        📞 {t.contact.title}
                     </motion.div>
                     <motion.h2
                         className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent mb-4 drop-shadow-sm hover:scale-105 transition-transform duration-300 cursor-default"
@@ -41,10 +43,10 @@ export const Contact: React.FC = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         whileHover={{ scale: 1.02 }}
                     >
-                        Entre em Contato
+                        {t.contact.title}
                     </motion.h2>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-                        Pronto para discutir seu caso jurídico? Entre em contato para uma consulta.
+                        {t.contact.subtitle}
                     </p>
                 </div>
 
@@ -58,12 +60,10 @@ export const Contact: React.FC = () => {
                     >
                         <div>
                             <h3 className="text-xl sm:text-2xl font-semibold text-text-primary mb-4 sm:mb-6">
-                                Vamos Discutir Seu Caso
+                                {t.contact.title}
                             </h3>
                             <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
-                                Estou aqui para ajudá-lo a navegar pelos seus desafios jurídicos. Seja para
-                                consultoria, representação ou apenas dúvidas, estou comprometida em
-                                fornecer a orientação e o suporte que você merece.
+                                {t.contact.subtitle}
                             </p>
                         </div>
 
@@ -120,10 +120,10 @@ export const Contact: React.FC = () => {
                     >
                         <div className="mb-6">
                             <h3 className="text-xl font-semibold text-text-primary mb-2">
-                                Envie uma Mensagem
+                                {t.contact.form.send}
                             </h3>
                             <p className="text-text-secondary">
-                                Preencha o formulário abaixo e retornarei em até 24 horas.
+                                {t.contact.subtitle}
                             </p>
                         </div>
 

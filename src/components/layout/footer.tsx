@@ -3,10 +3,12 @@
 import { motion } from "framer-motion"
 import { Scale, Phone, Mail, MapPin, Clock, Award, Users, Shield, Zap } from "lucide-react"
 import { useTheme } from "@/contexts/ThemeContext"
+import { useTranslation } from "@/contexts/LanguageContext"
 import { lawyerConfig, servicesConfig, contactConfig, statisticsConfig } from "@/lib/core"
 
 export function Footer() {
     const { theme } = useTheme()
+    const t = useTranslation()
 
     return (
         <footer className="bg-background-tertiary text-text-primary border-t border-border-secondary">
@@ -33,7 +35,7 @@ export function Footer() {
                         </div>
 
                         <p className="text-sm sm:text-base text-text-secondary mb-6 max-w-lg leading-relaxed">
-                            {lawyerConfig.description}
+                            {t.footer.description}
                         </p>
 
                         {/* Stats */}
@@ -110,7 +112,7 @@ export function Footer() {
                                 <Zap className="h-4 w-4 text-secondary-500" />
                             </div>
                             <h3 className="text-lg font-semibold text-text-primary">
-                                Áreas de Atuação
+                                {t.footer.specialties}
                             </h3>
                         </div>
                         <ul className="space-y-2">
@@ -142,7 +144,7 @@ export function Footer() {
                                 <Phone className="h-4 w-4 text-gold-500" />
                             </div>
                             <h3 className="text-lg font-semibold text-text-primary">
-                                Contato
+                                {t.footer.contact}
                             </h3>
                         </div>
                         <ul className="space-y-3">
@@ -176,7 +178,7 @@ export function Footer() {
                     {/* Copyright - mais compacto */}
                     <div className="mb-4">
                         <p className="text-sm font-medium text-text-primary">
-                            &copy; 2024 {lawyerConfig.name}. Todos os direitos reservados.
+                            &copy; 2024 {lawyerConfig.name}. {t.footer.rights}.
                         </p>
                         <p className="text-xs text-text-secondary mt-1">
                             {lawyerConfig.credentials.bar} - Advogada Licenciada
@@ -186,7 +188,7 @@ export function Footer() {
                     {/* Developer info - mais espaçoso */}
                     <div className="bg-background-secondary border border-border-secondary rounded-lg p-4 max-w-lg mx-auto">
                         <p className="text-xs text-text-muted mb-2 font-medium text-center">
-                            Desenvolvido por
+                            {t.footer.developedBy}
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-xs text-text-muted">
                             <span className="font-medium text-text-primary">Bruno Cordeiro da Silva</span>

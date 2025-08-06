@@ -4,12 +4,15 @@ import { useState } from "react"
 import { Scale, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext"
+import { useTranslation } from "@/contexts/LanguageContext"
 import { ThemeToggle } from "@/components/ui/theme"
+import { LanguageToggle } from "@/components/ui/language-toggle"
 import { lawyerConfig } from "@/lib/core/config"
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const { theme } = useTheme()
+    const t = useTranslation()
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -40,7 +43,7 @@ export function Header() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Início
+                            {t.nav.home}
                         </motion.a>
                         <motion.a
                             href="#services"
@@ -48,7 +51,7 @@ export function Header() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Serviços
+                            {t.nav.services}
                         </motion.a>
                         <motion.a
                             href="#about"
@@ -56,7 +59,7 @@ export function Header() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Sobre
+                            {t.nav.about}
                         </motion.a>
                         <motion.a
                             href="#contact"
@@ -64,17 +67,19 @@ export function Header() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Contato
+                            {t.nav.contact}
                         </motion.a>
+
+                        {/* Language Toggle */}
+                        <LanguageToggle />
 
                         {/* Theme Toggle */}
                         <ThemeToggle />
-
-
                     </nav>
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center space-x-3">
+                        <LanguageToggle />
                         <ThemeToggle />
                         <motion.button
                             className="p-2 text-text-secondary hover:text-text-primary transition-colors"
@@ -104,7 +109,7 @@ export function Header() {
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    Início
+                                    {t.nav.home}
                                 </motion.a>
                                 <motion.a
                                     href="#services"
@@ -112,7 +117,7 @@ export function Header() {
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    Serviços
+                                    {t.nav.services}
                                 </motion.a>
                                 <motion.a
                                     href="#about"
@@ -120,7 +125,7 @@ export function Header() {
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    Sobre
+                                    {t.nav.about}
                                 </motion.a>
                                 <motion.a
                                     href="#contact"
@@ -128,9 +133,8 @@ export function Header() {
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    Contato
+                                    {t.nav.contact}
                                 </motion.a>
-
                             </div>
                         </motion.div>
                     )}

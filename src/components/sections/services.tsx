@@ -3,14 +3,14 @@
 import { motion } from "framer-motion"
 import { servicesConfig } from "@/lib/core"
 import { useTheme } from "@/contexts/ThemeContext"
-
+import { useTranslation } from "@/contexts/LanguageContext"
 
 /**
  * Componente Services - Seção de especialidades jurídicas
  * Exibe os serviços oferecidos pelo advogado
  */
 export function Services() {
-
+    const t = useTranslation()
 
     // Serviços adicionais para completar 6 itens
     const additionalServices: never[] = []
@@ -29,7 +29,7 @@ export function Services() {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         whileHover={{ scale: 1.05, y: -2 }}
                     >
-                        ⚖️ Áreas de Atuação
+                        ⚖️ {t.services.title}
                     </motion.div>
                     <motion.h2
                         className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent mb-4 drop-shadow-sm hover:scale-105 transition-transform duration-300 cursor-default"
@@ -39,10 +39,10 @@ export function Services() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         whileHover={{ scale: 1.02 }}
                     >
-                        Especialidades Jurídicas
+                        {t.services.title}
                     </motion.h2>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-                        Especializada em diversas áreas do direito, ofereço assessoria jurídica completa e personalizada para suas necessidades.
+                        {t.services.subtitle}
                     </p>
                 </div>
 

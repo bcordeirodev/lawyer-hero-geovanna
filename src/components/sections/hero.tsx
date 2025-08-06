@@ -3,6 +3,7 @@
 import { lawyerConfig, statisticsConfig } from "@/lib/core"
 import { motion } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext"
+import { useTranslation } from "@/contexts/LanguageContext"
 
 /**
  * Componente Hero - Seção principal da página
@@ -10,6 +11,7 @@ import { useTheme } from "@/contexts/ThemeContext"
  */
 export function Hero() {
     const { theme } = useTheme()
+    const t = useTranslation()
 
     return (
         <section id="home" className="relative overflow-hidden pt-12 sm:pt-16 lg:pt-20 bg-background-tertiary">
@@ -77,7 +79,9 @@ export function Hero() {
                                     <svg className="h-3 w-3 sm:h-4 sm:w-4 text-gold-500 fill-current" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                     </svg>
-                                    <span className="text-xs sm:text-sm font-medium">Advogada Jovem e Dinâmica</span>
+                                    <span className="text-xs sm:text-sm font-medium">
+                                        {t.hero.title}
+                                    </span>
                                 </motion.div>
                             </motion.div>
 
@@ -88,7 +92,7 @@ export function Hero() {
                                 {lawyerConfig.title}
                             </p>
                             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
-                                {lawyerConfig.description}
+                                {t.hero.description}
                             </p>
 
                             <motion.div
@@ -99,7 +103,8 @@ export function Hero() {
                             >
                                 <button className="group relative overflow-hidden flex flex-row items-center justify-center gap-2 w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg">
                                     <a href="#contact" className="text-white">
-                                        <span className="relative z-10 flex flex-row items-center gap-2 text-white">Agende uma Consulta
+                                        <span className="relative z-10 flex flex-row items-center gap-2 text-white">
+                                            {t.hero.cta}
                                             <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                             </svg>
@@ -108,7 +113,8 @@ export function Hero() {
                                 </button>
                                 <button className="group flex flex-row items-center justify-center gap-2 w-full sm:w-auto border border-border-secondary text-text-primary hover:bg-background-secondary px-6 py-3 rounded-lg font-medium transition-all duration-200">
                                     <a href="#services">
-                                        <span className="flex flex-row items-center gap-2">Ver Áreas de Atuação
+                                        <span className="flex flex-row items-center gap-2">
+                                            {t.nav.services}
                                             <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                             </svg>
