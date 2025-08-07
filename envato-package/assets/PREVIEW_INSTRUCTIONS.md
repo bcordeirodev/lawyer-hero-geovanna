@@ -3,24 +3,28 @@
 ## Required Images for Envato Submission
 
 ### 1. Main Thumbnail
+
 - **Size:** 590x300px
 - **Format:** JPG/PNG
 - **Filename:** `main-thumbnail.jpg`
 - **Purpose:** Main product image shown in search results
 
 **Content Guidelines:**
+
 - Show the homepage hero section
 - Include the lawyer template name/branding
 - Clean, professional look
 - Good contrast and readability
 
 ### 2. Desktop Screenshots
+
 - **Size:** 1920x1080px or 1280x720px
 - **Format:** JPG/PNG
 - **Quantity:** 3-5 images
 - **Purpose:** Show different sections of the template
 
 **Suggested Screenshots:**
+
 1. `desktop-homepage.jpg` - Full homepage view
 2. `desktop-services.jpg` - Services/practice areas section
 3. `desktop-about.jpg` - About section with lawyer info
@@ -28,22 +32,26 @@
 5. `desktop-responsive.jpg` - Mobile view (optional)
 
 ### 3. Mobile Screenshots
+
 - **Size:** 375x812px (iPhone) or similar mobile dimensions
 - **Format:** JPG/PNG
 - **Quantity:** 2-3 images
 - **Purpose:** Show mobile responsiveness
 
 **Suggested Mobile Screenshots:**
+
 1. `mobile-homepage.jpg` - Mobile homepage
 2. `mobile-menu.jpg` - Mobile navigation
 3. `mobile-contact.jpg` - Mobile contact form
 
 ### 4. Features Showcase
+
 - **Size:** 1200x800px
 - **Format:** JPG/PNG
 - **Purpose:** Highlight key features
 
 **Content Ideas:**
+
 - Split screen showing dark/light mode
 - Code quality showcase
 - Performance metrics (Lighthouse scores)
@@ -52,7 +60,9 @@
 ## Tools for Creating Screenshots
 
 ### Browser Screenshots
+
 1. **Full Page Screenshots:**
+
    - Use browser extensions like "Full Page Screen Capture"
    - Chrome DevTools (Ctrl+Shift+P → "Screenshot")
    - Firefox Developer Tools
@@ -63,6 +73,7 @@
    - Take screenshots in mobile view
 
 ### Design Tools (Optional)
+
 - **Figma** - Create professional mockups
 - **Adobe Photoshop** - Edit and enhance screenshots
 - **Canva** - Quick mockup creation
@@ -70,6 +81,7 @@
 ## Screenshot Checklist
 
 ### Before Taking Screenshots:
+
 - ✅ Clear browser cache
 - ✅ Use incognito/private browsing
 - ✅ Disable browser extensions
@@ -78,6 +90,7 @@
 - ✅ Check all animations are loaded
 
 ### Content Guidelines:
+
 - ✅ Use the fictional lawyer data (Dr. Alexandre Silva)
 - ✅ Ensure no personal information is visible
 - ✅ Show professional, realistic content
@@ -85,6 +98,7 @@
 - ✅ High-quality, crisp images
 
 ### Technical Requirements:
+
 - ✅ No browser UI visible (address bar, bookmarks)
 - ✅ Consistent lighting and contrast
 - ✅ No cursor visible in screenshots
@@ -109,16 +123,19 @@ dark-light-mode.jpg       # 1200x800 - Theme comparison
 ## Tips for Professional Screenshots
 
 1. **Consistency:**
+
    - Use the same browser for all screenshots
    - Maintain consistent styling
    - Same scroll position for sections
 
 2. **Quality:**
+
    - High resolution displays preferred
    - Retina/4K displays for crisp images
    - Avoid compression artifacts
 
 3. **Content:**
+
    - Professional lawyer imagery
    - Realistic but fictional client testimonials
    - Professional legal content

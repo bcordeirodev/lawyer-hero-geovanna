@@ -127,7 +127,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
             workingHours: "Segunda a Sexta: 9h às 18h | Sábados: 9h às 12h"
         },
         photo: {
-            src: "/images/lawyer-profile.jpg",
+            src: "/images/perfil.png",
             placeholder: "Dr. Alexandre Silva",
             alt: "Dr. Alexandre Silva - Advogado"
         }
