@@ -1,15 +1,16 @@
-# LawyerHero - Dra. Geovanna Nery
+# 🏛️ LawyerHero - Template para Advogados
 
-Landing page profissional para a advogada **Dra. Geovanna Nery**, especialista em Direito Civil, Empresarial e Família, atuando em São Paulo-SP.
+Template de landing page profissional para advogados, desenvolvido com Next.js 15, TypeScript e Tailwind CSS. Design moderno, responsivo e totalmente personalizável.
 
-## 🎯 Sobre a Advogada
+## ✨ Características
 
-- **Nome**: Dra. Geovanna Nery
-- **Nascimento**: 20/09/1997
-- **Localização**: São Paulo-SP
-- **Experiência**: Mais de 8 anos na área jurídica
-- **OAB**: OAB/SP - Advogada Licenciada
-- **Especialidades**: Direito Civil, Empresarial e Família
+- 🎨 **Design Moderno**: Interface limpa e profissional
+- 📱 **Totalmente Responsivo**: Perfeito em qualquer dispositivo
+- ⚡ **Alta Performance**: Otimizado para velocidade e SEO
+- 🌓 **Modo Escuro/Claro**: Tema adaptável às preferências do usuário
+- 📧 **Formulário Funcional**: Integração com EmailJS para contato
+- 🚀 **Fácil Personalização**: Configure rapidamente com seus dados
+- ♿ **Acessível**: Desenvolvido seguindo padrões de acessibilidade
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -170,15 +171,21 @@ Para alterar as cores, edite:
 - Componentes auto-explicativos
 - README detalhado
 
-## 📞 Contato
+## 🚀 Como Usar
 
-**Dra. Geovanna Nery**
-- **Telefone**: (11) 99999-9999
-- **E-mail**: geovanna.nery@advocacia.com.br
-- **Localização**: São Paulo, SP
-- **Horário**: Segunda a Sexta: 9h às 18h
+1. **Clone o repositório**
+2. **Instale as dependências**: `npm install`
+3. **Configure seus dados** em `src/config/lawyer.ts`
+4. **Configure EmailJS** (opcional)
+5. **Execute em desenvolvimento**: `npm run dev`
+6. **Faça o deploy**: `npm run build`
+
+Para instruções detalhadas, consulte o [TEMPLATE_GUIDE.md](./TEMPLATE_GUIDE.md)
+
+## 📄 Licença
+
+Este template está disponível sob licença MIT. Você pode usar, modificar e distribuir livremente.
 
 ---
 
 **Desenvolvido com ❤️ para advogados que buscam uma presença digital profissional e moderna.**
-# Build timestamp: seg 04 ago 2025 10:38:01 -03

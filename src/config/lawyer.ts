@@ -107,29 +107,29 @@ export interface LawyerConfig {
 
 export const LAWYER_CONFIG: LawyerConfig = {
     lawyer: {
-        name: "Dra. Geovanna Nery",
-        fullName: "Geovanna Nery da Silva",
-        title: "Advogada Especialista em Direito Civil, Empresarial e Família",
-        description: "Olá! Sou a Dra. Geovanna Nery, advogada recém-inscrita na OAB/DF, mas com mais de 5 anos de experiência na área jurídica. Acredito que cada caso é único e merece atenção especial. Minha missão é oferecer soluções práticas e eficazes, sempre com transparência e dedicação.",
-        detailedDescription: "Sou advogada com mais de 5 anos de experiência e atuação dedicada na busca de soluções jurídicas eficazes. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia e comprometimento. Por isso, me envolvo diretamente em cada demanda, com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança.",
+        name: "Dr. Alexandre Silva",
+        fullName: "Alexandre Silva Santos",
+        title: "Advogado Especialista em Direito Civil, Empresarial e Família",
+        description: "Olá! Sou o Dr. Alexandre Silva, advogado com sólida experiência na área jurídica. Acredito que cada caso é único e merece atenção especial. Minha missão é oferecer soluções práticas e eficazes, sempre com transparência e dedicação aos meus clientes.",
+        detailedDescription: "Sou advogado com vasta experiência e atuação dedicada na busca de soluções jurídicas eficazes. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia e comprometimento. Por isso, me envolvo diretamente em cada demanda, com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança.",
         credentials: {
-            bar: "OAB-DF",
-            location: "Brasília, DF"
+            bar: "OAB-SP 123.456",
+            location: "São Paulo, SP"
         },
         statistics: {
-            experience: "5+",
-            casesResolved: "200+",
-            successRate: "92%"
+            experience: "8+",
+            casesResolved: "500+",
+            successRate: "95%"
         },
         contact: {
-            email: "geovannanery.adv@gmail.com",
-            phone: "(61) 99999-9999",
+            email: "contato@alexandresilva.adv.br",
+            phone: "(11) 99999-9999",
             workingHours: "Segunda a Sexta: 9h às 18h | Sábados: 9h às 12h"
         },
         photo: {
-            src: "/images/geovanna-perfil.jpeg",
-            placeholder: "Dra. Geovanna Nery",
-            alt: "Dra. Geovanna Nery - Advogada"
+            src: "/images/lawyer-profile.jpg",
+            placeholder: "Dr. Alexandre Silva",
+            alt: "Dr. Alexandre Silva - Advogado"
         }
     },
 
@@ -228,10 +228,10 @@ export const LAWYER_CONFIG: LawyerConfig = {
     ],
 
     socialMedia: {
-        whatsapp: "https://wa.me/5561999999999",
-        instagram: "https://instagram.com/geovannanery",
-        linkedin: "https://linkedin.com/in/geovannanery",
-        facebook: "https://facebook.com/geovannanery"
+        whatsapp: "https://wa.me/5511999999999",
+        instagram: "https://instagram.com/alexandresilvaadv",
+        linkedin: "https://linkedin.com/in/alexandresilvaadv",
+        facebook: "https://facebook.com/alexandresilvaadv"
     },
 
     form: {
@@ -266,7 +266,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
     about: {
         highlights: [
             "Especialização em Direito Civil e Empresarial",
-            "Mais de 5 anos de experiência jurídica",
+            "Mais de 8 anos de experiência jurídica",
             "Atendimento personalizado e transparente",
             "Compromisso com resultados eficazes"
         ],

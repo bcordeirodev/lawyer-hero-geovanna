@@ -1,7 +1,11 @@
 {
-  "name": "lawyer-hero",
-  "version": "0.1.0",
-  "private": true,
+  "name": "lawyer-hero-template",
+  "version": "1.0.0",
+  "description": "Professional landing page template for lawyers built with Next.js 15, TypeScript and Tailwind CSS",
+  "keywords": ["lawyer", "template", "landing-page", "nextjs", "typescript", "tailwind"],
+  "author": "LawyerHero Template",
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
