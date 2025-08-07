@@ -40,12 +40,12 @@ const getPracticeArea = (subject: string): string => {
         return 'Direito Empresarial'
     } else if (lowerSubject.includes('família') || lowerSubject.includes('divórcio') || lowerSubject.includes('pensão')) {
         return 'Direito de Família'
-    } else if (lowerSubject.includes('imobiliário') || lowerSubject.includes('casa') || lowerSubject.includes('propriedade')) {
-        return 'Direito Imobiliário'
+    } else if (lowerSubject.includes('saúde') || lowerSubject.includes('plano') || lowerSubject.includes('médico') || lowerSubject.includes('sus')) {
+        return 'Direito à Saúde'
     } else if (lowerSubject.includes('trabalho') || lowerSubject.includes('trabalhista') || lowerSubject.includes('demissão')) {
         return 'Direito do Trabalho'
-    } else if (lowerSubject.includes('digital') || lowerSubject.includes('internet') || lowerSubject.includes('dados')) {
-        return 'Direito Digital'
+    } else if (lowerSubject.includes('tributário') || lowerSubject.includes('fiscal') || lowerSubject.includes('imposto') || lowerSubject.includes('execução fiscal')) {
+        return 'Direito Tributário'
     } else {
         return 'Consulta Geral'
     }
