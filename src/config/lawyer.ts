@@ -2,7 +2,6 @@ import {
     Activity,
     Building,
     Heart,
-    Home,
     Scale,
     TrendingUp
 } from 'lucide-react'
@@ -112,9 +111,9 @@ export const LAWYER_CONFIG: LawyerConfig = {
         fullName: "Geovanna Nery da Silva",
         title: "Advogada Especialista em Direito Civil, Empresarial e Família",
         description: "Olá! Sou a Dra. Geovanna Nery, advogada recém-inscrita na OAB/DF, mas com mais de 5 anos de experiência na área jurídica. Acredito que cada caso é único e merece atenção especial. Minha missão é oferecer soluções práticas e eficazes, sempre com transparência e dedicação.",
-        detailedDescription: "Sou a Dra. Geovanna Nery, uma advogada que acredita no poder transformador do direito. Formada em Direito e com mais de 5 anos de experiência na área jurídica, acabei de conquistar minha inscrição na OAB/DF, um sonho que persegui com determinação. Ao longo desses anos, trabalhei em diferentes setores do direito, desenvolvendo uma visão abrangente e prática das necessidades jurídicas das pessoas. Especializada em Direito Civil, Empresarial e Família, aprendi que cada cliente tem uma história única e que a melhor advocacia é aquela que combina conhecimento técnico com sensibilidade humana. Trabalho com ética, transparência e compromisso total com os resultados dos meus clientes. Acredito que o sucesso na advocacia não se mede apenas pelos casos ganhos, mas pela confiança construída e pela tranquilidade que proporcionamos às pessoas que confiam em nosso trabalho.",
+        detailedDescription: "Sou advogada com mais de 5 anos de experiência e atuação dedicada na busca de soluções jurídicas eficazes. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia e comprometimento. Por isso, me envolvo diretamente em cada demanda, com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança.",
         credentials: {
-            bar: "OAB/DF 123.456",
+            bar: "OAB-DF",
             location: "Brasília, DF"
         },
         statistics: {
@@ -123,7 +122,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
             successRate: "92%"
         },
         contact: {
-            email: "geovanna.nery@advocacia.com.br",
+            email: "geovannanery.adv@gmail.com",
             phone: "(61) 99999-9999",
             workingHours: "Segunda a Sexta: 9h às 18h | Sábados: 9h às 12h"
         },
@@ -138,13 +137,14 @@ export const LAWYER_CONFIG: LawyerConfig = {
         {
             id: "civil-law",
             title: "Direito Civil",
-            description: "Protejo seus direitos civis com assessoria completa e personalizada. Desde contratos até questões de responsabilidade, estou aqui para defender seus interesses.",
+            description: "Protejo seus direitos civis com assessoria completa e personalizada. Desde contratos até questões de responsabilidade, estou aqui para defender seus interesses com eficiência e comprometimento.",
             icon: Scale,
             features: [
                 "Contratos civis e comerciais",
-                "Responsabilidade civil e danos morais",
-                "Direito do consumidor e proteção",
-                "Direito de propriedade e posse"
+                "Responsabilidade civil e indenizações por danos morais e materiais",
+                "Direito do consumidor e relações de consumo",
+                "Direito de propriedade e ações possessórias",
+                "Cobrança de dívidas e execuções cíveis"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "civil"
@@ -152,13 +152,14 @@ export const LAWYER_CONFIG: LawyerConfig = {
         {
             id: "business-law",
             title: "Direito Empresarial",
-            description: "Acompanho o crescimento da sua empresa com assessoria jurídica estratégica. Do planejamento à resolução de conflitos, sua empresa em boas mãos.",
+            description: "Acompanho o crescimento da sua empresa com assessoria jurídica estratégica. Do planejamento à resolução de conflitos, sua empresa estará sempre bem amparada.",
             icon: Building,
             features: [
                 "Contratos comerciais e empresariais",
-                "Direito societário e governança",
-                "Recuperação judicial e extrajudicial",
-                "Compliance e adequação legal"
+                "Direito societário e resolução de conflitos entre sócios",
+                "Recuperação judicial e extrajudicial de empresas",
+                "Compliance, governança e adequação legal",
+                "Defesa em execuções fiscais e ações tributárias"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "business"
@@ -170,54 +171,59 @@ export const LAWYER_CONFIG: LawyerConfig = {
             icon: Heart,
             features: [
                 "Divórcio consensual e litigioso",
-                "Guarda compartilhada e unilateral",
-                "Pensão alimentícia e revisional",
-                "Inventário e partilha de bens"
+                "Guarda compartilhada, unilateral e regulamentação de visitas",
+                "Pensão alimentícia, revisional e execução de alimentos",
+                "Inventário, partilha de bens e testamentos",
+                "Reconhecimento de paternidade e ações de adoção",
+                "Medidas protetivas e violência doméstica (Lei Maria da Penha)"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "family"
         },
         {
-            id: "real-estate-law",
-            title: "Direito Imobiliário",
-            description: "Realizo seu sonho da casa própria com segurança jurídica. Assessoria completa em todas as etapas da transação imobiliária.",
-            icon: Home,
+            id: "health-law",
+            title: "Direito à Saúde",
+            description: "Defesa dos seus direitos em relação a planos de saúde, atendimento médico e acesso a tratamentos essenciais.",
+            icon: Heart,
             features: [
-                "Compra, venda e permuta",
-                "Locação residencial e comercial",
-                "Regularização e usucapião",
-                "Condomínio e administração"
+                "Ações contra negativa de cobertura por planos de saúde",
+                "Fornecimento de medicamentos pelo SUS",
+                "Internações e cirurgias urgentes",
+                "Tratamentos fora do rol da ANS",
+                "Responsabilidade por erro médico"
             ],
             gradient: "from-yellow-500 to-orange-500",
-            category: "real-estate"
+            category: "civil"
         },
         {
             id: "labor-law",
             title: "Direito do Trabalho",
-            description: "Defendo seus direitos trabalhistas com conhecimento e determinação. Do reconhecimento de vínculo à rescisão, estou ao seu lado.",
+            description: "Assessoria jurídica completa para empregados e empregadores, com foco na resolução de conflitos trabalhistas.",
             icon: Activity,
             features: [
+                "Verbas rescisórias, FGTS e horas extras",
                 "Reconhecimento de vínculo empregatício",
-                "Rescisão de contrato e verbas rescisórias",
-                "Horas extras e adicional noturno",
-                "Assédio moral e danos morais"
+                "Assédio moral e sexual no trabalho",
+                "Estabilidade e reintegração no cargo",
+                "Defesa em reclamações trabalhistas"
             ],
             gradient: "from-yellow-500 to-orange-500",
             category: "labor"
         },
         {
-            id: "digital-law",
-            title: "Direito Digital",
-            description: "Protejo seus direitos no mundo digital. Assessoria em questões de tecnologia, internet e proteção de dados pessoais.",
+            id: "tax-law",
+            title: "Direito Tributário",
+            description: "Suporte jurídico para enfrentar cobranças indevidas, regularizar pendências fiscais e planejar com eficiência.",
             icon: TrendingUp,
             features: [
-                "Proteção de dados pessoais (LGPD)",
-                "Direitos autorais e propriedade intelectual",
-                "Contratos digitais e e-commerce",
-                "Crimes cibernéticos e segurança digital"
+                "Defesa em execuções fiscais",
+                "Restituição de tributos pagos indevidamente",
+                "Planejamento e consultoria tributária",
+                "Impugnação de autos de infração",
+                "Regularização fiscal e parcelamentos"
             ],
             gradient: "from-yellow-500 to-orange-500",
-            category: "digital"
+            category: "business"
         }
     ],
 
@@ -234,9 +240,9 @@ export const LAWYER_CONFIG: LawyerConfig = {
             "Direito Civil",
             "Direito Empresarial",
             "Direito de Família",
-            "Direito Imobiliário",
+            "Direito à Saúde",
             "Direito do Trabalho",
-            "Direito Digital",
+            "Direito Tributário",
             "Outro"
         ],
         placeholders: {
