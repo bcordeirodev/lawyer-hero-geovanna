@@ -14,10 +14,13 @@ export { Button } from './button'
 // ============================================================================
 
 export {
-    Card,
-    CardHeader,
-    CardFooter,
-    CardTitle,
-    CardDescription,
-    CardContent
-} from './card' 
+    Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
+} from './card'
+
+// ============================================================================
+// TEXTAREA COMPONENTS
+// ============================================================================
+
+export { Textarea } from './textarea'
+export type { TextareaProps, TextareaRef } from './textarea'
+

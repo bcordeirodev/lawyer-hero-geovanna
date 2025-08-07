@@ -7,10 +7,19 @@
 // STYLED COMPONENTS
 // ============================================================================
 
-export * from './styled-components'
+// Styled components removed - using Tailwind CSS exclusively
 
 // ============================================================================
 // REGISTRY
 // ============================================================================
 
-export * from './registry' 
+// Registry removed - styled-components no longer used
+
+// ============================================================================
+// UI UTILITIES
+// ============================================================================
+
+// Export UI utilities when needed
+export const uiUtils = {
+    // Placeholder for future UI utilities
+} 

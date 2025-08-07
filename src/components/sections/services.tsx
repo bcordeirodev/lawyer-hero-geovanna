@@ -1,96 +1,58 @@
 "use client"
 
+import { ServiceIcon, StaggerContainer, StaggerItem, StandardSection } from "@/components/ui"
+import { LAWYER_CONFIG } from "@/config"
 import { motion } from "framer-motion"
-import { servicesConfig } from "@/lib/core"
-import { useTheme } from "@/contexts/ThemeContext"
-import { useTranslation } from "@/contexts/LanguageContext"
 
 /**
  * Componente Services - Seção de especialidades jurídicas
  * Exibe os serviços oferecidos pelo advogado
+ * Refatorado para usar componentes padronizados
  */
 export function Services() {
-    const t = useTranslation()
-
-    // Serviços adicionais para completar 6 itens
-    const additionalServices: never[] = []
-
-    const allServices = [...servicesConfig, ...additionalServices]
+    const allServices = LAWYER_CONFIG.services
 
     return (
-        <section id="services" className="relative py-8 sm:py-12 lg:py-16 xl:py-20 bg-background-primary">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-                <div className="text-center mb-12 sm:mb-16">
-                    <motion.div
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500/20 to-gold-600/20 text-gold-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gold-500/30 shadow-lg backdrop-blur-sm"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                    >
-                        ⚖️ {t.services.title}
-                    </motion.div>
-                    <motion.h2
-                        className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent mb-4 drop-shadow-sm hover:scale-105 transition-transform duration-300 cursor-default"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        whileHover={{ scale: 1.02 }}
-                    >
-                        {t.services.title}
-                    </motion.h2>
-                    <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-                        {t.services.subtitle}
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                    {allServices.map((service, index) => (
+        <StandardSection
+            id="services"
+            badge="⚖️ Nossos Serviços"
+            title="Nossos Serviços"
+            description="Especialidades jurídicas com atendimento personalizado e soluções eficazes"
+        >
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                {allServices.map((service, index) => (
+                    <StaggerItem key={service.title}>
                         <motion.div
-                            key={service.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
                             whileHover={{ scale: 1.02 }}
-                            className="group"
+                            className="group bg-background-secondary border border-border-secondary rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 h-full"
                         >
-                            <div className="bg-background-secondary border border-border-secondary rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 h-full">
-                                <div className="mb-4">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg mb-4">
-                                        <service.icon className="h-6 w-6 text-white" />
-                                    </div>
-                                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-text-primary group-hover:text-secondary-500 transition-colors duration-300 mb-2">
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-text-secondary text-xs sm:text-sm md:text-base mb-4">
-                                        {service.description}
-                                    </p>
-                                </div>
-                                <ul className="space-y-2 sm:space-y-3">
-                                    {service.features.map((feature: string, featureIndex: number) => (
-                                        <motion.li
-                                            key={feature}
-                                            className="flex items-center text-xs sm:text-sm text-text-secondary transition-colors duration-300"
-                                            initial={{ opacity: 0, x: -10 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            transition={{
-                                                delay: index * 0.1 + featureIndex * 0.1,
-                                                duration: 0.3
-                                            }}
-                                        >
-                                            <div className="mr-2 sm:mr-3 h-1.5 w-1.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600" />
-                                            {feature}
-                                        </motion.li>
-                                    ))}
-                                </ul>
+                            <div className="mb-4">
+                                <ServiceIcon
+                                    icon={service.icon}
+                                    className="mb-4"
+                                />
+                                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-text-primary group-hover:text-secondary-500 transition-colors duration-300 mb-2">
+                                    {service.title}
+                                </h3>
+                                <p className="text-text-secondary text-xs sm:text-sm md:text-base mb-4">
+                                    {service.description}
+                                </p>
                             </div>
+                            <ul className="space-y-2 sm:space-y-3">
+                                {service.features.map((feature: string) => (
+                                    <li
+                                        key={feature}
+                                        className="service-feature-item"
+                                    >
+                                        <div className="service-feature-bullet" />
+                                        <span className="text-xs sm:text-sm">{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section >
+                    </StaggerItem>
+                ))}
+            </StaggerContainer>
+        </StandardSection>
     )
 } 

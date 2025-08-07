@@ -9,34 +9,31 @@
 
 export { useContactForm } from './useContactForm'
 export type {
-    ContactFormState,
-    ContactFormActions,
-    UseContactFormReturn
+    ContactFormActions, ContactFormState, UseContactFormReturn
 } from './useContactForm'
 
 // ============================================================================
 // ANIMATION HOOKS
 // ============================================================================
 
-export { useAnimation } from './useAnimation'
+export { createHoverAnimation, useAnimation } from './useAnimation'
 export type {
     AnimationConfig,
     HoverAnimationConfig
 } from './useAnimation'
-export { createHoverAnimation } from './useAnimation'
 
 // ============================================================================
 // CONTACT HOOKS
 // ============================================================================
 
-export { useContact } from './useContact'
-export type {
-    ContactMethod,
-    ContactInfo,
-    ContactPreferences,
-    UseContactReturn,
-    ContactHistory
-} from './useContact'
+// export { useContact } from './useContact' // Removido - hook problemático
+// export type {
+//     ContactMethod,
+//     ContactInfo,
+//     ContactPreferences,
+//     UseContactReturn,
+//     ContactHistory
+// } from './useContact'
 
 // ============================================================================
 // SERVICES HOOKS
@@ -53,83 +50,65 @@ export type {
 // SCROLL ANIMATION HOOKS
 // ============================================================================
 
-export { useScrollAnimation } from './useScrollAnimation'
+export {
+    createFadeInAnimation,
+    createScaleInAnimation, createStaggerAnimation, useScrollAnimation
+} from './useScrollAnimation'
 export type {
     ScrollAnimationConfig,
     ScrollAnimationState,
     UseScrollAnimationReturn
-} from './useScrollAnimation'
-export {
-    createStaggerAnimation,
-    createFadeInAnimation,
-    createScaleInAnimation
 } from './useScrollAnimation'
 
 // ============================================================================
 // FORM VALIDATION HOOKS
 // ============================================================================
 
-export { useFormValidation } from './useFormValidation'
-export type {
-    ValidationRule,
-    ValidationRules,
-    FormErrors,
-    UseFormValidationReturn
-} from './useFormValidation'
 export {
-    createEmailRules,
-    createPhoneRules,
-    createCPFRules,
-    createCNPJRules
+    createCNPJRules, createCPFRules, createEmailRules,
+    createPhoneRules, useFormValidation
+} from './useFormValidation'
+export type {
+    FormErrors,
+    UseFormValidationReturn, ValidationRule,
+    ValidationRules
 } from './useFormValidation'
 
 // ============================================================================
 // SCROLL HOOKS
 // ============================================================================
 
-export {
-    useScroll,
-    useIntersectionObserver,
-    useScrollProgress
-} from './useScroll'
+export { getScrollDirection, isInViewport, useIntersectionObserver, useScroll, useScrollProgress } from './useScroll'
 export type {
-    ScrollState,
     IntersectionOptions,
-    IntersectionState
+    IntersectionState, ScrollState
 } from './useScroll'
-export { isInViewport, getScrollDirection } from './useScroll'
 
 // ============================================================================
 // STORAGE HOOKS
 // ============================================================================
 
 export {
-    useLocalStorage,
-    useLocalStorageString,
-    useLocalStorageBoolean,
-    useLocalStorageNumber
-} from './useLocalStorage'
-export type { LocalStorageOptions } from './useLocalStorage'
-export {
-    removeFromLocalStorage,
     clearLocalStorage,
     getLocalStorageKeys,
-    isLocalStorageAvailable
+    isLocalStorageAvailable, removeFromLocalStorage, useLocalStorage, useLocalStorageBoolean,
+    useLocalStorageNumber, useLocalStorageString
 } from './useLocalStorage'
+export type { LocalStorageOptions } from './useLocalStorage'
 
 // ============================================================================
 // ALL HOOKS (for convenience)
 // ============================================================================
 
 // Import all hooks for the convenience object
-import { useContactForm } from './useContactForm'
 import { useAnimation } from './useAnimation'
-import { useContact } from './useContact'
-import { useServices } from './useServices'
-import { useScrollAnimation } from './useScrollAnimation'
+import { useContactForm } from './useContactForm'
+// import { useContact } from './useContact' // Removido
 import { useFormValidation } from './useFormValidation'
-import { useScroll, useIntersectionObserver, useScrollProgress } from './useScroll'
-import { useLocalStorage, useLocalStorageString, useLocalStorageBoolean, useLocalStorageNumber } from './useLocalStorage'
+import { useLocalStorage, useLocalStorageBoolean, useLocalStorageNumber, useLocalStorageString } from './useLocalStorage'
+import { useIntersectionObserver, useScroll, useScrollProgress } from './useScroll'
+import { useScrollAnimation } from './useScrollAnimation'
+import { useServices } from './useServices'
 
 export const hooks = {
     // Form hooks
@@ -141,7 +120,7 @@ export const hooks = {
     useScrollAnimation,
 
     // Contact hooks
-    useContact,
+    // useContact, // Removido
 
     // Services hooks
     useServices,

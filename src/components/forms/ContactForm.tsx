@@ -5,14 +5,12 @@
  * Reusable form component with validation and state management
  */
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Textarea } from '@/components/ui/primitives/textarea'
+import { LAWYER_CONFIG } from '@/config'
 import { useContactForm } from '@/hooks/useContactForm'
-import { formConfig, contactFormConfig } from '@/lib/core'
-import { useTheme } from '@/contexts/ThemeContext'
-import { useTranslation } from '@/contexts/LanguageContext'
-import { FormSubject } from '@/types'
+import { motion } from 'framer-motion'
+import { AlertCircle, CheckCircle, Send } from 'lucide-react'
+import React from 'react'
 
 interface ContactFormProps {
     className?: string
@@ -29,8 +27,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     onSuccess,
     onError
 }) => {
-    const { theme } = useTheme()
-    const t = useTranslation()
     const {
         formData,
         errors,
@@ -38,9 +34,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         isSubmitted,
         submitError,
         handleChange,
+        handleBlur: hookHandleBlur,
         handleSubmit,
-        validateField
-    } = useContactForm()
+        resetForm
+    } = useContactForm(onSuccess, onError)
+
+    const { form } = LAWYER_CONFIG
+    const formSubjects = form.subjects
 
     /**
      * Handles field blur events for real-time validation
@@ -48,11 +48,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
      * @param value - The field value
      */
     const handleBlur = (field: keyof typeof formData, value: string) => {
-        const error = validateField(field, value)
-        if (error) {
-            // Update errors state
-            // This would be handled by the hook in a real implementation
-        }
+        hookHandleBlur(field, value)
     }
 
     /**
@@ -85,7 +81,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 placeholder={placeholder}
                 required={required}
                 className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-border-secondary rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all duration-200 bg-background-secondary text-text-primary placeholder-text-muted ${errors[field] ? 'border-error focus:ring-error' : ''}`}
-                autoComplete={contactFormConfig.autoComplete[field as keyof typeof contactFormConfig.autoComplete]}
+                autoComplete="off"
                 disabled={isLoading}
             />
             {errors[field] && (
@@ -106,19 +102,27 @@ export const ContactForm: React.FC<ContactFormProps> = ({
      */
     const renderSuccessMessage = () => (
         <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center space-y-4"
+            className="bg-success/10 border border-success/20 rounded-lg p-6 text-center space-y-4"
         >
-            <div className="flex justify-center">
-                <CheckCircle className="h-12 w-12 text-success" />
+            <div className="flex items-center justify-center mb-4">
+                <CheckCircle className="h-8 w-8 text-success" />
             </div>
-            <h3 className="text-xl font-semibold text-text-primary">
-                {t.contact.form.success}
+            <h3 className="text-lg font-semibold text-text-primary mb-2">
+                Mensagem Enviada!
             </h3>
-            <p className="text-text-secondary">
-                {t.contact.subtitle}
+            <p className="text-text-secondary mb-4">
+                Obrigado pelo contato. Entrarei em contato em breve.
             </p>
+            <motion.button
+                onClick={resetForm}
+                className="px-4 py-2 bg-secondary-500 hover:bg-secondary-600 text-white font-medium rounded-lg transition-all duration-200"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                Enviar Nova Mensagem
+            </motion.button>
         </motion.div>
     )
 
@@ -126,38 +130,39 @@ export const ContactForm: React.FC<ContactFormProps> = ({
      * Renders the main form
      */
     const renderForm = () => (
-        <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            onSubmit={handleSubmit}
-            className="space-y-6"
-        >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                {renderField('name', t.contact.form.name, 'text', t.contact.form.name, true)}
-                {renderField('email', t.contact.form.email, 'email', t.contact.form.email, true)}
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {renderField('name', form.labels.name, 'text', form.placeholders.name, true)}
+                {renderField('email', form.labels.email, 'email', form.placeholders.email, true)}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                {renderField('phone', t.contact.form.phone, 'tel', t.contact.form.phone, false)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {renderField('phone', form.labels.phone, 'tel', form.placeholders.phone)}
                 <div className="space-y-2">
                     <label htmlFor="subject" className="block text-sm font-medium text-text-primary mb-2">
-                        {t.contact.form.subject} <span className="text-error ml-1">*</span>
+                        {form.labels.subject} <span className="text-error ml-1">*</span>
                     </label>
-                    <select
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={(e) => handleChange('subject', e.target.value)}
-                        required
-                        className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-border-secondary rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all duration-200 bg-background-secondary text-text-primary ${errors.subject ? 'border-error focus:ring-error' : ''}`}
-                        disabled={isLoading}
-                    >
-                        {formConfig.subjects.map((option: FormSubject) => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
-                    </select>
+                    <div className="relative">
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            value={formData.subject}
+                            onChange={(e) => handleChange('subject', e.target.value)}
+                            onBlur={(e) => handleBlur('subject', e.target.value)}
+                            placeholder={form.placeholders.subject}
+                            required
+                            className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-border-secondary rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all duration-200 bg-background-secondary text-text-primary placeholder-text-muted ${errors.subject ? 'border-error focus:ring-error' : ''}`}
+                            autoComplete="off"
+                            disabled={isLoading}
+                            list="subject-suggestions"
+                        />
+                        <datalist id="subject-suggestions">
+                            {formSubjects.map((subject) => (
+                                <option key={subject} value={subject} />
+                            ))}
+                        </datalist>
+                    </div>
                     {errors.subject && (
                         <motion.div
                             initial={{ opacity: 0, y: -10 }}
@@ -171,73 +176,59 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 </div>
             </div>
 
-            <div className="space-y-2">
-                <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-2">
-                    {t.contact.form.message} <span className="text-error ml-1">*</span>
-                </label>
-                <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={(e) => handleChange('message', e.target.value)}
-                    onBlur={(e) => handleBlur('message', e.target.value)}
-                    placeholder={t.contact.form.message}
-                    required
-                    rows={6}
-                    maxLength={contactFormConfig.maxMessageLength}
-                    className={`w-full px-3 py-2.5 sm:px-4 sm:py-3 border border-border-secondary rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all duration-200 bg-background-secondary text-text-primary placeholder-text-muted resize-none ${errors.message ? 'border-error focus:ring-error' : ''}`}
-                    disabled={isLoading}
-                />
-                <div className="flex justify-between items-center text-xs text-text-muted">
-                    <span>
-                        {formData.message.length}/{contactFormConfig.maxMessageLength} caracteres
-                    </span>
-                    {errors.message && (
-                        <motion.span
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-error flex items-center gap-1"
-                        >
-                            <AlertCircle className="h-3 w-3" />
-                            {errors.message}
-                        </motion.span>
-                    )}
-                </div>
-            </div>
+            <Textarea
+                id="message"
+                name="message"
+                label={form.labels.message}
+                value={formData.message}
+                onChange={(value) => handleChange('message', value)}
+                onBlur={(value) => handleBlur('message', value)}
+                placeholder={form.placeholders.message}
+                required={true}
+                error={errors.message}
+                disabled={isLoading}
+                showCharCount={true}
+                maxLength={1000}
+                minHeight={100}
+                maxHeight={200}
+                autoResize={true}
+            />
 
             {submitError && (
                 <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-error flex items-center gap-2 p-3 bg-error/10 border border-error/20 rounded-lg"
+                    className="text-error text-sm p-3 bg-error/10 border border-error/20 rounded-lg flex items-center gap-2"
                 >
                     <AlertCircle className="h-4 w-4" />
                     {submitError}
                 </motion.div>
             )}
 
-            <button
+            <motion.button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-secondary-600 to-secondary-500 hover:from-secondary-700 hover:to-secondary-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
             >
                 {isLoading ? (
-                    <div className="flex items-center gap-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
-                        {t.contact.form.sending}
-                    </div>
+                    <>
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                        {form.labels.loading}
+                    </>
                 ) : (
-                    <div className="flex items-center gap-2">
+                    <>
                         <Send className="h-4 w-4" />
-                        {t.contact.form.send}
-                    </div>
+                        {form.labels.submit}
+                    </>
                 )}
-            </button>
-        </motion.form>
+            </motion.button>
+        </form>
     )
 
     return (
-        <div className={`space-y-6 ${className}`}>
+        <div className={`bg-background-secondary border border-border-secondary rounded-lg p-6 lg:p-8 hover:shadow-lg transition-all duration-300 ${className}`}>
             {isSubmitted ? renderSuccessMessage() : renderForm()}
         </div>
     )

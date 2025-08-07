@@ -3,22 +3,21 @@
  * Reusable animation wrapper component following DRY principle
  */
 
-import React from 'react'
-import { motion, HTMLMotionProps } from 'framer-motion'
-import { cn } from '@/lib/core'
 import {
     fadeIn,
+    hoverAnimations,
+    scaleIn,
+    slideInBottom,
     slideInLeft,
     slideInRight,
     slideInTop,
-    slideInBottom,
-    scaleIn,
     staggerContainer,
-    staggerItem,
-    hoverAnimations,
-    viewportAnimations
+    staggerItem
 } from '@/lib/animations'
+import { cn } from '@/lib/core'
 import type { ViewportOptions } from 'framer-motion'
+import { HTMLMotionProps, motion } from 'framer-motion'
+import React from 'react'
 
 // ============================================================================
 // ANIMATION TYPES
@@ -172,13 +171,13 @@ export const ScaleInWrapper: React.FC<Omit<AnimatedWrapperProps, 'animation'>> =
 /**
  * StaggerContainer - Container for staggered animations
  */
-export const StaggerContainer: React.FC<Omit<AnimatedWrapperProps, 'animation'>> = (props) => (
+export const LegacyStaggerContainer: React.FC<Omit<AnimatedWrapperProps, 'animation'>> = (props) => (
     <AnimatedWrapper animation="staggerContainer" {...props} />
 )
 
 /**
- * StaggerItem - Item for staggered animations
+ * LegacyStaggerItem - Item for staggered animations (legacy)
  */
-export const StaggerItem: React.FC<Omit<AnimatedWrapperProps, 'animation'>> = (props) => (
+export const LegacyStaggerItem: React.FC<Omit<AnimatedWrapperProps, 'animation'>> = (props) => (
     <AnimatedWrapper animation="staggerItem" {...props} />
 ) 

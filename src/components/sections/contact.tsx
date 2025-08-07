@@ -8,10 +8,9 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import { ContactForm } from '@/components/forms/ContactForm'
-import { contactConfig } from '@/lib/core'
-import { ContactInfo } from '@/types'
+import { LAWYER_CONFIG } from '@/config'
 import { useTheme } from '@/contexts/ThemeContext'
-import { useTranslation } from '@/contexts/LanguageContext'
+import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 
 /**
  * Contact Section Component
@@ -19,7 +18,38 @@ import { useTranslation } from '@/contexts/LanguageContext'
  */
 export const Contact: React.FC = () => {
     const { theme } = useTheme()
-    const t = useTranslation()
+    const { lawyer } = LAWYER_CONFIG
+
+    const contactInfo = [
+        {
+            type: 'email',
+            label: 'Email',
+            value: lawyer.contact.email,
+            icon: Mail,
+            href: `mailto:${lawyer.contact.email}`
+        },
+        {
+            type: 'phone',
+            label: 'Telefone',
+            value: lawyer.contact.phone,
+            icon: Phone,
+            href: `tel:${lawyer.contact.phone}`
+        },
+        {
+            type: 'location',
+            label: 'Localização',
+            value: lawyer.credentials.location,
+            icon: MapPin,
+            href: null
+        },
+        {
+            type: 'hours',
+            label: 'Horário de Atendimento',
+            value: lawyer.contact.workingHours,
+            icon: Clock,
+            href: null
+        }
+    ]
 
     return (
         <section id="contact" className="relative py-8 sm:py-12 lg:py-16 xl:py-20 bg-background-primary">
@@ -33,7 +63,7 @@ export const Contact: React.FC = () => {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         whileHover={{ scale: 1.05, y: -2 }}
                     >
-                        📞 {t.contact.title}
+                        📞 Contato
                     </motion.div>
                     <motion.h2
                         className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent mb-4 drop-shadow-sm hover:scale-105 transition-transform duration-300 cursor-default"
@@ -43,10 +73,10 @@ export const Contact: React.FC = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         whileHover={{ scale: 1.02 }}
                     >
-                        {t.contact.title}
+                        Entre em Contato
                     </motion.h2>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-                        {t.contact.subtitle}
+                        Estou aqui para ajudar você com suas questões jurídicas
                     </p>
                 </div>
 
@@ -60,15 +90,15 @@ export const Contact: React.FC = () => {
                     >
                         <div>
                             <h3 className="text-xl sm:text-2xl font-semibold text-text-primary mb-4 sm:mb-6">
-                                {t.contact.title}
+                                Informações de Contato
                             </h3>
                             <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
-                                {t.contact.subtitle}
+                                Entre em contato através dos canais abaixo ou preencha o formulário
                             </p>
                         </div>
 
                         <div className="space-y-6">
-                            {contactConfig.map((contact: ContactInfo, index: number) => (
+                            {contactInfo.map((contact, index) => (
                                 <motion.div
                                     key={contact.type}
                                     initial={{ opacity: 0, y: 20 }}
@@ -107,8 +137,6 @@ export const Contact: React.FC = () => {
                                 </motion.div>
                             ))}
                         </div>
-
-
                     </motion.div>
 
                     {/* Contact Form */}
@@ -116,17 +144,16 @@ export const Contact: React.FC = () => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-background-secondary border border-border-secondary rounded-lg p-6 lg:p-8 hover:shadow-lg transition-all duration-300"
+                        className="space-y-8"
                     >
-                        <div className="mb-6">
-                            <h3 className="text-xl font-semibold text-text-primary mb-2">
-                                {t.contact.form.send}
+                        <div>
+                            <h3 className="text-xl sm:text-2xl font-semibold text-text-primary mb-4 sm:mb-6">
+                                Envie uma Mensagem
                             </h3>
-                            <p className="text-text-secondary">
-                                {t.contact.subtitle}
+                            <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
+                                Preencha o formulário abaixo e entrarei em contato em breve
                             </p>
                         </div>
-
                         <ContactForm />
                     </motion.div>
                 </div>

@@ -4,16 +4,16 @@
  * Follows SOLID principles and uses the new validation system
  */
 
-import { useState, useCallback } from 'react'
+import { initEmailJS, isEmailJSConfigured, sendContactEmail } from '@/lib/email'
 import {
     ContactFormData,
-    validateField,
-    validateForm,
-    sanitizeFormData,
+    hasErrors,
     sanitizeField,
-    hasErrors
+    sanitizeFormData,
+    validateField,
+    validateForm
 } from '@/lib/validation'
-import { contactFormConfig } from '@/lib/core'
+import { useCallback, useEffect, useState } from 'react'
 
 // ============================================================================
 // HOOK STATE INTERFACE
@@ -66,6 +66,8 @@ const initialErrors: Record<keyof ContactFormData, string | null> = {
  * 
  * Provides form state management, validation, and submission handling
  * 
+ * @param onSuccess - Callback function called when form is successfully submitted
+ * @param onError - Callback function called when form submission fails
  * @returns Object containing form state and actions
  * 
  * @example
@@ -79,7 +81,10 @@ const initialErrors: Record<keyof ContactFormData, string | null> = {
  * } = useContactForm()
  * ```
  */
-export function useContactForm(): UseContactFormReturn {
+export function useContactForm(
+    onSuccess?: () => void,
+    onError?: (error: string) => void
+): UseContactFormReturn {
     // ============================================================================
     // STATE MANAGEMENT
     // ============================================================================
@@ -89,6 +94,15 @@ export function useContactForm(): UseContactFormReturn {
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [submitError, setSubmitError] = useState<string | null>(null)
+
+    // ============================================================================
+    // INITIALIZATION
+    // ============================================================================
+
+    useEffect(() => {
+        // Initialize EmailJS on component mount
+        initEmailJS()
+    }, [])
 
     // ============================================================================
     // FORM ACTIONS
@@ -189,46 +203,62 @@ export function useContactForm(): UseContactFormReturn {
 
         } catch (error) {
             console.error('Form submission error:', error)
-            setSubmitError('Erro ao enviar formulário. Tente novamente.')
+
+            const errorMessage = error instanceof Error ? error.message : 'Erro ao enviar formulário. Tente novamente.'
+            setSubmitError(errorMessage)
+
+            // Call onError callback if provided
+            if (onError) {
+                onError(errorMessage)
+            }
         } finally {
             setIsLoading(false)
         }
-    }, [formData])
+    }, [formData, onSuccess, onError])
 
     // ============================================================================
     // SUBMISSION LOGIC
     // ============================================================================
 
     /**
-     * Submits form data to API
+     * Submits form data using EmailJS
      * @param data - Sanitized form data
      */
     const submitFormData = async (data: ContactFormData): Promise<void> => {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1000))
-
-        // Simulate API response
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                ...data,
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                maxMessageLength: contactFormConfig.maxMessageLength
-            })
-        })
-
-        if (!response.ok) {
-            throw new Error('Failed to submit form')
+        // Check if EmailJS is configured
+        if (!isEmailJSConfigured()) {
+            throw new Error('Serviço de email não configurado. Entre em contato por telefone: (61) 99999-9999')
         }
 
-        const result = await response.json()
+        try {
+            // Log attempt for analytics (in development)
+            if (process.env.NODE_ENV === 'development') {
+                console.log('Enviando dados do formulário:', {
+                    name: data.name,
+                    email: data.email,
+                    hasPhone: !!data.phone,
+                    subject: data.subject,
+                    messageLength: data.message.length,
+                    timestamp: new Date().toISOString()
+                })
+            }
 
-        if (!result.success) {
-            throw new Error(result.error || 'Form submission failed')
+            // Send email using EmailJS
+            await sendContactEmail(data)
+
+            // Log success for analytics (in development)
+            if (process.env.NODE_ENV === 'development') {
+                console.log('✅ Email enviado com sucesso!')
+            }
+        } catch (error) {
+            console.error('❌ Email submission error:', error)
+
+            // Re-throw the error to be handled by the calling function
+            if (error instanceof Error) {
+                throw error
+            }
+
+            throw new Error('Erro ao enviar email. Tente novamente ou entre em contato por telefone.')
         }
     }
 

@@ -1,6 +1,9 @@
 /**
  * Centralized constants
  * Provides reusable constants following DRY principle
+ * 
+ * NOTE: Most configurations have been moved to @/lib/core/config.ts
+ * This file now contains only unique constants not duplicated elsewhere
  */
 
 import { lawyerConfig } from '@/lib/core/config'
@@ -15,128 +18,6 @@ export const APP_CONFIG = {
     description: 'Professional lawyer landing page',
     author: lawyerConfig.name,
     url: 'https://geovannanery.com'
-} as const
-
-// ============================================================================
-// BREAKPOINTS
-// ============================================================================
-
-export const BREAKPOINTS = {
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280,
-    '2xl': 1536
-} as const
-
-// ============================================================================
-// ANIMATION CONSTANTS
-// ============================================================================
-
-export const ANIMATION = {
-    duration: {
-        fast: 0.2,
-        normal: 0.3,
-        slow: 0.6,
-        slower: 0.8
-    },
-    easing: {
-        easeOut: 'easeOut',
-        easeInOut: 'easeInOut',
-        easeIn: 'easeIn'
-    },
-    delay: {
-        none: 0,
-        small: 0.1,
-        medium: 0.2,
-        large: 0.3
-    }
-} as const
-
-// ============================================================================
-// FORM CONSTANTS
-// ============================================================================
-
-export const FORM = {
-    maxLength: {
-        name: 50,
-        email: 100,
-        phone: 20,
-        subject: 100,
-        message: 1000
-    },
-    minLength: {
-        name: 2,
-        email: 5,
-        subject: 1,
-        message: 10
-    },
-    patterns: {
-        name: /^[a-zA-ZÀ-ÿ\s]+$/,
-        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        phone: /^[\+]?[1-9][\d]{0,15}$/
-    }
-} as const
-
-// ============================================================================
-// SEO CONSTANTS
-// ============================================================================
-
-export const SEO = {
-    title: {
-        default: `${lawyerConfig.name} - ${lawyerConfig.title}`,
-        services: `Áreas de Atuação - ${lawyerConfig.name}`,
-        contact: `Contato - ${lawyerConfig.name}`,
-        about: `Sobre - ${lawyerConfig.name}`
-    },
-    description: {
-        default: lawyerConfig.description,
-        services: 'Conheça nossas áreas de atuação: direito civil, empresarial e família. Assessoria jurídica especializada.',
-        contact: `Entre em contato com ${lawyerConfig.name} para assessoria jurídica personalizada.`,
-        about: `Conheça ${lawyerConfig.name}, advogada especialista com mais de ${lawyerConfig.statistics.experience} anos de experiência.`
-    },
-    keywords: {
-        default: 'advogada, direito civil, direito empresarial, direito família, assessoria jurídica',
-        services: 'direito civil, direito empresarial, direito família, advocacia',
-        contact: 'contato advogada, assessoria jurídica',
-        about: 'advogada, experiência jurídica, especialista direito'
-    }
-} as const
-
-// ============================================================================
-// SOCIAL MEDIA
-// ============================================================================
-
-export const SOCIAL = {
-    whatsapp: lawyerConfig.contact.phone,
-    email: lawyerConfig.contact.email,
-    phone: lawyerConfig.contact.phone,
-    linkedin: 'https://linkedin.com/in/geovannanery',
-    instagram: 'https://instagram.com/geovannanery'
-} as const
-
-// ============================================================================
-// CONTACT INFORMATION
-// ============================================================================
-
-export const CONTACT = {
-    address: {
-        street: 'Rua das Flores, 123',
-        neighborhood: 'Vila Madalena',
-        city: lawyerConfig.credentials.location.split(', ')[0],
-        state: lawyerConfig.credentials.location.split(', ')[1],
-        zipCode: '01234-567',
-        country: 'Brasil'
-    },
-    hours: {
-        weekdays: '09:00 - 18:00',
-        saturday: '09:00 - 12:00',
-        sunday: 'Fechado'
-    },
-    emergency: {
-        phone: lawyerConfig.contact.phone,
-        available: '24/7'
-    }
 } as const
 
 // ============================================================================
@@ -217,26 +98,26 @@ export const TESTIMONIALS = [
 ] as const
 
 // ============================================================================
-// STATISTICS
+// STATISTICS (Simplificado - usando dados do config)
 // ============================================================================
 
 export const STATISTICS = [
     {
         id: 1,
         label: 'Anos de Experiência',
-        value: '8+',
+        value: `${lawyerConfig.statistics.experience}+`,
         icon: 'briefcase'
     },
     {
         id: 2,
         label: 'Casos Resolvidos',
-        value: '500+',
+        value: `${lawyerConfig.statistics.casesResolved}+`,
         icon: 'check-circle'
     },
     {
         id: 3,
         label: 'Taxa de Sucesso',
-        value: '95%',
+        value: `${lawyerConfig.statistics.successRate}`,
         icon: 'trending-up'
     },
     {
@@ -248,88 +129,17 @@ export const STATISTICS = [
 ] as const
 
 // ============================================================================
-// NAVIGATION
+// RE-EXPORTS FROM CONFIG (Para manter compatibilidade)
 // ============================================================================
 
-export const NAVIGATION = {
-    main: [
-        { name: 'Início', href: '#home' },
-        { name: 'Serviços', href: '#services' },
-        { name: 'Sobre', href: '#about' },
-        { name: 'Contato', href: '#contact' }
-    ],
-    services: [
-        { name: 'Direito Civil', href: '/servicos/direito-civil' },
-        { name: 'Direito Empresarial', href: '/servicos/direito-empresarial' },
-        { name: 'Direito de Família', href: '/servicos/direito-familia' }
-    ],
-    legal: [
-        { name: 'Política de Privacidade', href: '/politica-privacidade' },
-        { name: 'Termos de Uso', href: '/termos-uso' },
-        { name: 'Cookies', href: '/cookies' }
-    ]
-} as const
-
-// ============================================================================
-// THEME CONSTANTS
-// ============================================================================
-
-export const THEME = {
-    colors: {
-        primary: {
-            light: '#eab308',
-            dark: '#b8860b'
-        },
-        secondary: {
-            light: '#ca8a04',
-            dark: '#daa520'
-        },
-        background: {
-            primary: {
-                light: '#f5f5f0',
-                dark: '#0a0f1a'
-            },
-            secondary: {
-                light: '#f0f0e8',
-                dark: '#1e293b'
-            }
-        },
-        text: {
-            primary: {
-                light: '#1a1a1a',
-                dark: '#f8fafc'
-            },
-            secondary: {
-                light: '#4a4a4a',
-                dark: '#e2e8f0'
-            }
-        },
-        border: {
-            primary: {
-                light: '#d1d5db',
-                dark: '#334155'
-            },
-            secondary: {
-                light: '#9ca3af',
-                dark: '#475569'
-            }
-        }
-    },
-    spacing: {
-        xs: '0.25rem',
-        sm: '0.5rem',
-        md: '1rem',
-        lg: '1.5rem',
-        xl: '2rem',
-        '2xl': '3rem',
-        '3xl': '4rem'
-    },
-    borderRadius: {
-        sm: '0.25rem',
-        md: '0.375rem',
-        lg: '0.5rem',
-        xl: '0.75rem',
-        '2xl': '1rem',
-        full: '9999px'
-    }
-} as const 
+// Re-export configurations from the centralized config
+export {
+    breakpoints as BREAKPOINTS,
+    coreAnimationConfig as ANIMATION,
+    formValidationConfig as FORM,
+    seoConfig as SEO,
+    socialConfig as SOCIAL,
+    contactDetailsConfig as CONTACT,
+    themeConfig as THEME,
+    navigationConfig as NAVIGATION
+} from '@/lib/core/config' 

@@ -1,9 +1,10 @@
-import { LAWYER_DATA } from '@/constants/data'
+
+import { LAWYER_CONFIG } from '@/config'
 
 export const SEO_CONFIG = {
-    siteName: `${LAWYER_DATA.lawyer.name} - Advocacia`,
+    siteName: `${LAWYER_CONFIG.lawyer.name} - Advocacia`,
     siteUrl: 'https://geovannanery.com',
-    siteDescription: LAWYER_DATA.lawyer.description,
+    siteDescription: LAWYER_CONFIG.lawyer.description,
     siteImage: '/api/og',
     twitterHandle: '@advocaciageovanna',
     locale: 'pt_BR',
@@ -34,9 +35,9 @@ export const generateKeywords = (additionalKeywords: string[] = []) => {
         'direito família',
         'São Paulo',
         'assessoria jurídica',
-        LAWYER_DATA.lawyer.name,
-        LAWYER_DATA.lawyer.credentials.bar,
-        ...LAWYER_DATA.services.map(service => service.title.toLowerCase()),
+        LAWYER_CONFIG.lawyer.name,
+        LAWYER_CONFIG.lawyer.credentials.bar,
+        ...LAWYER_CONFIG.services.map(service => service.title.toLowerCase()),
         ...additionalKeywords,
     ]
 
@@ -44,7 +45,7 @@ export const generateKeywords = (additionalKeywords: string[] = []) => {
 }
 
 export const generateServiceKeywords = (serviceId: string) => {
-    const service = LAWYER_DATA.services.find(s => s.id === serviceId)
+    const service = LAWYER_CONFIG.services.find(s => s.id === serviceId)
     if (!service) return generateKeywords()
 
     const serviceKeywords = [

@@ -9,9 +9,7 @@
 
 export {
     Section,
-    SectionHeader,
-    type SectionProps,
-    type SectionHeaderProps
+    SectionHeader, type SectionHeaderProps, type SectionProps
 } from './section'
 
 // ============================================================================
@@ -20,15 +18,18 @@ export {
 
 export {
     AnimatedWrapper,
-    FadeInWrapper,
-    SlideInLeftWrapper,
+    FadeInWrapper, LegacyStaggerContainer,
+    LegacyStaggerItem, ScaleInWrapper, SlideInBottomWrapper, SlideInLeftWrapper,
     SlideInRightWrapper,
-    SlideInTopWrapper,
-    SlideInBottomWrapper,
-    ScaleInWrapper,
-    StaggerContainer,
-    StaggerItem,
-    type AnimatedWrapperProps,
+    SlideInTopWrapper, type AnimatedWrapperProps,
     type AnimationType,
     type HoverAnimationType
-} from './animated-wrapper' 
+} from './animated-wrapper'
+
+// ============================================================================
+// STANDARD SECTION
+// ============================================================================
+
+export {
+    CompactSection, ContentSection, HeroSection, StandardSection
+} from './StandardSection'

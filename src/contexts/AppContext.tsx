@@ -6,7 +6,7 @@
 "use client"
 
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react'
-import { LAWYER_DATA } from '@/constants/data'
+import { LAWYER_CONFIG } from '@/config'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 // ============================================================================
@@ -15,11 +15,10 @@ import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 export interface AppState {
     // Lawyer data
-    lawyer: typeof LAWYER_DATA.lawyer
-    services: typeof LAWYER_DATA.services
-    contactInfo: typeof LAWYER_DATA.contactInfo
-    statistics: typeof LAWYER_DATA.statistics
-    aboutSection: typeof LAWYER_DATA.aboutSection
+    lawyer: typeof LAWYER_CONFIG.lawyer
+    services: typeof LAWYER_CONFIG.services
+    contactInfo: typeof LAWYER_CONFIG.lawyer.contact
+    statistics: typeof LAWYER_CONFIG.lawyer.statistics
 
     // UI State
     isMenuOpen: boolean
@@ -58,8 +57,8 @@ export interface AppActions {
     updateVisitCount: () => void
 
     // Data Actions
-    updateLawyerData: (data: Partial<typeof LAWYER_DATA.lawyer>) => void
-    updateServices: (services: typeof LAWYER_DATA.services) => void
+    updateLawyerData: (data: Partial<typeof LAWYER_CONFIG.lawyer>) => void
+    updateServices: (services: typeof LAWYER_CONFIG.services) => void
 }
 
 export interface AppContextType extends AppState, AppActions { }
@@ -70,11 +69,10 @@ export interface AppContextType extends AppState, AppActions { }
 
 const initialState: AppState = {
     // Lawyer data
-    lawyer: LAWYER_DATA.lawyer,
-    services: LAWYER_DATA.services,
-    contactInfo: LAWYER_DATA.contactInfo,
-    statistics: LAWYER_DATA.statistics,
-    aboutSection: LAWYER_DATA.aboutSection,
+    lawyer: LAWYER_CONFIG.lawyer,
+    services: LAWYER_CONFIG.services,
+    contactInfo: LAWYER_CONFIG.lawyer.contact,
+    statistics: LAWYER_CONFIG.lawyer.statistics,
 
     // UI State
     isMenuOpen: false,
@@ -124,11 +122,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({
     )
 
     // State management
-    const [lawyer, setLawyer] = useState(LAWYER_DATA.lawyer)
-    const [services, setServices] = useState(LAWYER_DATA.services)
-    const [contactInfo, setContactInfo] = useState(LAWYER_DATA.contactInfo)
-    const [statistics, setStatistics] = useState(LAWYER_DATA.statistics)
-    const [aboutSection, setAboutSection] = useState(LAWYER_DATA.aboutSection)
+    const [lawyer, setLawyer] = useState(LAWYER_CONFIG.lawyer)
+    const [services, setServices] = useState(LAWYER_CONFIG.services)
+    const [contactInfo, setContactInfo] = useState(LAWYER_CONFIG.lawyer.contact)
+    const [statistics, setStatistics] = useState(LAWYER_CONFIG.lawyer.statistics)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [activeSection, setActiveSection] = useState('home')
@@ -185,11 +182,11 @@ export const AppProvider: React.FC<AppProviderProps> = ({
         setLastVisit(new Date().toISOString())
     }, [setVisitCount, setLastVisit])
 
-    const updateLawyerData = useCallback((data: Partial<typeof LAWYER_DATA.lawyer>) => {
+    const updateLawyerData = useCallback((data: Partial<typeof LAWYER_CONFIG.lawyer>) => {
         setLawyer(prev => ({ ...prev, ...data }))
     }, [])
 
-    const updateServices = useCallback((newServices: typeof LAWYER_DATA.services) => {
+    const updateServices = useCallback((newServices: typeof LAWYER_CONFIG.services) => {
         setServices(newServices)
     }, [])
 
@@ -203,7 +200,6 @@ export const AppProvider: React.FC<AppProviderProps> = ({
         services,
         contactInfo,
         statistics,
-        aboutSection,
         isMenuOpen,
         activeSection,
         isLoading,

@@ -3,12 +3,34 @@
 import { motion } from "framer-motion"
 import { Scale, Phone, Mail, MapPin, Clock, Award, Users, Shield, Zap } from "lucide-react"
 import { useTheme } from "@/contexts/ThemeContext"
-import { useTranslation } from "@/contexts/LanguageContext"
-import { lawyerConfig, servicesConfig, contactConfig, statisticsConfig } from "@/lib/core"
+import { LAWYER_CONFIG } from "@/config"
 
 export function Footer() {
     const { theme } = useTheme()
-    const t = useTranslation()
+    const { lawyer, services } = LAWYER_CONFIG
+
+    const contactInfo = [
+        {
+            icon: Mail,
+            value: lawyer.contact.email,
+            href: `mailto:${lawyer.contact.email}`
+        },
+        {
+            icon: Phone,
+            value: lawyer.contact.phone,
+            href: `tel:${lawyer.contact.phone}`
+        },
+        {
+            icon: MapPin,
+            value: lawyer.credentials.location,
+            href: null
+        },
+        {
+            icon: Clock,
+            value: lawyer.contact.workingHours,
+            href: null
+        }
+    ]
 
     return (
         <footer className="bg-background-tertiary text-text-primary border-t border-border-secondary">
@@ -28,14 +50,14 @@ export function Footer() {
                             </div>
                             <div>
                                 <h2 className="text-xl sm:text-2xl font-bold text-text-primary">
-                                    {lawyerConfig.name}
+                                    {lawyer.name}
                                 </h2>
-                                <p className="text-sm text-gold-500 font-medium">Advogada Especialista</p>
+                                <p className="text-sm text-gold-500 font-medium">{lawyer.title}</p>
                             </div>
                         </div>
 
                         <p className="text-sm sm:text-base text-text-secondary mb-6 max-w-lg leading-relaxed">
-                            {t.footer.description}
+                            Advocacia especializada com atendimento personalizado e soluções jurídicas eficazes
                         </p>
 
                         {/* Stats */}
@@ -50,8 +72,8 @@ export function Footer() {
                                         <Users className="h-3.5 w-3.5 text-secondary-500" />
                                     </div>
                                     <div>
-                                        <p className="text-lg font-bold text-text-primary">{statisticsConfig[1].value}</p>
-                                        <p className="text-xs text-text-secondary">{statisticsConfig[1].name}</p>
+                                        <p className="text-lg font-bold text-text-primary">{lawyer.statistics.casesResolved}</p>
+                                        <p className="text-xs text-text-secondary">Casos Resolvidos</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -66,8 +88,8 @@ export function Footer() {
                                         <Shield className="h-3.5 w-3.5 text-gold-500" />
                                     </div>
                                     <div>
-                                        <p className="text-lg font-bold text-text-primary">{statisticsConfig[0].value}</p>
-                                        <p className="text-xs text-text-secondary">{statisticsConfig[0].name}</p>
+                                        <p className="text-lg font-bold text-text-primary">{lawyer.statistics.successRate}</p>
+                                        <p className="text-xs text-text-secondary">Taxa de Sucesso</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -76,10 +98,12 @@ export function Footer() {
                         {/* Social links */}
                         <div className="flex space-x-3">
                             <motion.a
-                                href="#"
+                                href={LAWYER_CONFIG.socialMedia.linkedin}
                                 className="p-2 bg-background-secondary border border-border-secondary rounded-lg hover:bg-secondary-500/10 transition-colors"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <span className="sr-only">LinkedIn</span>
                                 <svg className="h-4 w-4 text-text-secondary hover:text-secondary-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -87,10 +111,12 @@ export function Footer() {
                                 </svg>
                             </motion.a>
                             <motion.a
-                                href="#"
+                                href={LAWYER_CONFIG.socialMedia.instagram}
                                 className="p-2 bg-background-secondary border border-border-secondary rounded-lg hover:bg-gold-500/10 transition-colors"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <span className="sr-only">Instagram</span>
                                 <svg className="h-4 w-4 text-text-secondary hover:text-gold-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -112,11 +138,11 @@ export function Footer() {
                                 <Zap className="h-4 w-4 text-secondary-500" />
                             </div>
                             <h3 className="text-lg font-semibold text-text-primary">
-                                {t.footer.specialties}
+                                Especialidades
                             </h3>
                         </div>
                         <ul className="space-y-2">
-                            {servicesConfig.slice(0, 6).map((service, index) => (
+                            {services.slice(0, 6).map((service, index) => (
                                 <motion.li
                                     key={service.id}
                                     initial={{ opacity: 0, x: -10 }}
@@ -144,11 +170,11 @@ export function Footer() {
                                 <Phone className="h-4 w-4 text-gold-500" />
                             </div>
                             <h3 className="text-lg font-semibold text-text-primary">
-                                {t.footer.contact}
+                                Contato
                             </h3>
                         </div>
                         <ul className="space-y-3">
-                            {contactConfig.map((contact, index) => (
+                            {contactInfo.map((contact, index) => (
                                 <motion.li
                                     key={index}
                                     initial={{ opacity: 0, x: -10 }}
@@ -178,17 +204,17 @@ export function Footer() {
                     {/* Copyright - mais compacto */}
                     <div className="mb-4">
                         <p className="text-sm font-medium text-text-primary">
-                            &copy; 2024 {lawyerConfig.name}. {t.footer.rights}.
+                            &copy; 2024 {lawyer.name}. Todos os direitos reservados.
                         </p>
                         <p className="text-xs text-text-secondary mt-1">
-                            {lawyerConfig.credentials.bar} - Advogada Licenciada
+                            {lawyer.credentials.bar} - {lawyer.title}
                         </p>
                     </div>
 
                     {/* Developer info - mais espaçoso */}
                     <div className="bg-background-secondary border border-border-secondary rounded-lg p-4 max-w-lg mx-auto">
                         <p className="text-xs text-text-muted mb-2 font-medium text-center">
-                            {t.footer.developedBy}
+                            Desenvolvido por
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-xs text-text-muted">
                             <span className="font-medium text-text-primary">Bruno Cordeiro da Silva</span>

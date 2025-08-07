@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { generateServiceMetadata } from '@/lib/seo/metadata'
-import { LAWYER_DATA } from '@/constants/data'
+import { LAWYER_CONFIG } from '@/config'
 import { notFound } from 'next/navigation'
 import { ServiceStructuredData } from '@/components/common/ServiceStructuredData'
 
@@ -12,7 +12,7 @@ interface ServicePageProps {
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
     const { service } = await params
-    const serviceData = LAWYER_DATA.services.find(s => s.id === service)
+    const serviceData = LAWYER_CONFIG.services.find(s => s.id === service)
 
     if (!serviceData) {
         return generateServiceMetadata('')
@@ -23,13 +23,13 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
 export default async function ServicePage({ params }: ServicePageProps) {
     const { service } = await params
-    const serviceData = LAWYER_DATA.services.find(s => s.id === service)
+    const serviceData = LAWYER_CONFIG.services.find(s => s.id === service)
 
     if (!serviceData) {
         notFound()
     }
 
-    const { lawyer } = LAWYER_DATA
+    const { lawyer } = LAWYER_CONFIG
 
     return (
         <>
@@ -69,14 +69,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
                         {/* Contact CTA */}
                         <div className="bg-gradient-to-r from-accent-primary to-accent-secondary rounded-lg p-8 text-center">
                             <h3 className="text-2xl font-semibold text-white mb-4">
-                                Precisa de assessoria em {serviceData.title}?
+                                Precisa de assistência em {serviceData.title}?
                             </h3>
                             <p className="text-white/90 mb-6">
                                 Entre em contato com {lawyer.name} para uma consulta personalizada
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <a
-                                    href={`https://wa.me/5511999999999?text=Olá! Gostaria de agendar uma consulta sobre ${serviceData.title}`}
+                                    href={`${LAWYER_CONFIG.socialMedia.whatsapp}?text=Olá! Gostaria de agendar uma consulta sobre ${serviceData.title}`}
                                     className="bg-white text-accent-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                                     target="_blank"
                                     rel="noopener noreferrer"

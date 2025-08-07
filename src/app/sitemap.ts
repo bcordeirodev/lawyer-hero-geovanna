@@ -1,5 +1,5 @@
+import { LAWYER_CONFIG } from '@/config'
 import { MetadataRoute } from 'next'
-import { LAWYER_DATA } from '@/constants/data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://geovannanery.com'
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ]
 
-    const servicePages = LAWYER_DATA.services.map((service) => ({
+    const servicePages = LAWYER_CONFIG.services.map((service) => ({
         url: `${baseUrl}/servicos/${service.id}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,

@@ -4,15 +4,12 @@ import { useState } from "react"
 import { Scale, Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext"
-import { useTranslation } from "@/contexts/LanguageContext"
 import { ThemeToggle } from "@/components/ui/theme"
-import { LanguageToggle } from "@/components/ui/language-toggle"
-import { lawyerConfig } from "@/lib/core/config"
+import { LAWYER_CONFIG } from "@/config"
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const { theme } = useTheme()
-    const t = useTranslation()
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -32,7 +29,7 @@ export function Header() {
                         <div className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-xl">
                             <Scale className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-white" />
                         </div>
-                        <span className="text-lg sm:text-xl md:text-2xl font-bold text-text-primary">{lawyerConfig.name}</span>
+                        <span className="text-lg sm:text-xl md:text-2xl font-bold text-text-primary">{LAWYER_CONFIG.lawyer.name}</span>
                     </motion.div>
 
                     {/* Desktop Navigation */}
@@ -43,7 +40,7 @@ export function Header() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            {t.nav.home}
+                            Início
                         </motion.a>
                         <motion.a
                             href="#services"
@@ -51,7 +48,7 @@ export function Header() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            {t.nav.services}
+                            Serviços
                         </motion.a>
                         <motion.a
                             href="#about"
@@ -59,7 +56,7 @@ export function Header() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            {t.nav.about}
+                            Sobre
                         </motion.a>
                         <motion.a
                             href="#contact"
@@ -67,11 +64,8 @@ export function Header() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            {t.nav.contact}
+                            Contato
                         </motion.a>
-
-                        {/* Language Toggle */}
-                        <LanguageToggle />
 
                         {/* Theme Toggle */}
                         <ThemeToggle />
@@ -79,7 +73,6 @@ export function Header() {
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center space-x-3">
-                        <LanguageToggle />
                         <ThemeToggle />
                         <motion.button
                             className="p-2 text-text-secondary hover:text-text-primary transition-colors"
@@ -109,7 +102,7 @@ export function Header() {
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    {t.nav.home}
+                                    Início
                                 </motion.a>
                                 <motion.a
                                     href="#services"
@@ -117,7 +110,7 @@ export function Header() {
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    {t.nav.services}
+                                    Serviços
                                 </motion.a>
                                 <motion.a
                                     href="#about"
@@ -125,7 +118,7 @@ export function Header() {
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    {t.nav.about}
+                                    Sobre
                                 </motion.a>
                                 <motion.a
                                     href="#contact"
@@ -133,7 +126,7 @@ export function Header() {
                                     whileHover={{ x: 10 }}
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    {t.nav.contact}
+                                    Contato
                                 </motion.a>
                             </div>
                         </motion.div>

@@ -50,7 +50,7 @@ const config: Config = {
                     800: '#854d0e',
                     900: '#713f12'
                 },
-                // Secondary colors (for styled-components compatibility)
+                // Secondary colors
                 secondary: {
                     50: '#fefce8',
                     100: '#fef9c3',

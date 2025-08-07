@@ -12,7 +12,7 @@
  */
 
 import { useState, useMemo, useCallback } from 'react'
-import { LAWYER_DATA } from '@/constants/data'
+import { LAWYER_CONFIG } from '@/config'
 
 // ============================================================================
 // TYPES
@@ -28,13 +28,13 @@ export interface ServiceFilter {
 }
 
 export interface UseServicesReturn {
-    services: typeof LAWYER_DATA.services
-    filteredServices: typeof LAWYER_DATA.services
+    services: typeof LAWYER_CONFIG.services
+    filteredServices: typeof LAWYER_CONFIG.services
     filter: ServiceFilter
     setFilter: (filter: Partial<ServiceFilter>) => void
     clearFilter: () => void
-    getServiceById: (id: string) => typeof LAWYER_DATA.services[0] | undefined
-    getServicesByCategory: (category: ServiceCategory) => typeof LAWYER_DATA.services
+    getServiceById: (id: string) => typeof LAWYER_CONFIG.services[0] | undefined
+    getServicesByCategory: (category: ServiceCategory) => typeof LAWYER_CONFIG.services
     categories: ServiceCategory[]
     activeCategory: ServiceCategory | null
     setActiveCategory: (category: ServiceCategory | null) => void
@@ -85,7 +85,7 @@ export function useServices(): UseServicesReturn {
     // COMPUTED VALUES
     // ============================================================================
 
-    const services = LAWYER_DATA.services
+    const services = LAWYER_CONFIG.services
     const categories: ServiceCategory[] = ['civil', 'business', 'family', 'real-estate', 'health', 'tax']
 
     // ============================================================================

@@ -1,12 +1,12 @@
-import { LAWYER_DATA } from '@/constants/data'
+import { LAWYER_CONFIG } from '@/config'
 
 interface ServiceStructuredDataProps {
     serviceId: string
 }
 
 export function ServiceStructuredData({ serviceId }: ServiceStructuredDataProps) {
-    const service = LAWYER_DATA.services.find(s => s.id === serviceId)
-    const { lawyer } = LAWYER_DATA
+    const service = LAWYER_CONFIG.services.find(s => s.id === serviceId)
+    const { lawyer } = LAWYER_CONFIG
 
     if (!service) {
         return null
@@ -19,21 +19,21 @@ export function ServiceStructuredData({ serviceId }: ServiceStructuredDataProps)
         description: service.description,
         provider: {
             '@type': 'LegalService',
-            name: `${lawyer.name} - Advocacia`,
+            name: `${lawyer.name} - ${lawyer.title}`,
             description: lawyer.description,
             url: 'https://geovannanery.com',
             telephone: lawyer.contact.phone,
             email: lawyer.contact.email,
             address: {
                 '@type': 'PostalAddress',
-                addressLocality: 'São Paulo',
-                addressRegion: 'SP',
+                addressLocality: lawyer.credentials.location.split(', ')[0],
+                addressRegion: lawyer.credentials.location.split(', ')[1],
                 addressCountry: 'BR',
             },
         },
         areaServed: {
             '@type': 'Place',
-            name: 'São Paulo, SP',
+            name: lawyer.credentials.location,
         },
         serviceType: service.title,
         category: service.category,

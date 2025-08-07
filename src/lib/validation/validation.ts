@@ -24,7 +24,11 @@ export const contactFormSchema = z.object({
         .max(100, 'Email deve ter no máximo 100 caracteres'),
 
     phone: z.string()
-        .regex(/^[\+]?[1-9][\d]{0,15}$/, 'Telefone inválido')
+        .refine((val) => {
+            if (!val || val === '') return true // Optional field
+            const cleaned = val.replace(/\D/g, '')
+            return cleaned.length >= 10 && cleaned.length <= 11
+        }, 'Telefone deve ter 10 ou 11 dígitos')
         .optional()
         .or(z.literal('')),
 
@@ -62,7 +66,7 @@ export const validationRules = {
     },
     phone: {
         required: false,
-        pattern: /^[\+]?[1-9][\d]{0,15}$/
+        pattern: /^[1-9]\d{9,10}$/
     },
     subject: {
         required: true,
@@ -95,7 +99,7 @@ export function validateField(field: keyof ContactFormData, value: string): stri
 
     // Required validation
     if (rules.required && (!value || value.trim() === '')) {
-        return `${field.charAt(0).toUpperCase() + field.slice(1)} é obrigatório`
+        return getFieldLabel(field) + ' é obrigatório'
     }
 
     // Skip other validations if not required and empty
@@ -103,19 +107,30 @@ export function validateField(field: keyof ContactFormData, value: string): stri
         return null
     }
 
+    // Trim value for further validations
+    const trimmedValue = value.trim()
+
     // Min length validation
-    if ('minLength' in rules && rules.minLength && value.length < rules.minLength) {
-        return `${field.charAt(0).toUpperCase() + field.slice(1)} deve ter pelo menos ${rules.minLength} caracteres`
+    if ('minLength' in rules && rules.minLength && trimmedValue.length < rules.minLength) {
+        return `${getFieldLabel(field)} deve ter pelo menos ${rules.minLength} caracteres`
     }
 
     // Max length validation
-    if ('maxLength' in rules && rules.maxLength && value.length > rules.maxLength) {
-        return `${field.charAt(0).toUpperCase() + field.slice(1)} deve ter no máximo ${rules.maxLength} caracteres`
+    if ('maxLength' in rules && rules.maxLength && trimmedValue.length > rules.maxLength) {
+        return `${getFieldLabel(field)} deve ter no máximo ${rules.maxLength} caracteres`
     }
 
-    // Pattern validation
-    if ('pattern' in rules && rules.pattern && !rules.pattern.test(value)) {
-        return getPatternErrorMessage(field)
+    // Pattern validation - special handling for phone
+    if ('pattern' in rules && rules.pattern) {
+        if (field === 'phone') {
+            // For phone, clean the value before testing pattern
+            const cleanedPhone = trimmedValue.replace(/\D/g, '')
+            if (cleanedPhone && !rules.pattern.test(cleanedPhone)) {
+                return getPatternErrorMessage(field)
+            }
+        } else if (!rules.pattern.test(trimmedValue)) {
+            return getPatternErrorMessage(field)
+        }
     }
 
     return null
@@ -149,6 +164,23 @@ export function validateForm(data: Partial<ContactFormData>): Record<keyof Conta
  */
 export function hasErrors(errors: Record<string, string | null>): boolean {
     return Object.values(errors).some(error => error !== null)
+}
+
+/**
+ * Gets the field label for error messages
+ * @param field - Field name
+ * @returns Field label
+ */
+function getFieldLabel(field: keyof ContactFormData): string {
+    const labels = {
+        name: 'Nome',
+        email: 'Email',
+        phone: 'Telefone',
+        subject: 'Assunto',
+        message: 'Mensagem'
+    }
+
+    return labels[field] || 'Campo'
 }
 
 /**
@@ -194,15 +226,21 @@ export function sanitizeFormData(data: Record<string, string>): ContactFormData 
  * @returns Sanitized value
  */
 export function sanitizeField(field: keyof ContactFormData, value: string): string {
-    const sanitized = value.trim()
-
     switch (field) {
         case 'email':
-            return sanitized.toLowerCase()
+            return value.trim().toLowerCase()
         case 'name':
-            return sanitized.replace(/\s+/g, ' ')
+            return value.trim().replace(/\s+/g, ' ')
+        case 'phone':
+            // For phone, format as user types but preserve input
+            return formatPhoneNumberAsType(value)
+        case 'message':
+            // For message, preserve spaces and line breaks, just remove leading/trailing spaces
+            return value.replace(/^\s+|\s+$/g, '')
+        case 'subject':
+            return value.trim()
         default:
-            return sanitized
+            return value.trim()
     }
 }
 
@@ -230,6 +268,30 @@ export function formatPhoneNumber(phone: string): string {
 }
 
 /**
+ * Formats phone number as user types (real-time formatting)
+ * @param value - Current input value
+ * @returns Formatted phone number
+ */
+export function formatPhoneNumberAsType(value: string): string {
+    // Remove all non-numeric characters
+    const cleaned = value.replace(/\D/g, '')
+
+    // Limit to 11 digits (Brazilian phone number)
+    const limited = cleaned.slice(0, 11)
+
+    // Apply formatting based on length
+    if (limited.length <= 2) {
+        return limited
+    } else if (limited.length <= 7) {
+        return `(${limited.slice(0, 2)}) ${limited.slice(2)}`
+    } else if (limited.length <= 11) {
+        return `(${limited.slice(0, 2)}) ${limited.slice(2, 7)}-${limited.slice(7)}`
+    }
+
+    return limited
+}
+
+/**
  * Validates email format
  * @param email - Email to validate
  * @returns True if email is valid
@@ -245,6 +307,7 @@ export function isValidEmail(email: string): boolean {
  * @returns True if phone is valid
  */
 export function isValidPhone(phone: string): boolean {
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/
-    return phoneRegex.test(phone.replace(/\D/g, ''))
+    const cleaned = phone.replace(/\D/g, '')
+    const phoneRegex = /^[1-9]\d{9,10}$/
+    return phoneRegex.test(cleaned)
 } 

@@ -1,5 +1,5 @@
+import { LAWYER_CONFIG } from '@/config'
 import { Metadata } from 'next'
-import { LAWYER_DATA } from '@/constants/data'
 import { SEO_CONFIG, generateKeywords, generateServiceKeywords } from './seo'
 
 export interface MetadataOptions {
@@ -11,7 +11,7 @@ export interface MetadataOptions {
 }
 
 export function generateMetadata(options: MetadataOptions = {}): Metadata {
-    const { lawyer } = LAWYER_DATA
+    const { lawyer } = LAWYER_CONFIG
 
     const defaultTitle = `${lawyer.name} - ${lawyer.title}`
     const defaultDescription = lawyer.detailedDescription
@@ -92,8 +92,8 @@ export function generateMetadata(options: MetadataOptions = {}): Metadata {
 }
 
 export function generateServiceMetadata(serviceId: string): Metadata {
-    const service = LAWYER_DATA.services.find(s => s.id === serviceId)
-    const { lawyer } = LAWYER_DATA
+    const service = LAWYER_CONFIG.services.find(s => s.id === serviceId)
+    const { lawyer } = LAWYER_CONFIG
 
     if (!service) {
         return generateMetadata()
@@ -118,7 +118,7 @@ export function generateServiceMetadata(serviceId: string): Metadata {
 }
 
 export function generateStructuredData() {
-    const { lawyer } = LAWYER_DATA
+    const { lawyer } = LAWYER_CONFIG
 
     return {
         '@context': 'https://schema.org',
@@ -149,7 +149,7 @@ export function generateStructuredData() {
         hasOfferCatalog: {
             '@type': 'OfferCatalog',
             name: 'Serviços Jurídicos',
-            itemListElement: LAWYER_DATA.services.map((service, index) => ({
+            itemListElement: LAWYER_CONFIG.services.map((service, index) => ({
                 '@type': 'Offer',
                 itemOffered: {
                     '@type': 'Service',
@@ -174,7 +174,7 @@ export function generateStructuredData() {
                 '@type': 'Organization',
                 name: 'Universidade de São Paulo (USP)',
             },
-            knowsAbout: LAWYER_DATA.services.map(service => service.title),
+            knowsAbout: LAWYER_CONFIG.services.map(service => service.title),
             hasCredential: lawyer.credentials.bar,
             worksFor: {
                 '@type': 'Organization',

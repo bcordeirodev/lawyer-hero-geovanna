@@ -1,37 +1,28 @@
 "use client"
 
+import { LAWYER_CONFIG } from "@/config"
+import { isFeatureEnabled } from "@/lib/env"
 import { motion } from "framer-motion"
 import { MessageCircle } from "lucide-react"
-import { useContact } from "@/hooks/useContact"
-import { isFeatureEnabled } from "@/lib/env"
-import { lawyerConfig } from "@/lib/core/config"
-import { useCallback } from "react"
 
 /**
  * Componente Floating WhatsApp
  * Botão flutuante do WhatsApp no canto inferior direito
  * 
- * Utiliza o hook useContact para gerenciar links de contato
- * de forma centralizada e reutilizável
- * 
  * Respeita as configurações de ambiente para habilitar/desabilitar
  */
 export function FloatingWhatsApp() {
-    const { getWhatsAppLink, addContactHistory } = useContact()
     const isWhatsAppEnabled = isFeatureEnabled('ENABLE_WHATSAPP_INTEGRATION')
-
-    // Function to handle WhatsApp click (moved to top)
-    const handleWhatsAppClick = useCallback(() => {
-        addContactHistory('whatsapp', true)
-    }, [addContactHistory])
 
     // If not enabled, do not render the component
     if (!isWhatsAppEnabled) {
         return null
     }
 
-    // Generate WhatsApp link once
-    const whatsappLink = getWhatsAppLink(`Olá ${lawyerConfig.name}! Gostaria de agendar uma consulta jurídica. Pode me ajudar?`)
+    // Generate WhatsApp link
+    const phoneNumber = LAWYER_CONFIG.lawyer.contact.phone.replace(/\D/g, '')
+    const message = encodeURIComponent(`Olá ${LAWYER_CONFIG.lawyer.name}! Gostaria de agendar uma consulta jurídica. Pode me ajudar?`)
+    const whatsappLink = `https://wa.me/55${phoneNumber}?text=${message}`
 
     return (
         <motion.div
@@ -46,7 +37,6 @@ export function FloatingWhatsApp() {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={handleWhatsAppClick}
                 className="flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 whileHover={{
                     scale: 1.1,
