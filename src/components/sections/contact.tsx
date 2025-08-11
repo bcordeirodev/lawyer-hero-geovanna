@@ -17,7 +17,7 @@ import React from 'react'
  * Provides contact information and a contact form for potential clients
  */
 export const Contact: React.FC = () => {
-    const { theme } = useTheme()
+    const { } = useTheme()
     const { lawyer } = LAWYER_CONFIG
 
     const contactInfo = [

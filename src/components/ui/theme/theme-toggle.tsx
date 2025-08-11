@@ -6,7 +6,7 @@ import { Moon, Sun } from 'lucide-react'
 import React from 'react'
 
 export const ThemeToggle: React.FC = () => {
-    const { theme, toggleTheme, isLight, isDark } = useTheme()
+    const { toggleTheme, isLight } = useTheme()
 
     return (
         <motion.button

@@ -61,7 +61,7 @@ function parseBoolean(value: string | undefined, defaultValue: boolean = false):
  * @param value - Valor string
  * @param defaultValue - Valor padrão
  */
-function parseNumber(value: string | undefined, defaultValue: number = 0): number {
+function _parseNumber(value: string | undefined, defaultValue: number = 0): number {
     if (!value) return defaultValue
     const parsed = parseInt(value, 10)
     return isNaN(parsed) ? defaultValue : parsed

@@ -10,7 +10,7 @@ import Image from "next/image"
  * Exibe informações do advogado, call-to-action e estatísticas
  */
 export function Hero() {
-    const { theme } = useTheme()
+    const { } = useTheme()
     const { lawyer } = LAWYER_CONFIG
 
     const statistics = [

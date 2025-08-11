@@ -11,8 +11,7 @@
  * @version 1.0.0
  */
 
-import { useState, useEffect, useCallback, useRef } from 'react'
-import { useAnimation } from './useAnimation'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 // ============================================================================
 // TYPES
@@ -80,8 +79,7 @@ export function useScrollAnimation(config: ScrollAnimationConfig = {}): UseScrol
         rootMargin = '0px',
         triggerOnce = true,
         delay = 0,
-        duration = 0.6,
-        stagger = 0
+        duration = 0.6
     } = config
 
     // ============================================================================
@@ -95,7 +93,6 @@ export function useScrollAnimation(config: ScrollAnimationConfig = {}): UseScrol
     })
 
     const ref = useRef<HTMLElement>(null)
-    const { fadeIn, scaleIn, slideInLeft, slideInRight } = useAnimation()
 
     // ============================================================================
     // INTERSECTION OBSERVER

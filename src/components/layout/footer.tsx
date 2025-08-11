@@ -1,12 +1,10 @@
 "use client"
 
 import { LAWYER_CONFIG } from "@/config"
-import { useTheme } from "@/contexts/ThemeContext"
 import { motion } from "framer-motion"
 import { Award, Clock, Mail, MapPin, Phone, Scale, Shield, Zap } from "lucide-react"
 
 export function Footer() {
-    const { theme } = useTheme()
     const { lawyer, services } = LAWYER_CONFIG
 
     const contactInfo = [
