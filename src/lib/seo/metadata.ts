@@ -128,8 +128,8 @@ export function generateStructuredData() {
         url: 'https://geovannanery.com',
         telephone: lawyer.contact.phone,
         email: lawyer.contact.email,
-        image: 'https://picsum.photos/400/300?random=1',
-        logo: 'https://picsum.photos/200/200?random=1',
+        image: 'https://geovannanery.com/images/logos/logo-512x512.png',
+        logo: 'https://geovannanery.com/images/logos/logo-192x192.png',
         address: {
             '@type': 'PostalAddress',
             addressLocality: lawyer.credentials.location.split(', ')[0],

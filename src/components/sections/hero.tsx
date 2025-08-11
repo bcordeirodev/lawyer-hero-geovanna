@@ -17,22 +17,25 @@ export function Hero() {
         {
             label: "Anos de Experiência",
             value: lawyer.statistics.experience,
-            icon: "⚖️"
+            icon: "⚖️",
+            gradient: "from-amber-500 via-gold-500 to-amber-600"
         },
         {
-            label: "Casos Resolvidos",
-            value: lawyer.statistics.casesResolved,
-            icon: "✅"
+            label: "Formação",
+            value: lawyer.statistics.formation,
+            icon: "🎓",
+            gradient: "from-blue-500 via-indigo-500 to-purple-500"
         },
         {
-            label: "Taxa de Sucesso",
-            value: lawyer.statistics.successRate,
-            icon: "📈"
+            label: "Áreas de Expertise",
+            value: lawyer.statistics.expertise,
+            icon: "📚",
+            gradient: "from-emerald-500 via-teal-500 to-cyan-500"
         }
     ]
 
     return (
-        <section id="home" className="relative overflow-hidden pt-12 sm:pt-16 lg:pt-20 bg-background-tertiary">
+        <section id="home" className="relative overflow-hidden pt-16 sm:pt-20 lg:pt-24 bg-background-tertiary">
             {/* Background decoration */}
             <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
                 <div
@@ -84,7 +87,7 @@ export function Hero() {
                             className="text-center lg:text-left"
                         >
                             <motion.div
-                                className="flex items-center justify-center lg:justify-start mb-4 sm:mb-6"
+                                className="flex items-center justify-center lg:justify-start mb-6 sm:mb-8"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -103,13 +106,13 @@ export function Hero() {
                                 </motion.div>
                             </motion.div>
 
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent drop-shadow-sm text-center lg:text-left">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent drop-shadow-sm text-center lg:text-left leading-tight">
                                 {lawyer.name}
                             </h1>
-                            <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-secondary-600 to-secondary-500 bg-clip-text text-transparent text-center lg:text-left">
+                            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-secondary-600 to-secondary-500 bg-clip-text text-transparent text-center lg:text-left">
                                 {lawyer.title}
                             </p>
-                            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
+                            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 text-center lg:text-left leading-relaxed">
                                 {lawyer.description}
                             </p>
 
@@ -117,13 +120,13 @@ export function Hero() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                                className="flex flex-col sm:flex-row gap-4 mt-6 sm:mt-8 justify-center lg:justify-start"
+                                className="flex flex-col sm:flex-row gap-4 mt-8 sm:mt-10 justify-center lg:justify-start"
                             >
                                 <motion.a
                                     href={LAWYER_CONFIG.socialMedia.whatsapp}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
+                                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-500/50 focus:ring-offset-2 focus:ring-offset-background-tertiary"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
@@ -134,7 +137,7 @@ export function Hero() {
                                 </motion.a>
                                 <motion.a
                                     href="#contact"
-                                    className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200"
+                                    className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-secondary-500/50 focus:ring-offset-2 focus:ring-offset-background-tertiary"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                 >
@@ -205,29 +208,31 @@ export function Hero() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-                        className="mt-16 sm:mt-20 lg:mt-24"
+                        className="mt-20 sm:mt-24 lg:mt-28"
                     >
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
                             {statistics.map((stat, index) => (
                                 <motion.div
                                     key={stat.label}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
-                                    className="bg-background-secondary border border-border-secondary rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300"
-                                    whileHover={{ scale: 1.02 }}
+                                    className="group bg-gradient-to-br from-background-secondary via-background-secondary to-background-tertiary border border-border-secondary rounded-2xl p-6 sm:p-8 hover:shadow-2xl hover:shadow-gold-500/20 dark:hover:shadow-gold-400/10 transition-all duration-500 hover:border-gold-500/50 dark:hover:border-gold-400/50"
+                                    whileHover={{ scale: 1.03, y: -5 }}
                                 >
-                                    <div className="flex items-center space-x-4">
-                                        <div className="flex-shrink-0">
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg">
-                                                <span className="text-2xl">{stat.icon}</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-2xl sm:text-3xl font-bold text-text-primary">
+                                    <div className="text-center space-y-4">
+                                        <motion.div
+                                            className={`flex h-16 w-16 mx-auto items-center justify-center rounded-2xl bg-gradient-to-br ${stat.gradient} dark:${stat.gradient} shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300 border border-white/10 dark:border-white/5`}
+                                            whileHover={{ scale: 1.1, rotate: 3 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <span className="text-3xl drop-shadow-sm filter brightness-110">{stat.icon}</span>
+                                        </motion.div>
+                                        <div>
+                                            <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-text-primary mb-2 group-hover:text-gold-500 dark:group-hover:text-gold-400 transition-colors duration-300">
                                                 {stat.value}
                                             </p>
-                                            <p className="text-sm sm:text-base text-text-secondary">
+                                            <p className="text-sm sm:text-base text-text-secondary font-medium group-hover:text-text-primary transition-colors duration-300">
                                                 {stat.label}
                                             </p>
                                         </div>

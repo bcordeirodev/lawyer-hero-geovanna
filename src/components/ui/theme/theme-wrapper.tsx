@@ -1,7 +1,7 @@
 "use client"
 
-import React from 'react'
 import { useTheme } from '@/contexts/ThemeContext'
+import React from 'react'
 
 interface ThemeWrapperProps {
     children: React.ReactNode
@@ -15,16 +15,17 @@ export const ThemeWrapper: React.FC<ThemeWrapperProps> = ({ children }) => {
         const root = document.documentElement
         const body = document.body
 
+        // Remove existing theme classes
+        root.classList.remove('light', 'dark')
+        body.classList.remove('light', 'dark')
+
+        // Add current theme class
         if (isDark) {
             root.classList.add('dark')
-            root.classList.remove('light')
             body.classList.add('dark')
-            body.classList.remove('light')
         } else {
             root.classList.add('light')
-            root.classList.remove('dark')
             body.classList.add('light')
-            body.classList.remove('dark')
         }
     }, [isLight, isDark])
 

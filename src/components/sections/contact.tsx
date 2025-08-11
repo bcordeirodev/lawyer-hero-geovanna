@@ -5,12 +5,12 @@
  * Displays contact information and contact form
  */
 
-import React from 'react'
-import { motion } from "framer-motion"
 import { ContactForm } from '@/components/forms/ContactForm'
 import { LAWYER_CONFIG } from '@/config'
 import { useTheme } from '@/contexts/ThemeContext'
-import { Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { motion } from "framer-motion"
+import { Clock, Mail, MapPin, Phone } from 'lucide-react'
+import React from 'react'
 
 /**
  * Contact Section Component
@@ -63,7 +63,10 @@ export const Contact: React.FC = () => {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         whileHover={{ scale: 1.05, y: -2 }}
                     >
-                        📞 Contato
+                        <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        Entre em Contato
                     </motion.div>
                     <motion.h2
                         className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent mb-4 drop-shadow-sm hover:scale-105 transition-transform duration-300 cursor-default"

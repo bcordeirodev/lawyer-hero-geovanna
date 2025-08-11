@@ -111,13 +111,13 @@ export const STATISTICS = [
     {
         id: 2,
         label: 'Casos Resolvidos',
-        value: `${lawyerConfig.statistics.casesResolved}+`,
+        value: `${lawyerConfig.statistics.casesResolved || '150+'}`,
         icon: 'check-circle'
     },
     {
         id: 3,
         label: 'Taxa de Sucesso',
-        value: `${lawyerConfig.statistics.successRate}`,
+        value: `${lawyerConfig.statistics.successRate || '95%'}`,
         icon: 'trending-up'
     },
     {
@@ -134,12 +134,6 @@ export const STATISTICS = [
 
 // Re-export configurations from the centralized config
 export {
-    breakpoints as BREAKPOINTS,
-    coreAnimationConfig as ANIMATION,
-    formValidationConfig as FORM,
-    seoConfig as SEO,
-    socialConfig as SOCIAL,
-    contactDetailsConfig as CONTACT,
-    themeConfig as THEME,
-    navigationConfig as NAVIGATION
-} from '@/lib/core/config' 
+    coreAnimationConfig as ANIMATION, breakpoints as BREAKPOINTS, contactDetailsConfig as CONTACT, formValidationConfig as FORM, navigationConfig as NAVIGATION, seoConfig as SEO,
+    socialConfig as SOCIAL, themeConfig as THEME
+} from '@/lib/core/config'

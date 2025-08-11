@@ -8,10 +8,18 @@
 // ============================================================================
 
 export const GRADIENTS = {
-    // Gold gradients (primário)
-    gold: 'from-gold-500 to-gold-600',
-    goldLight: 'from-gold-500/20 to-gold-600/20',
-    goldBr: 'from-gold-500 to-gold-600', // br = border-radius
+    // Gold gradients (primário) - adaptado para temas
+    gold: 'from-gold-400 via-gold-500 to-gold-600 dark:from-gold-500 dark:via-gold-600 dark:to-gold-700',
+    goldLight: 'from-gold-500/20 to-gold-600/20 dark:from-gold-400/15 dark:to-gold-500/15',
+    goldBr: 'from-gold-400 via-gold-500 to-gold-600 dark:from-gold-500 dark:via-gold-600 dark:to-gold-700', // br = border-radius
+
+    // Service-specific gradients - variações douradas e sutis para melhor harmonização
+    civil: 'from-amber-500 via-yellow-500 to-gold-500 dark:from-amber-400 dark:via-yellow-400 dark:to-gold-400',
+    business: 'from-gold-500 via-amber-500 to-yellow-500 dark:from-gold-400 dark:via-amber-400 dark:to-yellow-400',
+    family: 'from-yellow-500 via-gold-500 to-amber-500 dark:from-yellow-400 dark:via-gold-400 dark:to-amber-400',
+    realEstate: 'from-gold-600 via-gold-500 to-amber-500 dark:from-gold-500 dark:via-gold-400 dark:to-amber-400',
+    health: 'from-amber-600 via-gold-500 to-yellow-500 dark:from-amber-500 dark:via-gold-400 dark:to-yellow-400',
+    digital: 'from-yellow-600 via-amber-500 to-gold-500 dark:from-yellow-500 dark:via-amber-400 dark:to-gold-400',
 
     // Text gradients
     textPrimary: 'from-text-primary via-gold-500 to-text-primary',
@@ -206,9 +214,9 @@ export const SHADOWS = {
     glow: 'shadow-glow',
     glowHover: 'shadow-glow--hover',
 
-    // Colored shadows
-    gold: 'shadow-lg shadow-gold-500/25',
-    goldHover: 'shadow-xl shadow-gold-500/40',
+    // Colored shadows - adaptado para temas
+    gold: 'shadow-lg shadow-gold-500/25 dark:shadow-gold-400/20',
+    goldHover: 'shadow-xl shadow-gold-500/40 dark:shadow-gold-400/30',
 } as const
 
 // ============================================================================

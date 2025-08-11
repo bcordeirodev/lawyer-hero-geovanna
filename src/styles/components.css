@@ -39,7 +39,7 @@
  * ============================================================================ */
 
 .card {
-  @apply border-0 bg-background-secondary/80 backdrop-blur-sm shadow-xl border-border-primary;
+  @apply border-0 bg-background-secondary/80 dark:bg-background-secondary/90 backdrop-blur-sm shadow-xl border-border-primary dark:border-border-secondary;
 }
 
 .card--hover {
@@ -242,7 +242,7 @@
 
 /* Section Badge - Padrão repetido em múltiplos componentes */
 .section-badge {
-  @apply inline-flex items-center gap-2 bg-gradient-to-r from-gold-500/20 to-gold-600/20 text-gold-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gold-500/30 shadow-lg backdrop-blur-sm;
+  @apply inline-flex items-center gap-2 bg-gradient-to-r from-gold-500/20 to-gold-600/20 dark:from-gold-400/15 dark:to-gold-500/15 text-gold-600 dark:text-gold-400 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gold-500/30 dark:border-gold-400/30 shadow-lg backdrop-blur-sm;
 }
 
 .section-badge:hover {
@@ -261,7 +261,7 @@
 
 /* Gradient Icon Container - Padrão de ícones com gradiente */
 .gradient-icon-container {
-  @apply flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg;
+  @apply flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 dark:from-gold-400 dark:to-gold-500 shadow-lg dark:shadow-gold-400/20;
 }
 
 .gradient-icon-container--sm {
@@ -283,12 +283,47 @@
 
 /* Service Feature List */
 .service-feature-item {
-  @apply flex items-center gap-3 text-text-secondary;
+  @apply flex items-center gap-3;
 }
 
 .service-feature-bullet {
-  @apply h-1.5 w-1.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 flex-shrink-0;
+  @apply h-1.5 w-1.5 rounded-full bg-gold-500 flex-shrink-0;
 }
+
+/* Service Icon Enhancement */
+.service-icon-glow {
+  animation: serviceIconGlow 3s ease-in-out infinite;
+}
+
+@keyframes serviceIconGlow {
+  0%,
+  100% {
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.2),
+      0 0 20px rgba(var(--tw-shadow-color), 0.4), 0 0 0 1px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Enhanced icon colors and visibility */
+.service-icon-glow svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 1px rgba(0, 0, 0, 0.8)) brightness(115%) saturate(130%)
+    contrast(115%);
+  transition: all 0.3s ease;
+}
+
+.service-icon-glow:hover svg {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 0 2px rgba(0, 0, 0, 1))
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)) brightness(125%)
+    saturate(140%) contrast(125%);
+  transform: scale(1.05);
+}
+
+/* Padrão dourado uniforme para todos os ícones como no print */
 
 /* Standard Section Container */
 .section-container {

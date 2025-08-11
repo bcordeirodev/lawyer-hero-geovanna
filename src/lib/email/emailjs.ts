@@ -3,8 +3,10 @@
  * Handles email sending using EmailJS service
  */
 
+import { LAWYER_CONFIG } from '@/config/lawyer'
 import { ContactFormData } from '@/lib/validation'
 import emailjs from '@emailjs/browser'
+
 
 // ============================================================================
 // HELPER FUNCTIONS FOR ENHANCED DATA COLLECTION
@@ -108,7 +110,7 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<void>
         // ============================================================================
         // INFORMAÇÕES DO SISTEMA
         // ============================================================================
-        to_email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'bcordeiro.dev@gmail.com',
+        to_email: LAWYER_CONFIG.lawyer.contact.email.trim().toLowerCase(),
         timestamp: timestamp,
         date_only: now.toLocaleDateString('pt-BR'),
         time_only: now.toLocaleTimeString('pt-BR'),

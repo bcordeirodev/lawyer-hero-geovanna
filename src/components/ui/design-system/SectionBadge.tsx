@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/core/utils"
 import { motion } from "framer-motion"
+import { type LucideIcon } from "lucide-react"
 import { type ReactNode } from "react"
 
 // ============================================================================
@@ -13,6 +14,7 @@ interface SectionBadgeProps {
     className?: string
     animated?: boolean
     variant?: 'default' | 'outline' | 'solid'
+    icon?: LucideIcon
 }
 
 // ============================================================================
@@ -20,9 +22,9 @@ interface SectionBadgeProps {
 // ============================================================================
 
 const badgeVariants = {
-    default: 'section-badge',
-    outline: 'inline-flex items-center gap-2 border-2 border-gold-500 text-gold-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-transparent',
-    solid: 'inline-flex items-center gap-2 bg-gold-500 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg'
+    default: 'inline-flex items-center gap-2 bg-gradient-to-r from-gold-500/20 to-gold-600/20 dark:from-gold-400/15 dark:to-gold-500/15 text-gold-600 dark:text-gold-400 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gold-500/30 dark:border-gold-400/30 shadow-lg backdrop-blur-sm',
+    outline: 'inline-flex items-center gap-2 border-2 border-gold-500 dark:border-gold-400 text-gold-600 dark:text-gold-400 px-4 py-2 rounded-full text-sm font-semibold mb-4 bg-transparent hover:bg-gold-500/10 dark:hover:bg-gold-400/10 transition-colors',
+    solid: 'inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-600 dark:from-gold-600 dark:to-gold-700 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg hover:shadow-xl hover:from-gold-600 hover:to-gold-700 dark:hover:from-gold-700 dark:hover:to-gold-800 transition-all'
 }
 
 // ============================================================================
@@ -43,8 +45,16 @@ export function SectionBadge({
     children,
     className,
     animated = true,
-    variant = 'default'
+    variant = 'default',
+    icon: Icon
 }: SectionBadgeProps) {
+    const content = (
+        <>
+            {Icon && <Icon className="h-3 w-3 sm:h-4 sm:w-4" />}
+            {children}
+        </>
+    )
+
     if (animated) {
         return (
             <motion.div
@@ -55,14 +65,14 @@ export function SectionBadge({
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 whileHover={{ scale: 1.05, y: -2 }}
             >
-                {children}
+                {content}
             </motion.div>
         )
     }
 
     return (
         <div className={cn(badgeVariants[variant], className)}>
-            {children}
+            {content}
         </div>
     )
 }
@@ -75,19 +85,19 @@ export function SectionBadge({
  * ServicesBadge - Preset para seção de serviços
  */
 export function ServicesBadge() {
-    return <SectionBadge>⚖️ Nossos Serviços</SectionBadge>
+    return <SectionBadge>Especialidades Jurídicas</SectionBadge>
 }
 
 /**
  * AboutBadge - Preset para seção sobre
  */
 export function AboutBadge() {
-    return <SectionBadge>👩‍💼 Sobre a Advogada</SectionBadge>
+    return <SectionBadge>Sobre</SectionBadge>
 }
 
 /**
  * ContactBadge - Preset para seção de contato
  */
 export function ContactBadge() {
-    return <SectionBadge>📞 Entre em Contato</SectionBadge>
+    return <SectionBadge>Contato</SectionBadge>
 }

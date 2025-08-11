@@ -1,10 +1,10 @@
 import {
-    Activity,
+    Briefcase,
     Building,
-    Heart,
-    Home,
-    Scale,
-    TrendingUp
+    Gavel,
+    ShieldCheck,
+    Smartphone,
+    Users
 } from 'lucide-react'
 
 export interface LawyerCredentials {
@@ -14,8 +14,10 @@ export interface LawyerCredentials {
 
 export interface LawyerStatistics {
     experience: string
-    casesResolved: string
-    successRate: string
+    formation: string
+    expertise: string
+    casesResolved?: string
+    successRate?: string
 }
 
 export interface LawyerContact {
@@ -110,21 +112,21 @@ export const LAWYER_CONFIG: LawyerConfig = {
     lawyer: {
         name: "Dra. Geovanna Nery",
         fullName: "Geovanna Nery da Silva",
-        title: "Advogada Especialista em Direito Civil, Empresarial e Família",
-        description: "Olá! Sou a Dra. Geovanna Nery, advogada recém-inscrita na OAB/DF, mas com mais de 5 anos de experiência na área jurídica. Acredito que cada caso é único e merece atenção especial. Minha missão é oferecer soluções práticas e eficazes, sempre com transparência e dedicação.",
-        detailedDescription: "Sou a Dra. Geovanna Nery, uma advogada que acredita no poder transformador do direito. Formada em Direito e com mais de 5 anos de experiência na área jurídica, acabei de conquistar minha inscrição na OAB/DF, um sonho que persegui com determinação. Ao longo desses anos, trabalhei em diferentes setores do direito, desenvolvendo uma visão abrangente e prática das necessidades jurídicas das pessoas. Especializada em Direito Civil, Empresarial e Família, aprendi que cada cliente tem uma história única e que a melhor advocacia é aquela que combina conhecimento técnico com sensibilidade humana. Trabalho com ética, transparência e compromisso total com os resultados dos meus clientes. Acredito que o sucesso na advocacia não se mede apenas pelos casos ganhos, mas pela confiança construída e pela tranquilidade que proporcionamos às pessoas que confiam em nosso trabalho.",
+        title: "Advogada com Atuação em Direito Civil, Empresarial e Família",
+        description: "Sou a Dra. Geovanna Nery, advogada inscrita na OAB/DF, com mais de 5 anos de experiência na área jurídica. Atuo com foco em Direito Civil, Empresarial e de Família, oferecendo atuação jurídica diferenciada e atendimento ético e personalizado.",
+        detailedDescription: "Sou a Dra. Geovanna Nery, advogada graduada em Direito com mais de 5 anos de experiência na área jurídica e inscrita na OAB/DF. Durante minha trajetória profissional, desenvolvi expertise em diferentes setores do direito, com foco principal em Direito Civil, Empresarial e de Família. Minha atuação profissional é pautada pela ética, transparência e dedicação ao atendimento personalizado. Acredito na importância do conhecimento técnico aliado à sensibilidade para compreender as necessidades específicas de cada cliente. Meu compromisso é com a qualidade do serviço jurídico prestado e o relacionamento de confiança com os clientes.",
         credentials: {
-            bar: "OAB/DF 123.456",
+            bar: "OAB/DF",
             location: "Brasília, DF"
         },
         statistics: {
             experience: "5+",
-            casesResolved: "200+",
-            successRate: "92%"
+            formation: "Pós-graduada em Direito Civil e Tributário",
+            expertise: "Civil, Empresarial e Família"
         },
         contact: {
-            email: "geovanna.nery@advocacia.com.br",
-            phone: "(61) 99999-9999",
+            email: "geovannanery.adv@gmail.com.br",
+            phone: "61 99936-3560",
             workingHours: "Segunda a Sexta: 9h às 18h | Sábados: 9h às 12h"
         },
         photo: {
@@ -138,85 +140,86 @@ export const LAWYER_CONFIG: LawyerConfig = {
         {
             id: "civil-law",
             title: "Direito Civil",
-            description: "Protejo seus direitos civis com assessoria completa e personalizada. Desde contratos até questões de responsabilidade, estou aqui para defender seus interesses.",
-            icon: Scale,
+            description: "Atuação jurídica em Direito Civil, abrangendo contratos, responsabilidade civil, direito do consumidor e questões de propriedade.",
+            icon: Gavel,
             features: [
                 "Contratos civis e comerciais",
                 "Responsabilidade civil e danos morais",
                 "Direito do consumidor e proteção",
                 "Direito de propriedade e posse"
             ],
-            gradient: "from-yellow-500 to-orange-500",
+            gradient: "from-amber-600 via-amber-500 to-gold-500",
             category: "civil"
         },
         {
             id: "business-law",
             title: "Direito Empresarial",
-            description: "Acompanho o crescimento da sua empresa com assessoria jurídica estratégica. Do planejamento à resolução de conflitos, sua empresa em boas mãos.",
-            icon: Building,
+            description: "Atuação jurídica empresarial especializada em contratos comerciais, direito societário, recuperação judicial e compliance.",
+            icon: Briefcase,
             features: [
                 "Contratos comerciais e empresariais",
                 "Direito societário e governança",
                 "Recuperação judicial e extrajudicial",
                 "Compliance e adequação legal"
             ],
-            gradient: "from-yellow-500 to-orange-500",
+            gradient: "from-blue-600 via-indigo-500 to-purple-500",
             category: "business"
         },
         {
             id: "family-law",
             title: "Direito de Família",
-            description: "Entendo que questões familiares são delicadas e pessoais. Ofereço assessoria com sensibilidade e respeito, sempre priorizando o bem-estar da família.",
-            icon: Heart,
+            description: "Atuação jurídica em Direito de Família, incluindo divórcio, guarda, pensão alimentícia e inventário, com atendimento personalizado.",
+            icon: Users,
             features: [
                 "Divórcio consensual e litigioso",
                 "Guarda compartilhada e unilateral",
                 "Pensão alimentícia e revisional",
                 "Inventário e partilha de bens"
             ],
-            gradient: "from-yellow-500 to-orange-500",
+            gradient: "from-rose-500 via-pink-500 to-red-500",
             category: "family"
         },
         {
             id: "real-estate-law",
             title: "Direito Imobiliário",
-            description: "Realizo seu sonho da casa própria com segurança jurídica. Assessoria completa em todas as etapas da transação imobiliária.",
-            icon: Home,
+            description: "Atuação jurídica imobiliária para compra, venda, locação e regularização de imóveis, com análise documental completa.",
+            icon: Building,
             features: [
                 "Compra, venda e permuta",
                 "Locação residencial e comercial",
                 "Regularização e usucapião",
                 "Condomínio e administração"
             ],
-            gradient: "from-yellow-500 to-orange-500",
+            gradient: "from-green-600 via-emerald-500 to-teal-500",
             category: "real-estate"
         },
         {
-            id: "labor-law",
-            title: "Direito do Trabalho",
-            description: "Defendo seus direitos trabalhistas com conhecimento e determinação. Do reconhecimento de vínculo à rescisão, estou ao seu lado.",
-            icon: Activity,
+            id: "health-law",
+            title: "Direito à Saúde",
+            description: "Defesa dos seus direitos em relação a planos de saúde, atendimento médico e acesso a tratamentos essenciais.",
+            icon: ShieldCheck,
             features: [
-                "Reconhecimento de vínculo empregatício",
-                "Rescisão de contrato e verbas rescisórias",
-                "Horas extras e adicional noturno",
-                "Assédio moral e danos morais"
+                "Ações contra negativa de cobertura por planos de saúde",
+                "Fornecimento de medicamentos pelo SUS",
+                "Internações e cirurgias urgentes",
+                "Tratamentos fora do rol da ANS",
+                "Responsabilidade por erro médico"
             ],
-            gradient: "from-yellow-500 to-orange-500",
+            gradient: "from-cyan-600 via-sky-500 to-blue-500",
             category: "labor"
         },
         {
             id: "digital-law",
             title: "Direito Digital",
-            description: "Protejo seus direitos no mundo digital. Assessoria em questões de tecnologia, internet e proteção de dados pessoais.",
-            icon: TrendingUp,
+            description: "Atuação jurídica em Direito Digital, LGPD, propriedade intelectual e contratos digitais para o ambiente tecnológico.",
+            icon: Smartphone,
             features: [
                 "Proteção de dados pessoais (LGPD)",
                 "Direitos autorais e propriedade intelectual",
                 "Contratos digitais e e-commerce",
                 "Crimes cibernéticos e segurança digital"
             ],
-            gradient: "from-yellow-500 to-orange-500",
+            gradient: "from-violet-600 via-purple-500 to-indigo-500",
             category: "digital"
         }
     ],
@@ -235,7 +238,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
             "Direito Empresarial",
             "Direito de Família",
             "Direito Imobiliário",
-            "Direito do Trabalho",
+            "Direito à Saúde",
             "Direito Digital",
             "Outro"
         ],
@@ -259,16 +262,17 @@ export const LAWYER_CONFIG: LawyerConfig = {
 
     about: {
         highlights: [
-            "Especialização em Direito Civil e Empresarial",
+            "Atuação focada em Direito Civil, Empresarial e Família",
             "Mais de 5 anos de experiência jurídica",
-            "Atendimento personalizado e transparente",
-            "Compromisso com resultados eficazes"
+            "Atendimento personalizado e profissional",
+            "Formação acadêmica sólida e atualizada"
         ],
         whyChooseUs: [
-            "Atendimento personalizado e dedicado",
-            "Transparência em todos os processos",
-            "Experiência em casos complexos",
-            "Compromisso com prazos e resultados"
+            "Atendimento personalizado e humanizado",
+            "Comunicação transparente durante todo o processo",
+            "Experiência e atualização constante em diversas áreas do Direito",
+            "Atuação diferenciada em múltiplas áreas do direito",
+            "Defesa dos seus direitos com seriedade e transparência"
         ]
     }
 } 
