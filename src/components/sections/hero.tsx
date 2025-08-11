@@ -208,31 +208,31 @@ export function Hero() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-                        className="mt-20 sm:mt-24 lg:mt-28"
+                        className="hidden mt-12 sm:mt-16 lg:mt-20"
                     >
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                             {statistics.map((stat, index) => (
                                 <motion.div
                                     key={stat.label}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
-                                    className="group bg-gradient-to-br from-background-secondary via-background-secondary to-background-tertiary border border-border-secondary rounded-2xl p-6 sm:p-8 hover:shadow-2xl hover:shadow-gold-500/20 dark:hover:shadow-gold-400/10 transition-all duration-500 hover:border-gold-500/50 dark:hover:border-gold-400/50"
-                                    whileHover={{ scale: 1.03, y: -5 }}
+                                    className="group bg-gradient-to-br from-background-secondary via-background-secondary to-background-tertiary border border-border-secondary rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-gold-500/20 dark:hover:shadow-gold-400/10 transition-all duration-500 hover:border-gold-500/50 dark:hover:border-gold-400/50"
+                                    whileHover={{ scale: 1.02, y: -2 }}
                                 >
-                                    <div className="text-center space-y-4">
+                                    <div className="text-center space-y-3">
                                         <motion.div
-                                            className={`flex h-16 w-16 mx-auto items-center justify-center rounded-2xl bg-gradient-to-br ${stat.gradient} dark:${stat.gradient} shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300 border border-white/10 dark:border-white/5`}
-                                            whileHover={{ scale: 1.1, rotate: 3 }}
+                                            className={`flex h-12 w-12 mx-auto items-center justify-center rounded-xl bg-gradient-to-br ${stat.gradient} dark:${stat.gradient} shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-300 border border-white/10 dark:border-white/5`}
+                                            whileHover={{ scale: 1.08, rotate: 2 }}
                                             transition={{ duration: 0.2 }}
                                         >
-                                            <span className="text-3xl drop-shadow-sm filter brightness-110">{stat.icon}</span>
+                                            <span className="text-2xl drop-shadow-sm filter brightness-110">{stat.icon}</span>
                                         </motion.div>
                                         <div>
-                                            <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-text-primary mb-2 group-hover:text-gold-500 dark:group-hover:text-gold-400 transition-colors duration-300">
+                                            <p className="text-lg sm:text-xl lg:text-2xl font-bold text-text-primary mb-1 group-hover:text-gold-500 dark:group-hover:text-gold-400 transition-colors duration-300">
                                                 {stat.value}
                                             </p>
-                                            <p className="text-sm sm:text-base text-text-secondary font-medium group-hover:text-text-primary transition-colors duration-300">
+                                            <p className="text-xs sm:text-sm text-text-secondary font-medium group-hover:text-text-primary transition-colors duration-300">
                                                 {stat.label}
                                             </p>
                                         </div>

@@ -19,7 +19,7 @@ interface GradientIconProps {
     containerClassName?: string
     animated?: boolean
     gradient?: keyof typeof DESIGN_TOKENS.gradients
-    serviceType?: 'civil' | 'business' | 'family' | 'real-estate' | 'health' | 'digital' | 'labor'
+    serviceType?: 'civil' | 'business' | 'family' | 'labor' | 'tax'
 }
 
 // ============================================================================
@@ -205,10 +205,8 @@ export function ServiceIcon(props: Omit<GradientIconProps, 'animated'>) {
         'civil': 'hover:border-amber-500/40 dark:hover:border-amber-400/40',
         'business': 'hover:border-blue-500/40 dark:hover:border-blue-400/40',
         'family': 'hover:border-rose-500/40 dark:hover:border-rose-400/40',
-        'real-estate': 'hover:border-green-500/40 dark:hover:border-green-400/40',
-        'health': 'hover:border-emerald-500/40 dark:hover:border-emerald-400/40',
-        'digital': 'hover:border-violet-500/40 dark:hover:border-violet-400/40',
-        'labor': 'hover:border-cyan-500/40 dark:hover:border-cyan-400/40'
+        'labor': 'hover:border-orange-500/40 dark:hover:border-orange-400/40',
+        'tax': 'hover:border-emerald-500/40 dark:hover:border-emerald-400/40'
     }
 
     return (

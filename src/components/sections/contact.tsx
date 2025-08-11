@@ -56,7 +56,7 @@ export const Contact: React.FC = () => {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
                 <div className="text-center mb-12 sm:mb-16">
                     <motion.div
-                        className="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500/20 to-gold-600/20 text-gold-600 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gold-500/30 shadow-lg backdrop-blur-sm"
+                        className="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500/20 to-gold-600/20 text-gold-600 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 border border-gold-500/30 shadow-lg backdrop-blur-sm"
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
@@ -69,7 +69,7 @@ export const Contact: React.FC = () => {
                         Entre em Contato
                     </motion.div>
                     <motion.h2
-                        className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent mb-4 drop-shadow-sm hover:scale-105 transition-transform duration-300 cursor-default"
+                        className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-text-primary via-gold-500 to-text-primary bg-clip-text text-transparent mb-4 drop-shadow-sm hover:scale-105 transition-transform duration-300 cursor-default"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -78,7 +78,7 @@ export const Contact: React.FC = () => {
                     >
                         Entre em Contato
                     </motion.h2>
-                    <p className="text-lg text-text-secondary max-w-3xl mx-auto">
+                    <p className="text-base sm:text-lg text-text-secondary max-w-3xl mx-auto px-4">
                         Estou aqui para ajudar você com suas questões jurídicas
                     </p>
                 </div>
@@ -92,10 +92,10 @@ export const Contact: React.FC = () => {
                         className="space-y-8"
                     >
                         <div>
-                            <h3 className="text-xl sm:text-2xl font-semibold text-text-primary mb-4 sm:mb-6">
+                            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-text-primary mb-3 sm:mb-4 lg:mb-6">
                                 Informações de Contato
                             </h3>
-                            <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
+                            <p className="text-xs sm:text-sm lg:text-base text-text-secondary leading-relaxed px-2 sm:px-0">
                                 Entre em contato através dos canais abaixo ou preencha o formulário
                             </p>
                         </div>
@@ -107,28 +107,28 @@ export const Contact: React.FC = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                                    className={`bg-background-secondary border border-border-secondary rounded-lg p-6 hover:shadow-lg transition-all duration-300 group ${contact.href ? 'cursor-pointer hover:border-gold-500/50 hover:bg-background-secondary/80' : ''
+                                    className={`bg-background-secondary border border-border-secondary rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 group ${contact.href ? 'cursor-pointer hover:border-gold-500/50 hover:bg-background-secondary/80' : ''
                                         }`}
                                     onClick={contact.href ? () => window.open(contact.href, '_blank') : undefined}
                                 >
-                                    <div className="flex items-start gap-4">
-                                        <div className="flex-shrink-0">
+                                    <div className="flex items-start gap-3 sm:gap-4">
+                                        <div className="flex-shrink-0 flex items-center justify-center w-10">
                                             <div className={`flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 shadow-lg ${contact.href ? 'group-hover:scale-110 transition-transform duration-200' : ''
                                                 }`}>
                                                 <contact.icon className="h-5 w-5 text-white" />
                                             </div>
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <h4 className="text-sm font-medium text-text-secondary mb-1">
+                                            <h4 className="text-base font-semibold text-gold-500 mb-1 tracking-wide">
                                                 {contact.label}
                                             </h4>
-                                            <p className={`text-text-primary font-medium ${contact.href ? 'group-hover:text-gold-500 transition-colors duration-200' : ''
+                                            <p className={`text-text-primary font-medium text-sm sm:text-base break-words ${contact.href ? 'group-hover:text-gold-500 transition-colors duration-200' : ''
                                                 }`}>
                                                 {contact.value}
                                             </p>
                                         </div>
                                         {contact.href && (
-                                            <div className="flex-shrink-0">
+                                            <div className="flex-shrink-0 flex items-center justify-center w-6">
                                                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-500/20 text-gold-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                                     <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -150,10 +150,10 @@ export const Contact: React.FC = () => {
                         className="space-y-8"
                     >
                         <div>
-                            <h3 className="text-xl sm:text-2xl font-semibold text-text-primary mb-4 sm:mb-6">
+                            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-text-primary mb-3 sm:mb-4 lg:mb-6">
                                 Envie uma Mensagem
                             </h3>
-                            <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
+                            <p className="text-xs sm:text-sm lg:text-base text-text-secondary leading-relaxed px-2 sm:px-0">
                                 Preencha o formulário abaixo e entrarei em contato em breve
                             </p>
                         </div>

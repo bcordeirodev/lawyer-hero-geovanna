@@ -35,7 +35,7 @@ export function About() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         whileHover={{ scale: 1.02 }}
                     >
-                        Sobre Mim
+                        Experiência Profissional
                     </motion.h2>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">
                         Conheça minha trajetória e especialidades jurídicas
@@ -64,12 +64,10 @@ export function About() {
                                 {lawyer.name}
                             </h3>
                             <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg leading-7 sm:leading-8 text-text-secondary">
-                                {lawyer.description}
+                                Sou advogada inscrita na OAB/DF, com sólida experiência em diversas áreas do Direito e atuação estratégica em assessoria jurídica. Ofereço um atendimento personalizado, pautado na ética, dedicação e no profundo comprometimento com os resultados de cada cliente.
                             </p>
-                            <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg leading-7 sm:leading-8 text-text-secondary">
-                                Minha missão é fornecer soluções jurídicas eficazes, sempre priorizando a ética,
-                                transparência e compromisso com meus clientes. Acredito que cada caso é único e
-                                merece atenção especial, independentemente da complexidade.
+                            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg leading-7 sm:leading-8 text-text-secondary">
+                                Meu propósito é proporcionar soluções jurídicas eficientes e seguras, aliando conhecimento técnico, transparência e agilidade, de modo a defender e proteger os interesses de meus clientes com excelência.
                             </p>
 
                             <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4">

@@ -203,7 +203,7 @@ export const seoConfig = {
     },
     description: {
         default: lawyerConfig.description,
-        services: 'Conheça nossas áreas de atuação: direito civil, empresarial e família. Assessoria jurídica especializada.',
+        services: 'Conheça nossas áreas de atuação: direito civil e tributário, com atuação também em outras áreas do Direito. Assessoria jurídica especializada.',
         contact: `Entre em contato com ${lawyerConfig.name} para assessoria jurídica personalizada.`,
         about: `Conheça ${lawyerConfig.name}, advogada especialista com mais de ${lawyerConfig.statistics.experience} anos de experiência.`
     },

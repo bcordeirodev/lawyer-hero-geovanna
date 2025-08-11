@@ -1,10 +1,8 @@
 import {
+    BookOpen,
     Briefcase,
-    Building,
     Gavel,
-    ShieldCheck,
-    Smartphone,
-    Users
+    Heart
 } from 'lucide-react'
 
 export interface LawyerCredentials {
@@ -53,7 +51,7 @@ export interface ServiceFeature {
     icon: LucideIcon
     features: string[]
     gradient: string
-    category: 'civil' | 'business' | 'family' | 'real-estate' | 'labor' | 'digital'
+    category: 'civil' | 'business' | 'family' | 'labor' | 'tax'
 }
 
 export interface SocialMedia {
@@ -112,9 +110,9 @@ export const LAWYER_CONFIG: LawyerConfig = {
     lawyer: {
         name: "Dra. Geovanna Nery",
         fullName: "Geovanna Nery da Silva",
-        title: "Advogada com Atuação em Direito Civil, Empresarial e Família",
-        description: "Sou a Dra. Geovanna Nery, advogada inscrita na OAB/DF, com mais de 5 anos de experiência na área jurídica. Atuo com foco em Direito Civil, Empresarial e de Família, oferecendo atuação jurídica diferenciada e atendimento ético e personalizado.",
-        detailedDescription: "Sou a Dra. Geovanna Nery, advogada graduada em Direito com mais de 5 anos de experiência na área jurídica e inscrita na OAB/DF. Durante minha trajetória profissional, desenvolvi expertise em diferentes setores do direito, com foco principal em Direito Civil, Empresarial e de Família. Minha atuação profissional é pautada pela ética, transparência e dedicação ao atendimento personalizado. Acredito na importância do conhecimento técnico aliado à sensibilidade para compreender as necessidades específicas de cada cliente. Meu compromisso é com a qualidade do serviço jurídico prestado e o relacionamento de confiança com os clientes.",
+        title: "Especialista em Direito Civil e Tributário, com atuação também em outras áreas do Direito",
+        description: "Sou advogada com atuação dedicada na busca de soluções jurídicas eficazes. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia e comprometimento. Por isso, me envolvo diretamente em cada demanda, com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança.",
+        detailedDescription: "Sou advogada com atuação dedicada na busca de soluções jurídicas eficazes e personalizadas. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia cuidadosa e comprometimento total. Por isso, me envolvo diretamente em cada demanda, sempre com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança para aqueles que buscam defender seus direitos.",
         credentials: {
             bar: "OAB/DF",
             location: "Brasília, DF"
@@ -130,7 +128,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
             workingHours: "Segunda a Sexta: 9h às 18h | Sábados: 9h às 12h"
         },
         photo: {
-            src: "/images/geovanna-perfil.jpeg",
+            src: "/images/geovanna-perfil.png",
             placeholder: "Dra. Geovanna Nery",
             alt: "Dra. Geovanna Nery - Advogada"
         }
@@ -169,7 +167,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
             id: "family-law",
             title: "Direito de Família",
             description: "Atuação jurídica em Direito de Família, incluindo divórcio, guarda, pensão alimentícia e inventário, com atendimento personalizado.",
-            icon: Users,
+            icon: Heart,
             features: [
                 "Divórcio consensual e litigioso",
                 "Guarda compartilhada e unilateral",
@@ -180,24 +178,10 @@ export const LAWYER_CONFIG: LawyerConfig = {
             category: "family"
         },
         {
-            id: "real-estate-law",
-            title: "Direito Imobiliário",
-            description: "Atuação jurídica imobiliária para compra, venda, locação e regularização de imóveis, com análise documental completa.",
-            icon: Building,
-            features: [
-                "Compra, venda e permuta",
-                "Locação residencial e comercial",
-                "Regularização e usucapião",
-                "Condomínio e administração"
-            ],
-            gradient: "from-green-600 via-emerald-500 to-teal-500",
-            category: "real-estate"
-        },
-        {
             id: "health-law",
             title: "Direito à Saúde",
             description: "Defesa dos seus direitos em relação a planos de saúde, atendimento médico e acesso a tratamentos essenciais.",
-            icon: ShieldCheck,
+            icon: Heart,
             features: [
                 "Ações contra negativa de cobertura por planos de saúde",
                 "Fornecimento de medicamentos pelo SUS",
@@ -209,18 +193,34 @@ export const LAWYER_CONFIG: LawyerConfig = {
             category: "labor"
         },
         {
-            id: "digital-law",
-            title: "Direito Digital",
-            description: "Atuação jurídica em Direito Digital, LGPD, propriedade intelectual e contratos digitais para o ambiente tecnológico.",
-            icon: Smartphone,
+            id: "labor-law",
+            title: "Direito do Trabalho",
+            description: "Assessoria jurídica completa para empregados e empregadores, com foco na resolução de conflitos trabalhistas.",
+            icon: Gavel,
             features: [
-                "Proteção de dados pessoais (LGPD)",
-                "Direitos autorais e propriedade intelectual",
-                "Contratos digitais e e-commerce",
-                "Crimes cibernéticos e segurança digital"
+                "Verbas rescisórias, FGTS e horas extras",
+                "Reconhecimento de vínculo empregatício",
+                "Assédio moral e sexual no trabalho",
+                "Estabilidade e reintegração no cargo",
+                "Defesa em reclamações trabalhistas"
             ],
-            gradient: "from-violet-600 via-purple-500 to-indigo-500",
-            category: "digital"
+            gradient: "from-orange-600 via-amber-500 to-yellow-500",
+            category: "labor"
+        },
+        {
+            id: "tax-law",
+            title: "Direito Tributário",
+            description: "Suporte jurídico para enfrentar cobranças indevidas, regularizar pendências fiscais e planejar com eficiência.",
+            icon: BookOpen,
+            features: [
+                "Defesa em execuções fiscais",
+                "Restituição de tributos pagos indevidamente",
+                "Planejamento e consultoria tributária",
+                "Impugnação de autos de infração",
+                "Regularização fiscal e parcelamentos"
+            ],
+            gradient: "from-emerald-600 via-green-500 to-teal-500",
+            category: "tax"
         }
     ],
 
@@ -237,9 +237,9 @@ export const LAWYER_CONFIG: LawyerConfig = {
             "Direito Civil",
             "Direito Empresarial",
             "Direito de Família",
-            "Direito Imobiliário",
             "Direito à Saúde",
-            "Direito Digital",
+            "Direito do Trabalho",
+            "Direito Tributário",
             "Outro"
         ],
         placeholders: {
@@ -262,17 +262,17 @@ export const LAWYER_CONFIG: LawyerConfig = {
 
     about: {
         highlights: [
-            "Atuação focada em Direito Civil, Empresarial e Família",
+            "Atuação jurídica atualizada com as mais recentes mudanças legislativas",
             "Mais de 5 anos de experiência jurídica",
             "Atendimento personalizado e profissional",
             "Formação acadêmica sólida e atualizada"
         ],
         whyChooseUs: [
-            "Atendimento personalizado e humanizado",
-            "Comunicação transparente durante todo o processo",
-            "Experiência e atualização constante em diversas áreas do Direito",
-            "Atuação diferenciada em múltiplas áreas do direito",
-            "Defesa dos seus direitos com seriedade e transparência"
+            "Compromisso com resultados e ética profissional;",
+            "Atuação estratégica, com foco na solução do seu problema;",
+            "Atendimento personalizado e humanizado;",
+            "Experiência e atualização constante em diversas áreas do Direito;",
+            "Defesa dos seus direitos com seriedade e transparência."
         ]
     }
 } 

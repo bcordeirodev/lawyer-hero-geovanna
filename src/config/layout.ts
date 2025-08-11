@@ -47,7 +47,7 @@ export const LAYOUT_CONFIG: LayoutConfig = {
     },
     seo: {
         siteName: "Dra. Geovanna Nery - Advocacia",
-        siteDescription: "Advocacia especializada em Direito Civil, Empresarial e Família em Brasília, DF. Atendimento personalizado e soluções jurídicas eficazes.",
+        siteDescription: "Advocacia especializada em Direito Civil e Tributário, com atuação também em outras áreas do Direito. Atendimento personalizado e soluções jurídicas eficazes.",
         siteUrl: "https://geovannanery.com",
         defaultLanguage: "pt-BR",
         enableStructuredData: true
