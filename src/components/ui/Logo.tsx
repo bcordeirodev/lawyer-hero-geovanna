@@ -12,8 +12,8 @@ interface LogoProps {
 const sizeMap = {
     sm: { logo: 24, text: 'text-sm' },
     md: { logo: 32, text: 'text-base' },
-    lg: { logo: 40, text: 'text-lg' },
-    xl: { logo: 48, text: 'text-xl' }
+    lg: { logo: 48, text: 'text-xl' },
+    xl: { logo: 56, text: 'text-2xl' }
 }
 
 export function Logo({
@@ -26,15 +26,15 @@ export function Logo({
 
     return (
         <div className={cn(
-            "flex items-center space-x-3",
+            "flex items-center space-x-4",
             containerClassName
         )}>
             <div className={cn(
                 "flex items-center justify-center overflow-hidden",
                 size === 'sm' && "h-6 w-6",
                 size === 'md' && "h-8 w-8",
-                size === 'lg' && "h-10 w-10",
-                size === 'xl' && "h-12 w-12"
+                size === 'lg' && "h-12 w-12",
+                size === 'xl' && "h-14 w-14"
             )}>
                 <Image
                     src="/images/logos/logo-app-64x64.png"
@@ -45,8 +45,8 @@ export function Logo({
                         "object-contain",
                         size === 'sm' && "h-6 w-6",
                         size === 'md' && "h-8 w-8",
-                        size === 'lg' && "h-10 w-10",
-                        size === 'xl' && "h-12 w-12",
+                        size === 'lg' && "h-12 w-12",
+                        size === 'xl' && "h-14 w-14",
                         className
                     )}
                     priority
@@ -54,7 +54,7 @@ export function Logo({
             </div>
             {showText && (
                 <span className={cn(
-                    "font-bold text-text-primary",
+                    "font-extrabold text-text-primary",
                     text
                 )}>
                     {LAWYER_CONFIG.lawyer.name}
