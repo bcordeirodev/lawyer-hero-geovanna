@@ -13,7 +13,7 @@ export interface MetadataOptions {
 export function generateMetadata(options: MetadataOptions = {}): Metadata {
     const { lawyer } = LAWYER_CONFIG
 
-    const defaultTitle = `${lawyer.name} - ${lawyer.title}`
+    const defaultTitle = `${lawyer.name} - Advogada em Brasília, Ceilândia e DF | Direito Civil e Tributário`
     const defaultDescription = lawyer.detailedDescription
     const defaultImage = `${SEO_CONFIG.siteImage}?name=${encodeURIComponent(lawyer.name)}&title=${encodeURIComponent(lawyer.title)}`
 
@@ -83,10 +83,10 @@ export function generateMetadata(options: MetadataOptions = {}): Metadata {
             canonical: url,
         },
         other: {
-            'geo.region': 'BR-SP',
-            'geo.placename': 'São Paulo',
-            'geo.position': '-23.5505;-46.6333',
-            'ICBM': '-23.5505, -46.6333',
+            'geo.region': 'BR-DF',
+            'geo.placename': 'Brasília',
+            'geo.position': '-15.7801;-47.9292',
+            'ICBM': '-15.7801, -47.9292',
         },
     }
 }
@@ -99,8 +99,8 @@ export function generateServiceMetadata(serviceId: string): Metadata {
         return generateMetadata()
     }
 
-    const title = `${service.title} - ${lawyer.name}`
-    const description = `${service.description} ${lawyer.name} oferece assessoria especializada em ${service.title.toLowerCase()}.`
+    const title = `${service.title} em Brasília e Ceilândia | ${lawyer.name}`
+    const description = `${service.description} Atendimento em Brasília, Ceilândia, Taguatinga e região do DF. ${lawyer.name} oferece assessoria jurídica especializada em ${service.title.toLowerCase()} com atendimento personalizado.`
     const image = `${SEO_CONFIG.siteImage}?name=${encodeURIComponent(lawyer.name)}&title=${encodeURIComponent(service.title)}&service=${encodeURIComponent(service.id)}`
 
     const metadata = generateMetadata({
@@ -122,7 +122,7 @@ export function generateStructuredData() {
 
     return {
         '@context': 'https://schema.org',
-        '@type': 'LegalService',
+        '@type': ['LegalService', 'Attorney', 'LocalBusiness', 'ProfessionalService'],
         name: `${lawyer.name} - Advocacia`,
         description: lawyer.description,
         url: 'https://geovannanery.com',
@@ -132,15 +132,15 @@ export function generateStructuredData() {
         logo: 'https://geovannanery.com/images/logos/logo-192x192.png',
         address: {
             '@type': 'PostalAddress',
-            addressLocality: lawyer.credentials.location.split(', ')[0],
-            addressRegion: lawyer.credentials.location.split(', ')[1],
+            addressLocality: 'Brasília',
+            addressRegion: 'DF',
             addressCountry: 'BR',
-            postalCode: '01234-567',
+            streetAddress: 'Ceilândia e Região',
         },
         geo: {
             '@type': 'GeoCoordinates',
-            latitude: -23.5505,
-            longitude: -46.6333,
+            latitude: -15.7801,
+            longitude: -47.9292,
         },
         openingHours: lawyer.contact.workingHours,
         priceRange: '$$',
@@ -171,8 +171,8 @@ export function generateStructuredData() {
             description: lawyer.detailedDescription,
             image: 'https://picsum.photos/200/200?random=1',
             alumniOf: {
-                '@type': 'Organization',
-                name: 'Universidade de São Paulo (USP)',
+                '@type': 'EducationalOrganization',
+                name: 'Instituição de Ensino Superior',
             },
             knowsAbout: LAWYER_CONFIG.services.map(service => service.title),
             hasCredential: lawyer.credentials.bar,
@@ -183,7 +183,7 @@ export function generateStructuredData() {
             givenName: 'Geovanna',
             familyName: 'Nery da Silva',
             honorificPrefix: 'Dra.',
-            honorificSuffix: 'OAB/SP',
+            honorificSuffix: 'OAB/DF',
         },
         aggregateRating: {
             '@type': 'AggregateRating',
@@ -220,13 +220,39 @@ export function generateStructuredData() {
                 reviewBody: `${lawyer.name} é muito competente e dedicada. Recomendo fortemente.`,
             },
         ],
-        areaServed: {
-            '@type': 'Place',
-            name: `${lawyer.credentials.location}`,
-        },
-        serviceArea: {
-            '@type': 'Place',
-            name: `${lawyer.credentials.location} e região`,
-        },
+        areaServed: [
+            {
+                '@type': 'City',
+                name: 'Brasília',
+                '@id': 'https://www.wikidata.org/wiki/Q2844',
+            },
+            {
+                '@type': 'City',
+                name: 'Ceilândia',
+            },
+            {
+                '@type': 'City',
+                name: 'Taguatinga',
+            },
+            {
+                '@type': 'City',
+                name: 'Samambaia',
+            },
+            {
+                '@type': 'City',
+                name: 'Sol Nascente',
+            },
+        ],
+        serviceArea: [
+            {
+                '@type': 'GeoCircle',
+                geoMidpoint: {
+                    '@type': 'GeoCoordinates',
+                    latitude: -15.8167,
+                    longitude: -48.1067,
+                },
+                geoRadius: '50000',
+            },
+        ],
     }
 } 

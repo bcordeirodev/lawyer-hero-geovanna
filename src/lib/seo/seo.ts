@@ -29,15 +29,56 @@ export const generateTwitterCardUrl = (path: string = '') => {
 
 export const generateKeywords = (additionalKeywords: string[] = []) => {
     const baseKeywords = [
+        // Localização - Termos Prioritários
+        'advogada Brasília',
+        'advogado Ceilândia',
+        'advogada Ceilândia',
+        'advogado DF',
+        'advogada DF',
+        'advogado Distrito Federal',
+        'advogado Brasília DF',
+        'escritório advocacia Ceilândia',
+        'escritório advocacia Brasília',
+
+        // Áreas de Atuação + Localização
+        'advogado direito civil Brasília',
+        'advogado direito família Ceilândia',
+        'advogado trabalhista Brasília',
+        'advogado tributário DF',
+        'advogada direito consumidor Brasília',
+
+        // Regiões Administrativas do DF
+        'advogado Taguatinga',
+        'advogado Samambaia',
+        'advogado Sol Nascente',
+        'advogado Águas Claras',
+        'advogado Vicente Pires',
+
+        // Termos Gerais
         'advogada',
+        'advogado',
         'direito civil',
         'direito empresarial',
         'direito família',
-        'São Paulo',
+        'direito tributário',
+        'direito trabalhista',
+        'direito saúde',
         'assessoria jurídica',
+        'consultoria jurídica',
+        'advogado online',
+
+        // Nome e Credenciais
         LAWYER_CONFIG.lawyer.name,
+        'Geovanna Nery',
         LAWYER_CONFIG.lawyer.credentials.bar,
+        'OAB DF',
+
+        // Serviços
         ...LAWYER_CONFIG.services.map(service => service.title.toLowerCase()),
+        ...LAWYER_CONFIG.services.map(service => `${service.title.toLowerCase()} Brasília`),
+        ...LAWYER_CONFIG.services.map(service => `${service.title.toLowerCase()} Ceilândia`),
+
+        // Adicional
         ...additionalKeywords,
     ]
 
@@ -49,14 +90,34 @@ export const generateServiceKeywords = (serviceId: string) => {
     if (!service) return generateKeywords()
 
     const serviceKeywords = [
+        // Serviço específico
         service.title.toLowerCase(),
+        `${service.title.toLowerCase()} Brasília`,
+        `${service.title.toLowerCase()} Ceilândia`,
+        `${service.title.toLowerCase()} DF`,
+        `${service.title.toLowerCase()} Distrito Federal`,
+
+        // Features do serviço + localização
         ...service.features.map(feature => feature.toLowerCase()),
+        ...service.features.map(feature => `${feature.toLowerCase()} Brasília`),
+        ...service.features.map(feature => `${feature.toLowerCase()} Ceilândia`),
+
+        // Termos relacionados
         'advocacia',
         'advogado',
+        'advogada',
         'direito',
         'jurídico',
-        'consulta',
+        'consulta jurídica',
         'assessoria',
+        'consultoria',
+        'atendimento jurídico',
+
+        // Localização
+        'Brasília',
+        'Ceilândia',
+        'DF',
+        'Distrito Federal',
     ]
 
     return generateKeywords(serviceKeywords)

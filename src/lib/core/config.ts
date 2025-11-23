@@ -26,7 +26,6 @@ export const appConfig = {
     ],
     aboutHighlights: [
         "Especialização em Direito Civil e Empresarial",
-        "Mais de 5 anos de experiência jurídica",
         "Atendimento personalizado e transparente",
         "Compromisso com resultados eficazes"
     ],

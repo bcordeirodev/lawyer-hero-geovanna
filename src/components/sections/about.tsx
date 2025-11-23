@@ -155,16 +155,6 @@ export function About() {
                                         <svg className="h-3 w-3 sm:h-4 sm:w-4 text-secondary-500" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
-                                        <span className="text-xs sm:text-sm text-text-primary font-medium">{lawyer.statistics.experience} anos de experiência</span>
-                                    </motion.div>
-                                    <motion.div
-                                        className="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-background-tertiary/50 transition-colors"
-                                        whileHover={{ x: 3 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <svg className="h-3 w-3 sm:h-4 sm:w-4 text-secondary-500" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
                                         <span className="text-xs sm:text-sm text-text-primary font-medium">{lawyer.statistics.formation}</span>
                                     </motion.div>
                                 </div>

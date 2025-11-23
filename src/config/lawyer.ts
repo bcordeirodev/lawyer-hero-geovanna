@@ -2,7 +2,9 @@ import {
     BookOpen,
     Briefcase,
     Gavel,
-    Heart
+    Handshake,
+    Heart,
+    HeartPulse
 } from 'lucide-react'
 
 export interface LawyerCredentials {
@@ -110,15 +112,15 @@ export const LAWYER_CONFIG: LawyerConfig = {
     lawyer: {
         name: "Dra. Geovanna Nery",
         fullName: "Geovanna Nery da Silva",
-        title: "Especialista em Direito Civil e Tributário, com atuação também em outras áreas do Direito",
-        description: "Sou advogada com atuação dedicada na busca de soluções jurídicas eficazes. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia e comprometimento. Por isso, me envolvo diretamente em cada demanda, com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança.",
-        detailedDescription: "Sou advogada com atuação dedicada na busca de soluções jurídicas eficazes e personalizadas. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia cuidadosa e comprometimento total. Por isso, me envolvo diretamente em cada demanda, sempre com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança para aqueles que buscam defender seus direitos.",
+        title: "Advogada Especialista em Direito Civil e Tributário",
+        description: "Advogada atuante em Brasília, Ceilândia e região do Distrito Federal. Atendimento dedicado na busca de soluções jurídicas eficazes para seus problemas. Cada cliente é único e cada caso exige atenção personalizada, estratégia e comprometimento. Atuação com ética, excelência técnica e foco em resultados, oferecendo atendimento jurídico completo e de confiança.",
+        detailedDescription: "Advogada com atuação em Brasília, Ceilândia, Taguatinga, Samambaia e toda região do Distrito Federal. Ofereço soluções jurídicas eficazes e personalizadas, pois acredito que cada cliente é único e cada caso exige atenção personalizada, estratégia cuidadosa e comprometimento total. Atendo presencialmente e online, sempre com ética, excelência técnica e foco em resultados para defender os direitos de quem confia no meu trabalho.",
         credentials: {
-            bar: "OAB/DF",
+            bar: "OAB/DF - 85.950",
             location: "Brasília, DF"
         },
         statistics: {
-            experience: "5+",
+            experience: "1+",
             formation: "Pós-graduada em Direito Civil e Tributário",
             expertise: "Civil, Empresarial e Família"
         },
@@ -181,7 +183,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
             id: "health-law",
             title: "Direito à Saúde",
             description: "Defesa dos seus direitos em relação a planos de saúde, atendimento médico e acesso a tratamentos essenciais.",
-            icon: Heart,
+            icon: HeartPulse,
             features: [
                 "Ações contra negativa de cobertura por planos de saúde",
                 "Fornecimento de medicamentos pelo SUS",
@@ -196,7 +198,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
             id: "labor-law",
             title: "Direito do Trabalho",
             description: "Assessoria jurídica completa para empregados e empregadores, com foco na resolução de conflitos trabalhistas.",
-            icon: Gavel,
+            icon: Handshake,
             features: [
                 "Verbas rescisórias, FGTS e horas extras",
                 "Reconhecimento de vínculo empregatício",
@@ -210,7 +212,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
         {
             id: "tax-law",
             title: "Direito Tributário",
-            description: "Suporte jurídico para enfrentar cobranças indevidas, regularizar pendências fiscais e planejar com eficiência.",
+            description: "Advogado tributarista em Brasília e DF. Suporte jurídico para enfrentar cobranças indevidas, regularizar pendências fiscais e planejamento tributário eficiente.",
             icon: BookOpen,
             features: [
                 "Defesa em execuções fiscais",
@@ -263,9 +265,9 @@ export const LAWYER_CONFIG: LawyerConfig = {
     about: {
         highlights: [
             "Atuação jurídica atualizada com as mais recentes mudanças legislativas",
-            "Mais de 5 anos de experiência jurídica",
             "Atendimento personalizado e profissional",
-            "Formação acadêmica sólida e atualizada"
+            "Formação acadêmica sólida e atualizada",
+            "Estratégia jurídica focada em soluções eficazes"
         ],
         whyChooseUs: [
             "Compromisso com resultados e ética profissional;",

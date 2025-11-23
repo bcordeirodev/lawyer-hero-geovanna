@@ -2,7 +2,7 @@
 
 import { LAWYER_CONFIG } from "@/config"
 import { motion } from "framer-motion"
-import { Award, Clock, Mail, MapPin, Phone, Scale, Shield, Zap } from "lucide-react"
+import { Award, Mail, MapPin, Phone, Scale, Shield, Zap } from "lucide-react"
 
 export function Footer() {
     const { lawyer, services } = LAWYER_CONFIG
@@ -23,11 +23,11 @@ export function Footer() {
             value: lawyer.credentials.location,
             href: null
         },
-        {
-            icon: Clock,
-            value: lawyer.contact.workingHours,
-            href: null
-        }
+        // {
+        //     icon: Clock,
+        //     value: lawyer.contact.workingHours,
+        //     href: null
+        // }
     ]
 
     return (
@@ -70,8 +70,8 @@ export function Footer() {
                                         <Award className="h-4 w-4 text-secondary-500" />
                                     </div>
                                     <div>
-                                        <p className="text-lg font-bold text-text-primary">{lawyer.statistics.experience}</p>
-                                        <p className="text-xs text-text-secondary">Anos de Experiência</p>
+                                        <p className="text-sm font-bold text-text-primary">Pós-Graduação</p>
+                                        <p className="text-xs text-text-secondary">Civil e Tributário</p>
                                     </div>
                                 </div>
                             </motion.div>

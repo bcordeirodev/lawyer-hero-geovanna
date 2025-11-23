@@ -9,7 +9,7 @@ import { ContactForm } from '@/components/forms/ContactForm'
 import { LAWYER_CONFIG } from '@/config'
 import { useTheme } from '@/contexts/ThemeContext'
 import { motion } from "framer-motion"
-import { Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import React from 'react'
 
 /**
@@ -40,13 +40,6 @@ export const Contact: React.FC = () => {
             label: 'Localização',
             value: lawyer.credentials.location,
             icon: MapPin,
-            href: null
-        },
-        {
-            type: 'hours',
-            label: 'Horário de Atendimento',
-            value: lawyer.contact.workingHours,
-            icon: Clock,
             href: null
         }
     ]
