@@ -13,7 +13,7 @@ export interface MetadataOptions {
 export function generateMetadata(options: MetadataOptions = {}): Metadata {
     const { lawyer } = LAWYER_CONFIG
 
-    const defaultTitle = `${lawyer.name} - Advogada em Brasília, Ceilândia e DF | Direito Civil e Tributário`
+    const defaultTitle = `${lawyer.name}`
     const defaultDescription = lawyer.detailedDescription
     const defaultImage = `${SEO_CONFIG.siteImage}?name=${encodeURIComponent(lawyer.name)}&title=${encodeURIComponent(lawyer.title)}`
 
@@ -99,8 +99,8 @@ export function generateServiceMetadata(serviceId: string): Metadata {
         return generateMetadata()
     }
 
-    const title = `${service.title} em Brasília e Ceilândia | ${lawyer.name}`
-    const description = `${service.description} Atendimento em Brasília, Ceilândia, Taguatinga e região do DF. ${lawyer.name} oferece assessoria jurídica especializada em ${service.title.toLowerCase()} com atendimento personalizado.`
+    const title = `${service.title} - ${lawyer.name}`
+    const description = `${service.description} ${lawyer.name} oferece assessoria especializada em ${service.title.toLowerCase()}.`
     const image = `${SEO_CONFIG.siteImage}?name=${encodeURIComponent(lawyer.name)}&title=${encodeURIComponent(service.title)}&service=${encodeURIComponent(service.id)}`
 
     const metadata = generateMetadata({

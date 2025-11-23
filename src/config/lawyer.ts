@@ -112,9 +112,9 @@ export const LAWYER_CONFIG: LawyerConfig = {
     lawyer: {
         name: "Dra. Geovanna Nery",
         fullName: "Geovanna Nery da Silva",
-        title: "Advogada Especialista em Direito Civil e Tributário",
-        description: "Advogada atuante em Brasília, Ceilândia e região do Distrito Federal. Atendimento dedicado na busca de soluções jurídicas eficazes para seus problemas. Cada cliente é único e cada caso exige atenção personalizada, estratégia e comprometimento. Atuação com ética, excelência técnica e foco em resultados, oferecendo atendimento jurídico completo e de confiança.",
-        detailedDescription: "Advogada com atuação em Brasília, Ceilândia, Taguatinga, Samambaia e toda região do Distrito Federal. Ofereço soluções jurídicas eficazes e personalizadas, pois acredito que cada cliente é único e cada caso exige atenção personalizada, estratégia cuidadosa e comprometimento total. Atendo presencialmente e online, sempre com ética, excelência técnica e foco em resultados para defender os direitos de quem confia no meu trabalho.",
+        title: "Especialista em Direito Civil e Tributário, com atuação também em outras áreas do Direito",
+        description: "Sou advogada com atuação dedicada na busca de soluções jurídicas eficazes. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia e comprometimento. Por isso, me envolvo diretamente em cada demanda, com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança.",
+        detailedDescription: "Sou advogada com atuação dedicada na busca de soluções jurídicas eficazes e personalizadas. Acredito que cada cliente é único e que cada caso exige atenção personalizada, estratégia cuidadosa e comprometimento total. Por isso, me envolvo diretamente em cada demanda, sempre com ética, excelência técnica e foco em resultados, oferecendo um atendimento jurídico completo e de confiança para aqueles que buscam defender seus direitos.",
         credentials: {
             bar: "OAB/DF - 85.950",
             location: "Brasília, DF"
@@ -212,7 +212,7 @@ export const LAWYER_CONFIG: LawyerConfig = {
         {
             id: "tax-law",
             title: "Direito Tributário",
-            description: "Advogado tributarista em Brasília e DF. Suporte jurídico para enfrentar cobranças indevidas, regularizar pendências fiscais e planejamento tributário eficiente.",
+            description: "Suporte jurídico para enfrentar cobranças indevidas, regularizar pendências fiscais e planejar com eficiência.",
             icon: BookOpen,
             features: [
                 "Defesa em execuções fiscais",
